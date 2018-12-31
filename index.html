@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/img/title.png" />
+    <title>个税神器</title>
+    <script src="/static/js/jquery-2.1.4.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    //判断是否ie
+    var DEFAULT_VERSION = 9;
+    var ua = navigator.userAgent.toLowerCase();
+    var isIE = ua.indexOf("msie") > -1;
+    var safariVersion;
+    if (isIE) {
+      safariVersion = ua.match(/msie ([\d.]+)/)[1];
+      var sa = parseInt(safariVersion);
+      if (safariVersion <= DEFAULT_VERSION) {
+        //ie9以下，添加class名调用slide框架
+        //console.log("ie9下");
+        alert("您的ie版本较低,建议您下载最新版本查看")
+      } else {
+        //ie9以上，调用swiper2
+        //console.log("ie9上");
+      }
+    } else {
+      //非ie
+    }
+  </script>
+</html>
