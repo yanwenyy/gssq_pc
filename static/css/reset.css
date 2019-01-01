@@ -25,7 +25,8 @@
 				caption {display:none;}    /* 重置表格标题为隐藏 */
 				table {width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}    /* 重置table属性 */
 				img{vertical-align:top}  /* 图片在当前行内的垂直位置 */
-
+        .inline-block{display: inline-block}
+        .box-sizing{box-sizing: border-box}
         /* 清浮动 */
         .clearfix:after,
         .clearfix:before{content: "";display: table;}

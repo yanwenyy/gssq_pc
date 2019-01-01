@@ -1,10 +1,18 @@
 <template>
-  <div class='container'>首页</div>
+  <div class='container'>
+      首页
+  </div>
 </template>
 
 <script>
     export default {
-        name: "home"
+        name: "home",
+        mounted(){
+
+        },
+        methods:{
+
+        }
     }
 </script>
 

@@ -1,6 +1,14 @@
 body{
   width:100%;
   height:100vh;
+  font-family:MicrosoftYaHei-Bold;
+}
+input::-webkit-input-placeholder{
+  color:#999;
+}
+/*小手显示*/
+.header-user-msg:hover{
+  cursor: pointer;
 }
 @media screen and (min-width: 1200px){
   html,body,#header,#footer{
@@ -28,18 +36,101 @@ body{
   position: relative;
   box-sizing: border-box;
   margin: 0 auto;
-  min-height:100vh;
-  height: auto;
 }
 /**/
 /*头部*/
 #header{
   width:100%;
-  height:6.25rem;
-  background: red;
-  color:#fff;
+}
+.header-logo{
+  height:5rem;
+  box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.04);
+}
+.header-logo .container{
+  height: 100%;
+}
+.header-logo .container,.header-tab .container{
+  display: flex;
+  justify-content: space-between;
+}
+.logo-img{
+  margin-top: 1.75rem;
+  width:7.81rem;
+  height:1.75rem;
+}
+.header-user{
+  font-size: 0.82rem;
+  color:#333;
+  margin-top: 1.25rem;
+  text-align: right;
+}
+.header-title{
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom:0.56rem ;
+}
+.header-user-msg>img{
+  vertical-align: middle;
+}
+.header-user-msg>img:nth-child(1){
+  width:1.125rem;
+  height:1.125rem;
+}
+.header-tab{
+  height:5rem;
+}
+.header-tab:before{
+  display: table;
+  content: '';
+}
+.header-tab-list{
   font-size: 1rem;
+  color:#333;
+  margin-top: 2.63rem;
+}
+.header-tab-list>div{
+  margin: 0 3.125rem;
+  padding-bottom: 1.125rem;
+}
+.header-tab-act{
+  color:#2FBEB9;
+  border-bottom: 4px solid #2FBEB9;
+}
+.header-search-group{
+  width:23.06rem;
+  height:1.875rem;
+  margin: 2.19rem 1.25rem 0 0;
+  border:1px solid rgba(238,238,238,1);
+  border-radius:15px;
+  padding:2px;
+}
+.header-search-group>input{
+  width:90%;
+  height:100%;
+  padding-left: 1.31rem;
+  border:none;
+  font-size: 0.875rem;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-right: 1px solid #eee;
+}
+.header-search-group>img{
+  vertical-align: middle;
+  width:1.06rem;
+  height:1.06rem;
+  margin-left: 0.3rem;
+}
+.close-login{
+  width:5.75rem;
+  height:2rem;
+  line-height: 2rem;
   text-align: center;
+  font-size: 0.81rem;
+  color:#333;
+  box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.04);
+  position: absolute;
+  bottom:-2rem;
+  right:0;
 }
 /*脚部*/
 #footer{
