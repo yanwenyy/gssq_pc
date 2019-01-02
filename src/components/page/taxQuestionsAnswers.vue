@@ -4,7 +4,7 @@
       <img src="../../../static/img/banner-gswd.png" alt="">
     </div>
     <ul class="gswd-ul">
-      <li class="gswd_list" v-for="item in 10">
+      <li class="gswd_list" v-for="item in 10" @click="go_detail()">
         <img src="../../../static/img/user-img.png" alt="">
         <div class="inline-block">
           <div class="gswd-user">
@@ -24,7 +24,12 @@
 
 <script>
     export default {
-        name: "tax-questions-answers"
+      name: "tax-questions-answers",
+      methods:{
+        go_detail:function(id){
+          this.$router.push({ name: 'taxQADetail'})
+        }
+      }
     }
 </script>
 
@@ -37,7 +42,7 @@
     color:#333;
     display: flex;
     justify-content: space-between;
-    padding:0.5rem 0 1.69rem 0;
+    padding:1.69rem 0;
   }
   .gswd_list:not(:last-child){
     border-bottom: 1px solid rgba(242,242,242,1);;
