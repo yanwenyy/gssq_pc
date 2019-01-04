@@ -7,7 +7,7 @@ input::-webkit-input-placeholder{
   color:#999;
 }
 /*小手显示*/
-.header-user-msg:hover{
+.header-user-msg:hover,.close-login:hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){
@@ -54,9 +54,19 @@ input::-webkit-input-placeholder{
   justify-content: space-between;
 }
 .logo-img{
-  margin-top: 1.75rem;
-  width:7.81rem;
-  height:1.75rem;
+  margin-top: 1.4rem;
+  width:7.93rem;
+  height:2.19rem;
+}
+.logo-name{
+  font-size: 1.25rem;
+  color:#13B5B1;
+  font-weight: bold;
+  padding-left: 0.625rem;
+  border-left: 1px solid #eeeeee;
+  margin-left: 0.75rem;
+  margin-top: 2rem;
+  /*vertical-align: middle;*/
 }
 .header-user{
   font-size: 0.82rem;
@@ -89,7 +99,7 @@ input::-webkit-input-placeholder{
   margin-top: 2.63rem;
 }
 .header-tab-list>div{
-  margin: 0 3.125rem;
+  margin: 0 2.5rem;
   padding-bottom: 1.125rem;
 }
 .header-tab-act{
@@ -131,6 +141,7 @@ input::-webkit-input-placeholder{
   position: absolute;
   bottom:-2rem;
   right:0;
+  z-index: 10000;
 }
 /*脚部*/
 #footer{
@@ -140,10 +151,49 @@ input::-webkit-input-placeholder{
   font-size: 0.81rem;
   color:#999;
   padding-top:1.625rem;
-  /*margin-top: 1rem;*/
+  margin-top: 3rem;
 }
 #footer div{
   text-align: center;
   margin-bottom: 0.63rem;
 }
 /**/
+/*首页公共样式*/
+.home-title{
+  margin-top: 1.94rem;
+  border-bottom: 1px solid #eee;
+  box-shadow:0px 1px 1px 0px rgba(0, 0, 0, 0.04);
+  font-size:0.81rem ;
+  color:#333;
+}
+.home-title>div{
+  padding-bottom: 0.875rem;
+}
+.home-title-cn{
+  font-size:1.124rem;
+  font-weight: bold;
+  margin-right: 0.75rem;
+  border-bottom: 2px solid #13B5B1;
+}
+.gsfd_system_title{
+  margin-top:1.81rem ;
+  display: flex;
+}
+.gsfd_system_title>img{
+  /*width:3%;*/
+  /*height:1.56rem;*/
+}
+.gsfd_system_title>div{
+  width:95.5%;
+  margin-left: 1%;
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 0.69rem;
+  font-size: 0.75rem;
+  color:#666666;
+}
+.gsfd_system_title>div>span:nth-child(1){
+  color:#333;
+  font-size: 1rem;
+  font-weight:400;
+  margin-right: 0.2rem;
+}
