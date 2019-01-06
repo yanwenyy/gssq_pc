@@ -1,5 +1,6 @@
 <template>
   <div class='container'>
+    <headerTab  msg="个税咨询"></headerTab>
     <ul class="gswd-ul">
       <li class="gswd_list">
         <img src="../../../static/img/user-img.png" alt="">
@@ -52,8 +53,12 @@
 </template>
 
 <script>
+    import headerTab from '@/components/headerTab'
     export default {
-
+      name: "taxQADetail",
+      components:{
+        headerTab
+      },
     }
 </script>
 

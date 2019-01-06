@@ -1,5 +1,6 @@
 <template>
   <div>
+    <headerTab msg="首页"></headerTab>
     <div class='container'>
       <div class="home-banner">
         <img src="../../../static/img/banner-gswd.png" alt="">
@@ -266,8 +267,12 @@
 </template>
 
 <script>
+  import headerTab from '@/components/headerTab'
     export default {
         name: "home",
+        components:{
+          headerTab
+        },
         mounted(){
           if(localStorage.getItem("if_login")){
 

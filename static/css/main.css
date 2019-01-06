@@ -7,7 +7,8 @@ input::-webkit-input-placeholder{
   color:#999;
 }
 /*小手显示*/
-.header-user-msg:hover,.close-login:hover{
+.header-user-msg:hover,.close-login:hover,.main-right-body-title>div:hover,.left-list-one:hover,
+.left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){
@@ -98,7 +99,7 @@ input::-webkit-input-placeholder{
   color:#333;
   margin-top: 2.63rem;
 }
-.header-tab-list>div{
+.header-tab-list>a>div{
   margin: 0 2.5rem;
   padding-bottom: 1.125rem;
 }
@@ -131,17 +132,30 @@ input::-webkit-input-placeholder{
   margin-left: 0.3rem;
 }
 .close-login{
-  width:5.75rem;
-  height:2rem;
+  width:9.63rem;
+  height:10.31rem;
+  background: url(../../static/img/header-user-bg.png) no-repeat;
+  background-size: 100% 100%;
   line-height: 2rem;
   text-align: center;
-  font-size: 0.81rem;
+  font-size: 0.875rem;
   color:#333;
   box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.04);
   position: absolute;
-  bottom:-2rem;
-  right:0;
+  bottom:-10.31rem;
+  right:-3rem;
   z-index: 10000;
+}
+.close-login>ul{
+  margin-top: 0.75rem;
+}
+.close-login li{
+  height:2.25rem;
+  line-height: 2.25rem;
+}
+.close-login li:hover{
+  background: #F6F6F6;
+  color:#13B5B1;
 }
 /*脚部*/
 #footer{
@@ -196,4 +210,178 @@ input::-webkit-input-placeholder{
   font-size: 1rem;
   font-weight:400;
   margin-right: 0.2rem;
+}
+/*个税辅导*/
+.main-left{
+  width:20%;
+  margin-right: 5%;
+  margin-top: 1.75rem;
+  vertical-align: top;
+}
+.main-right{
+  margin-top: 1rem;
+  vertical-align: top;
+  width:74%;
+}
+.main-left-title{
+  font-size: 1.125rem;
+  color:#333;
+}
+.main-left-title>img{
+  width:1.19rem;
+  height:1.125rem;
+  vertical-align: top;
+  margin-bottom: 1.56rem;
+}
+.left-list-ul>li{
+  min-height:3.5rem;
+  height:auto;
+  position: relative;
+  width:100%;
+  color:#333;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+.left-list-one>div{
+  width:40%;
+}
+.left-list-two-div-act{
+  color:#13B5B1;
+}
+.left-list-one{
+  height:3.5rem;
+  line-height: 3.5rem;
+  background: #F0F0F0;
+}
+.left-list-one-act{
+  background: #13B5B1;
+  color:#fff;
+}
+.left-list-one>img{
+  vertical-align: middle;
+}
+.left-list-one-icon{
+  margin: 0 0.75rem 0 1.125rem;
+  width:1.625rem;
+  height:1.625rem;
+  background: #13B5B1;
+  border-radius: 50%;
+  color:#fff;
+  /*font-size: 0.75rem;*/
+  vertical-align: middle;
+  position: relative;
+}
+.left-list-one-icon-act{
+  background: #fff;
+  color:#13B5B1;
+}
+.left-list-one-icon>span{
+  position: absolute;
+  top:5px;
+  left:5px;
+}
+.left-list-one>img:nth-child(3){
+ margin-left: 2rem;
+}
+.left-list-two>ul>li{
+  text-align: center;
+  font-size: 0.81rem;
+  color:#666;
+  margin-bottom: 1px;
+  min-height:3rem;
+  height:auto;
+}
+.left-list-two>ul>li>div:nth-child(1){
+  background: #FAFAFA;
+  height:3rem;
+  line-height: 3rem;
+}
+.left-list-three>.left-list-three-list{
+  line-height:auto;
+}
+.left-list-three>.left-list-three-list>div:nth-child(1){
+  width:30%;
+  text-align: right;
+  vertical-align: top;
+}
+.left-list-two li img{
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.left-list-three-dot{
+  width:4px;
+  height:4px;
+  background:#AAAAAA;
+  margin-right:0.56rem ;
+  vertical-align: middle;
+}
+.left-list-three-div{
+  vertical-align: top;
+  width:36%;
+  text-align: left;
+  line-height: 1rem;
+}
+.left-list-three-list{
+  margin-top: 1.19rem;
+}
+.left-list-three-list-act{
+  color:#13B5B1!important;
+}
+.left-list-three-dot-act{
+  background:#13B5B1!important;
+}
+.left-list-three-list:last-child{
+  margin-bottom:1.06rem ;
+}
+/*面包屑*/
+.bread-nav{
+  height:2.25rem;
+  line-height: 2.25rem;
+  color:#999999;
+  font-size: 0.875rem;
+  padding-left:1.06rem;
+  background: #F9F9F9;
+  margin-bottom: 1.06rem;
+}
+.bread-nav>img{
+  width:0.875rem;
+  height:0.81rem;
+  vertical-align: middle;
+}
+.main-right-body-title{
+  border-bottom: 2px solid #13B5B1;
+  font-size: 0.94rem;
+}
+.main-right-body-title>div{
+  width:8.5rem;
+  height:2.38rem;
+  line-height: 2.38rem;
+  text-align: center;
+}
+.main-right-body-title-act{
+  background: url(../../static/img/right-title-click.png);
+  color:#fff;
+}
+.main-right-msg{
+  padding:2.75rem 0;
+  height:40.63rem;
+  overflow: auto;
+  font-size: 0.94rem;
+}
+.main-right-footer{
+  text-align: center;
+  font-size: 0.875rem;
+}
+.iknown{
+  width:6.81rem;
+  height:1.94rem;
+  background: #13B5B1;
+  color:#fff;
+  line-height: 1.94rem;
+  text-align: center;
+  border-radius:4px;
+  margin-right: 0.94rem;
+}
+.orange{
+  color:#F99F12!important;
 }
