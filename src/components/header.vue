@@ -2,7 +2,10 @@
   <div id="header">
     <div class="header-logo box-sizing">
       <div class="container">
-        <img src="../../static/img/header-logo.png" class="logo-img" alt="">
+        <div class="inline-block">
+          <img src="../../static/img/logo.png" class="logo-img" alt="">
+          <span class="inline-block logo-name">个人所得税外包服务系统</span>
+        </div>
         <div class="inline-block header-user">
           <div class="header-title">北京解税宝科技有限公司</div>
           <div class="header-user-msg" @click="close_status=!close_status">
@@ -11,7 +14,7 @@
             <img src="../../static/img/header-down.png" alt="">
           </div>
         </div>
-        <div class="close-login" v-if="close_status">退出</div>
+        <div class="close-login" v-if="close_status" @click="close()">退出</div>
       </div>
     </div>
     <div class="header-tab box-sizing">
@@ -21,10 +24,13 @@
             <router-link :to="{name:'home'}">首&nbsp;&nbsp;&nbsp;&nbsp;页</router-link>
           </div>
           <div class="inline-block" :class="tab_class==2? 'header-tab-act':''" @click="tab_click(2)">
-            <router-link :to="{name:'taxQuestionsAnswers'}">个税签约辅导</router-link>
+            <router-link :to="{name:'taxQuestionsAnswers'}">个税辅导</router-link>
           </div>
           <div class="inline-block" :class="tab_class==3? 'header-tab-act':''" @click="tab_click(3)">
-            <router-link :to="{name:'taxQuestionsAnswers'}">个税问答</router-link>
+            <router-link :to="{name:'taxQuestionsAnswers'}">个税咨询</router-link>
+          </div>
+          <div class="inline-block" :class="tab_class==4? 'header-tab-act':''" @click="tab_click(4)">
+            <router-link :to="{name:'taxQuestionsAnswers'}">个税筹划</router-link>
           </div>
         </div>
         <div class="inline-block header-search-group box-sizing">
@@ -46,8 +52,13 @@
           }
         },
         methods:{
+          //tab切换
           tab_click:function(val){
             this.tab_class=val;
+          },
+          //退出登录
+          close:function(){
+            window.location.href="http://yanwen.com:8001/#/home?source=geishuishenqi"
           }
         }
     }
