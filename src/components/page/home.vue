@@ -262,18 +262,27 @@
         <div class="inline-block"><img src="../../../static/img/footer-banner2.png" alt=""></div>
       </div>
     </div>
+    <FirstLoginDialog v-show="show"></FirstLoginDialog>
   </div>
 </template>
 
 <script>
+  import FirstLoginDialog from '@/components/page/firstLoginDialog';
     export default {
         name: "home",
+      data(){
+          return{
+            show:false
+          }
+      },
+        components : {
+          FirstLoginDialog
+        },
         mounted(){
-          if(localStorage.getItem("if_login")){
-
+          if(localStorage.getItem("if_login")=="true"){
+            this.show=false
           }else{
-            localStorage.setItem("if_login","true");
-            // alert("已经登录")
+            this.show=true
           }
         },
         methods:{

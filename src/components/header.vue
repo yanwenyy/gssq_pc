@@ -4,7 +4,7 @@
       <div class="container">
         <div class="inline-block">
           <img src="../../static/img/logo.png" class="logo-img" alt="">
-          <span class="inline-block logo-name">个人所得税外包服务系统</span>
+          <span class="inline-block logo-name">个人所得税专家服务系统</span>
         </div>
         <div class="inline-block header-user">
           <div class="header-title">北京解税宝科技有限公司</div>
