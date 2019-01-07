@@ -1,5 +1,6 @@
 <template>
   <div class='container'>
+    <headerTab msg="个税咨询"></headerTab>
     <div class="banner">
       <img src="../../../static/img/banner-gswd.png" alt="">
     </div>
@@ -23,8 +24,12 @@
 </template>
 
 <script>
+  import headerTab from '@/components/headerTab'
     export default {
       name: "tax-questions-answers",
+      components:{
+        headerTab
+      },
       methods:{
         go_detail:function(id){
           this.$router.push({ name: 'taxQADetail'})

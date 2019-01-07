@@ -1,5 +1,6 @@
 <template>
   <div>
+    <headerTab msg="首页"></headerTab>
     <div class='container'>
       <div class="home-banner">
         <img src="../../../static/img/banner-gswd.png" alt="">
@@ -268,6 +269,7 @@
 
 <script>
   import FirstLoginDialog from '@/components/page/firstLoginDialog';
+  import headerTab from '@/components/headerTab';
     export default {
         name: "home",
       data(){
@@ -276,7 +278,8 @@
           }
       },
         components : {
-          FirstLoginDialog
+          FirstLoginDialog,
+          headerTab
         },
         mounted(){
           if(localStorage.getItem("if_login")=="true"){

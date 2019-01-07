@@ -14,28 +14,13 @@
             <img src="../../static/img/header-down.png" alt="">
           </div>
         </div>
-        <div class="close-login" v-if="close_status" @click="close()">退出</div>
-      </div>
-    </div>
-    <div class="header-tab box-sizing">
-      <div class="container">
-        <div class="header-tab-list inline-block">
-          <div class="inline-block" :class="tab_class==1? 'header-tab-act':''" @click="tab_click(1)">
-            <router-link :to="{name:'home'}">首&nbsp;&nbsp;&nbsp;&nbsp;页</router-link>
-          </div>
-          <div class="inline-block" :class="tab_class==2? 'header-tab-act':''" @click="tab_click(2)">
-            <router-link :to="{name:'taxQuestionsAnswers'}">个税辅导</router-link>
-          </div>
-          <div class="inline-block" :class="tab_class==3? 'header-tab-act':''" @click="tab_click(3)">
-            <router-link :to="{name:'taxQuestionsAnswers'}">个税咨询</router-link>
-          </div>
-          <div class="inline-block" :class="tab_class==4? 'header-tab-act':''" @click="tab_click(4)">
-            <router-link :to="{name:'taxQuestionsAnswers'}">个税筹划</router-link>
-          </div>
-        </div>
-        <div class="inline-block header-search-group box-sizing">
-          <input placeholder="请搜索问题" type="text" class="box-sizing">
-          <img src="../../static/img/header-search.png">
+        <div class="close-login" v-if="close_status">
+          <ul>
+            <li @click="user_model()">员工账户管理</li>
+            <li @click="user_model('taxCounselingEmployees')">员工个税辅导管理</li>
+            <li @click="user_model()">我的个税扣除申报</li>
+            <li @click="user_model()">退出</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -51,6 +36,9 @@
             close_status:false,//退出框是否显示
           }
         },
+        mounted(){
+
+        },
         methods:{
           //tab切换
           tab_click:function(val){
@@ -58,7 +46,13 @@
           },
           //退出登录
           close:function(){
-            window.location.href="http://yanwen.com:8001/#/home?source=geishuishenqi"
+            // window.location.href="http://yanwen.com:8001/#/home?source=geishuishenqi"
+            this.$router.push({name:"login"});
+          },
+          //用户框点击
+          user_model:function(val){
+            this.$router.push({name:val});
+            this.close_status=false;
           }
         }
     }
