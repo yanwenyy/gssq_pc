@@ -123,6 +123,9 @@
             three_status:''
           }
         },
+        mounted(){
+
+        },
         methods:{
           //点击我没懂
           not_known:function () {
