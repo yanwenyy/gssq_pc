@@ -52,8 +52,14 @@
         </div>
         <div class="main-right-footer">
           <div class="inline-block iknown">我懂了</div>
-          <div class="inline-block not-known orange">我没懂，去向专家提问</div>
+          <div class="inline-block not-known orange" @click="not_known">我没懂，去向专家提问</div>
         </div>
+      </div>
+    </div>
+    <div class="mask-layer" v-show="code_show">
+      <div class="code">
+        <img src="../../../static/img/code_img_close.png" class="close" @click="close">
+        <img src="../../../static/img/code_img.png" class="code_img">
       </div>
     </div>
   </div>
@@ -64,6 +70,8 @@
         name: "tax-counseling-employees",
         data(){
           return{
+            //点击我没懂二维码显示
+            code_show:false,
             //右边tab栏显示状态
             right_tab_status:1,
             //左边菜单栏模拟数据
@@ -116,6 +124,14 @@
           }
         },
         methods:{
+          //点击我没懂
+          not_known:function () {
+            this.code_show=true
+          },
+          //
+          close:function(){
+            this.code_show=false;
+          },
           //右边tab切换
           right_tab:function(val){
             this.right_tab_status=val;
@@ -152,5 +168,24 @@
 </script>
 
 <style scoped>
-
+  .code{
+    position: absolute;
+    width:300px;
+    height:361px ;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .code_img{
+    width: 100%;
+  }
+  .close {
+    width: 13px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+  }
 </style>

@@ -385,3 +385,11 @@ input::-webkit-input-placeholder{
 .orange{
   color:#F99F12!important;
 }
+.mask-layer{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left:0;
+  top:0;
+}

@@ -152,6 +152,7 @@
                 <div class="lookMK_btn">开始</div>
               </div>
             </div>
+            <img src="../../../static/img/shortcut_img.png" class="shortcut_excle" @click="mask_layer_show=!mask_layer_show;tax_dialog_show=!tax_dialog_show">
           </div>
         </div>
         <div class="six-special-deduction box-sizing">
@@ -263,7 +264,117 @@
         <div class="inline-block"><img src="../../../static/img/footer-banner2.png" alt=""></div>
       </div>
     </div>
-    <FirstLoginDialog v-show="show"></FirstLoginDialog>
+    <FirstLoginDialog v-show="once_show"></FirstLoginDialog>
+    <div class="mask-layer" v-show="mask_layer_show">
+      <div class="tax_dialog" v-show="tax_dialog_show">
+        <div class="rocket">
+          <img src="../../../static/img/rocket_img.png">
+        </div>
+        <div class="tax_dialog_close">
+          <img src="../../../static/img/tax_dialog_close.png" @click="tax_dialog_show=!tax_dialog_show">
+        </div>
+        <div class="tax_dialog_way">
+          <div class="tax_dialog_title">
+            <img src="../../../static/img/tax_dialog_Lline.png">
+            <span>专项附加扣除信息填报途径</span>
+            <img src="../../../static/img/tax_dialog_Rline.png">
+          </div>
+          <div class="tax_excle">
+            <h4 class="border-blue">方式一：</h4>
+            <div class="tax_excle_img">
+              <div class="inline-block">
+                <img src="../../../static/img/tax_dialog_img1.png">
+                <p>1.下载信息采集表格</p>
+                <span class="download_btn" @click="excle_dialog_show=!excle_dialog_show;tax_dialog_show=!tax_dialog_show">下载表格</span>
+              </div>
+              <img src="../../../static/img/arrows_icon.png"/>
+              <div class="inline-block">
+                <img src="../../../static/img/tax_dialog_img2.png">
+                <p>2.填写后，上传至<br/>“我的个税扣除申报”</p>
+              </div>
+              <img src="../../../static/img/arrows_icon.png"/>
+              <div class="inline-block">
+                <img src="../../../static/img/tax_dialog_img3.png">
+                <p>3.财务人员统一申报</p>
+              </div>
+            </div>
+            <div class="way_two inline-block">
+              <h4 class="border-blue">方式二：下载国税总局APP</h4>
+              <img src="../../../static/img/gs_code.png">
+            </div>
+            <div class="way_three inline-block">
+              <h4 class="border-blue">方式三：国税总局网址：</h4>
+              <p><a target="_blank" href="https://its.tax861.gov.cn/">https://its.tax861.gov.cn/</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="excle_download" v-show="excle_dialog_show">
+        <div class="excle_download_title">
+          <h4>下载表格</h4>
+          <img src="../../../static/img/excel_dialog_close.png" @click="mask_layer_show=!mask_layer_show;excle_dialog_show=!excle_dialog_show"/>
+        </div>
+        <div class="excle_list_box">
+          <div class="excle_list">
+          <img class="inline-block" src="../../../static/img/pdf_icon.png">
+          <div class="inline-block file_detail">
+            <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
+            <p>个人所得税专项附加扣除条件(辅导培训版)</p>
+          </div>
+          <span class="download_btn">下载文件</span>
+        </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/pdf_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
+              <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/pdf_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
+              <p>个人所得税扣缴申报指引（辅导培训版）</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/excel_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">4－1：专项附加扣除信息电子模版</h4>
+              <p>专项附加扣除信息电子模版</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/pdf_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">4－2：电子模板填写常见问题</h4>
+              <p>电子模板填写常见问题</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/pdf_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
+              <p>专项附加扣除电子模板填写样例说明</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+          <div class="excle_list">
+            <img class="inline-block" src="../../../static/img/pdf_icon.png">
+            <div class="inline-block file_detail">
+              <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
+              <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
+            </div>
+            <span class="download_btn">下载文件</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -274,7 +385,10 @@
         name: "home",
       data(){
           return{
-            show:false
+            once_show:false,
+            mask_layer_show:false,
+            tax_dialog_show:false,
+            excle_dialog_show:false
           }
       },
         components : {
@@ -282,10 +396,11 @@
           headerTab
         },
         mounted(){
+          //判断是否第一次登陆弹出框
           if(localStorage.getItem("if_login")=="true"){
-            this.show=false
+            this.once_show=false
           }else{
-            this.show=true
+            this.once_show=true
           }
         },
         methods:{
@@ -388,9 +503,13 @@
   }
   .look-my-kc>div{
     width:15.6rem;
-    margin: 8.56rem 1.81rem;
+    margin: 4rem 1.81rem 0 1.81rem;
     color:#fff;
     font-size: 0.81rem;
+  }
+  .shortcut_excle{
+    width:100%;
+    margin-top: 1rem;
   }
   .cc_msg_show>div:nth-child(1){
     font-size: 0.94rem;
@@ -428,7 +547,7 @@
     font-size: 1rem;
   }
   .look-my-kc{
-    height:19.75rem;
+    height:14.2rem;
     background: #064964;
     margin-top: 1.5rem;
     font-size: 0.81rem;
@@ -688,5 +807,202 @@
   .fjm-fd-btn>a,.jm-fd-btn>a{
     font-size: 0.875rem;
     margin-left: 1.69rem;
+  }
+  .tax_dialog{
+    width:42rem;
+    height: 40rem;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .rocket{
+    position: absolute;
+    width: 100%;
+    height: 281px;
+    text-align: center;
+    z-index: 2;
+  }
+  .rocket img{
+    width: 25rem;
+  }
+  .tax_dialog_way{
+    width: 100%;
+    height: 28rem;
+    background: #fff;
+    border-radius:4px;
+    position: absolute;
+    top: 185px;
+  }
+  .tax_dialog_title{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+    top: 40px;
+  }
+  .tax_dialog_title span{
+    color: rgba(19, 181, 177, 1);
+    font-size: 1rem;
+    padding:0 5px ;
+  }
+  .tax_dialog_title img{
+    padding-top: 5.5px;
+  }
+  .tax_excle h4{
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1);
+  }
+  .border-blue{
+    border-left: 3px solid rgba(19, 181, 177, 1);
+    text-indent: 3px;
+  }
+  .tax_excle{
+    padding: 0 30px;
+    margin-top: 70px;
+  }
+  .tax_excle_img{
+    text-align: center;
+    margin: 20px 0;
+  }
+  .tax_excle_img>img{
+    padding-top: 138px;
+  }
+  .tax_excle_img .inline-block{
+    width:167px;
+    height:208px;
+    background:rgba(242,242,242,1);
+    border-radius:4px;
+    vertical-align: top;
+  }
+  .tax_excle_img .inline-block>img{
+    padding-top: 8px;
+  }
+  .tax_excle_img .inline-block>p{
+    color: rgba(102, 102, 102, 1);
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 10px;
+  }
+  .download_btn{
+    display: inline-block;
+    width:78px;
+    height:27px;
+    background:rgba(19,181,177,1);
+    border-radius:4px;
+    color: #fff;
+    line-height: 27px;
+    margin-top: 8px;
+    text-align: center;
+    cursor: default;
+  }
+  .way_two{
+    width: 220px;
+  }
+  .way_two img{
+    width: 69px;
+    padding-left: 80px;
+    padding-top: 8px;
+  }
+  .way_three{
+    vertical-align: top;
+  }
+  .way_three p{
+    text-decoration: underline;
+    padding-top: 10px;
+  }
+  .mask-layer .tax_dialog_close{
+    width: 100%;
+    position: absolute;
+    top: 145px;
+  }
+  .mask-layer .tax_dialog_close img{
+    position: absolute;
+    right: -11px;
+    width: 23px;
+    top: 2px;
+  }
+  .mask-layer  .excle_download{
+    position: absolute;
+    width: 600px;
+    height: 360px;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .excle_download_title{
+    position: relative;
+    line-height: 50px;
+    border-bottom: 1px solid rgba(238,238,238,1);;
+  }
+  .excle_download_title h4{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgba(51, 51, 51, 1);
+  }
+  .excle_download_title>img{
+    position: absolute;
+    width: 12px;
+    top: 20px;
+    right: 19px;
+  }
+  .excle_list{
+    position: relative;
+    margin: 10px 30px 0 20px;
+  }
+  .excle_list::after{
+    content: '';
+    width: 490px;
+    display: block;
+    height: 0px;
+    border-top: 1px dashed rgba(238,238,238,1);
+    margin:10px 0;
+    margin-left: 35px;
+  }
+  .excle_list>img{
+    width: 100px;
+  }
+  .excle_list .download_btn{
+    position: absolute;
+    right: 0px;
+    top:15px;
+  }
+  .excle_list .file_detail{
+    width: 300px;
+    margin-top: 12px;
+  }
+  .excle_list .file_detail h4{
+    font-size: 14px;
+    color:#000
+  }
+  .excle_list .file_detail p{
+    color: rgba(153, 153, 153, 1);
+    margin-top: 8px;
+  }
+  .excle_list_box{
+    height: 320px;
+    overflow-y: scroll;
+  }
+  .excle_list_box::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+  .excle_list_box::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.1);
+  }
+  .excle_list_box::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0);
   }
 </style>
