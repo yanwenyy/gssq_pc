@@ -115,6 +115,9 @@
             three_status:''
           }
         },
+        mounted(){
+
+        },
         methods:{
           //右边tab切换
           right_tab:function(val){
