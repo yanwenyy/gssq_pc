@@ -31,14 +31,6 @@
 </script>
 
 <style scoped>
-  .mask-layer{
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    position: fixed;
-    left:0;
-    top:0;
-  }
   .tip-layer{
     width:500px;
     height: 100%;
