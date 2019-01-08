@@ -271,7 +271,7 @@
           <img src="../../../static/img/rocket_img.png">
         </div>
         <div class="tax_dialog_close">
-          <img src="../../../static/img/tax_dialog_close.png" @click="tax_dialog_show=!tax_dialog_show">
+          <img src="../../../static/img/tax_dialog_close.png" @click="tax_dialog_show=!tax_dialog_show;mask_layer_show=!mask_layer_show">
         </div>
         <div class="tax_dialog_way">
           <div class="tax_dialog_title">
