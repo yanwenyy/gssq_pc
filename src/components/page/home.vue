@@ -23,7 +23,7 @@
             <div>我的身份：</div>
             <div>
               <span>居民纳税人</span>
-              <a class="edit_sf_deter_msg">[ 修改 ]</a>
+              <a class="edit_sf_deter_msg" @click="mask_layer_show=!mask_layer_show;identity_dialog_show=!identity_dialog_show">[ 修改 ]</a>
             </div>
             <div>个税缴纳条款中，部分条款针对不同身份有不同适用定义</div>
             <div>
@@ -374,6 +374,29 @@
         </div>
 
       </div>
+      <div class="identity_dialog" v-show="identity_dialog_show">
+        <div class="identity_dialog_title">
+          <span>选择纳税身份</span>
+          <img src="../../../static/img/indentity_close.png" @click="identity_dialog_show=!identity_dialog_show;mask_layer_show=!mask_layer_show">
+        </div>
+        <div class="identity_dialog_choose">
+          <div class="identity_list inline-block">
+            <div class="identity_gray" :class="identity_yes?'identity_blue':''"><img src="../../../static/img/indentity_img1.png"></div>
+            <div class="identity_choose">
+              <label><input type="radio" name="name" value="0" @click="identity_no=false;identity_yes=true;"/>居民纳税人</label>
+            </div>
+            <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
+          </div>
+          <div class="identity_list inline-block">
+            <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
+            <div class="identity_choose">
+              <label><input type="radio" name="name" value="1" @click="identity_no=true;identity_yes=false;"/>非居民纳税人</label>
+            </div>
+            <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
+          </div>
+        </div>
+        <span class="submit_identity download_btn">确定</span>
+      </div>
     </div>
   </div>
 </template>
@@ -388,7 +411,10 @@
             once_show:false,
             mask_layer_show:false,
             tax_dialog_show:false,
-            excle_dialog_show:false
+            excle_dialog_show:false,
+            identity_dialog_show:false,
+            identity_yes:false,
+            identity_no:false
           }
       },
         components : {
@@ -1004,5 +1030,108 @@
     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     border-radius: 0;
     background: rgba(0,0,0,0);
+  }
+  .identity_dialog{
+    width: 445px;
+    height: 23.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #000
+  }
+  .identity_gray{
+    background: rgba(238, 238, 238, 1);
+    width: 132px;
+    height: 145px;
+    text-align: center;
+    border-radius:4px;
+  }
+  .identity_gray>img{
+    width:112px;
+    height: 125px;
+    margin-top: 20px;
+  }
+  .identity_gray:hover{
+    background: rgba(19, 181, 177, 1);
+  }
+  .identity_blue{
+    background: rgba(19, 181, 177, 1);
+  }
+  .identity_list{
+    width: 145px;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .identity_dialog_title{
+    position: relative;
+  }
+  .identity_dialog_title span{
+    color: rgba(51, 51, 51, 1);
+    font-size: 14px;
+    padding: 15px;
+    display: inline-block;
+  }
+  .identity_dialog_title img{
+    width: 20px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+  .identity_dialog_choose{
+    padding: 0 55px;
+  }
+  .identity_list p{
+    line-height: 1.4;
+    width: 126px;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 5px;
+    color: rgba(102, 102, 102, 1);
+  }
+  .identity_choose{
+    margin-top: 15px;
+    font-size: 15px;
+    color:rgba(51, 51, 51, 1);
+    margin-bottom: 8px;
+    width: 132px;
+  }
+  .identity_choose input{
+    position: relative;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+  .identity_choose input:before{
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border:1px solid rgba(149,149,149,1);
+    border-radius:50%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+  }
+  .identity_choose input:checked:before{
+    width: 12px;
+    height: 12px;
+    background: rgba(19, 181, 177, 1);
+    border:1px solid rgba(149,149,149,1);
+    border-radius:50%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+  }
+  .submit_identity{
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
   }
 </style>
