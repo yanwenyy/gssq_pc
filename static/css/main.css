@@ -8,7 +8,8 @@ input::-webkit-input-placeholder{
 }
 /*小手显示*/
 .header-user-msg:hover,.close-login:hover,.main-right-body-title>div:hover,.left-list-one:hover,
-.left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover{
+.left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover,.lookMK_btn:hover,
+.ques-change>div:hover,.look-more:hover,.look_new-detail:hover,.gswd_list:hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){
@@ -392,4 +393,57 @@ input::-webkit-input-placeholder{
   position: fixed;
   left:0;
   top:0;
+}
+.rapid-notice{
+  width: 60%;
+  margin: 0 auto;
+}
+.rapid-notice-title{
+  margin-left: 2.69rem;
+  font-size: 1rem;
+  color:#333;
+  margin-bottom: 8px;
+}
+.notice-line{
+  width:6px;
+  height:1rem;
+  background:rgba(19,181,177,1);
+  margin-right: 5px;
+  vertical-align:middle;
+}
+.notice-ul{
+  margin-left:7.44rem ;
+}
+.notice-ul>li{
+  margin-bottom: 1.44rem;
+  font-size: 0.875rem;
+}
+.notice-ul>li>span{
+  width: 20px;
+  display: inline-block;
+}
+.notice-li-title{
+  font-weight: bold;
+}
+/*分页样式*/
+#page{
+  margin: 50px 0;
+  text-align: center;
+}
+#page .prePage, .nextPage {
+  outline: none;
+}
+#page .activity {
+  background: #13B5B1;
+  color: #fff!important;
+  border: none!important;
+}
+#page .pageButton {
+  border: 1px solid #DDDDDD;
+  color: #333;
+  font-size: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.3rem;
+  border-radius: 2px;
 }

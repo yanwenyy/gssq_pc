@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import Public from '../static/js/puplic'
 import 'font-awesome/css/font-awesome.min.css'
+import paging from "../static/js/paging"
 
 Vue.config.productionTip = false
 Vue.use(Public)
+Vue.use(paging)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

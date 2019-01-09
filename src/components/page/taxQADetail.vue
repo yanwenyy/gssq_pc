@@ -1,16 +1,16 @@
 <template>
   <div class='container'>
     <headerTab  msg="个税咨询"></headerTab>
-    <ul class="gswd-ul">
-      <li class="gswd_list">
-        <img src="../../../static/img/user-img.png" alt="">
+    <ul class="gswd-ul gswd-ul-yw box-sizing">
+      <li class="gswd_list" @click="">
+        <img :src="head_src+questionUsers.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
         <div class="inline-block">
           <div class="gswd-user">
-            <span>用户昵称</span>
-            <span>2018-10-12 10:00:06</span>
+            <span>{{questionUsers.realName||'匿名用户'}}</span>
+            <span>{{format(questionUsers.date)}}</span>
           </div>
           <div>
-            我公司将进行资产重组，要将公司部分货物和劳力转移到一家新设立的物流公司请问需要开发票吗？转入新公司的货物可否折旧，折旧费 用能
+            {{questionUsers.content}}
           </div>
         </div>
       </li>
@@ -19,32 +19,18 @@
       <img src="../../../static/img/anwser-icon.png"/>
     </div>
     <ul class="gswd-ul">
-      <li class="gswd_list">
-        <img src="../../../static/img/user-img.png" alt="">
+      <li class="gswd_list" v-for="item in answerUsers">
+        <img :src="head_src+item.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
         <div class="inline-block">
           <div class="gswd-user">
-            <span>用户昵称</span>
+            <span>{{item.userName||'匿名用户'}}</span>
           </div>
-          <img src="../../../static/img/best-anwser-icon.png" class="best-anwser">
+          <img v-if="item.status==2||item.checkStatus==2" src="../../../static/img/best-anwser-icon.png" class="best-anwser">
           <div>
-            我公司将进行资产重组，要将公司部分货物和劳力转移到一家新设立的物流公司请问需要开发票吗？转入新公司的货物可否折旧，折旧费 用能
+            {{item.content}}
           </div>
           <div class="gswd-user">
-            <span>2018-10-12 10:00:06</span>
-          </div>
-        </div>
-      </li>
-      <li class="gswd_list">
-        <img src="../../../static/img/user-img.png" alt="">
-        <div class="inline-block">
-          <div class="gswd-user">
-            <span>用户昵称</span>
-          </div>
-          <div>
-            我公司将进行资产重组，要将公司部分货物和劳力转移到一家新设立的物流公司请问需要开发票吗？转入新公司的货物可否折旧，折旧费 用能
-          </div>
-          <div class="gswd-user">
-            <span>2018-10-12 10:00:06</span>
+            <span>{{format(item.date)}}</span>
           </div>
         </div>
       </li>
@@ -59,10 +45,31 @@
       components:{
         headerTab
       },
+      data(){
+        return{
+          answerUsers:[],
+          questionUsers:''
+        }
+      },
+      mounted(){
+        var that=this;
+        this.ajax_wd("/onlook/onlookDetail/share",{
+          "questionUuid":this.$route.query.uuid
+        },function(data){
+          console.log(data);
+          that.answerUsers=data.data.answerUsers;
+          that.questionUsers=data.data.questionUsers;
+        })
+      }
     }
 </script>
 
 <style scoped>
+  .gswd-ul-yw{
+    min-height:152px;
+    height:auto;
+    margin-bottom: 0!important;
+  }
   .anwser-icon{
     position: absolute;
     width: 2.8rem;
@@ -74,7 +81,6 @@
     width: 100%;
   }
   .gswd-ul{
-    margin-top: 1.31rem;
     border-top: #EEEEEE 1px solid;
     padding-left: 3rem;
     margin-bottom: 10rem;
@@ -103,9 +109,11 @@
     height:1.5rem;
     vertical-align: top;
     margin-right: 0.56rem;
+    border-radius: 50%;
   }
   .gswd_list>div{
     word-break: break-all;
+    width:96%;
   }
   .gswd-user{
     color: #999;
