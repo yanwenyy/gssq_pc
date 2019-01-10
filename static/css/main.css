@@ -10,7 +10,8 @@ input::-webkit-input-placeholder{
 .header-user-msg:hover,.close-login:hover,.main-right-body-title>div:hover,.left-list-one:hover,
 .left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover,.lookMK_btn:hover,
 .ques-change>div:hover,.look-more:hover,.look_new-detail:hover,.gswd_list:hover,.msg-main-left-li>div:hover,
-.msg-main-right-li>div:hover{
+.msg-main-right-li>div:hover,.jm-fd-btn>a:hover,.fjm-fd-btn>a:hover,.sl-classification-list>div:hover,
+.cc_fd_btn:hover,.six-special-fd-btn:hover,.total-gs-class-list>div[data-v-4cd1a4ff]:nth-child(3):hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){

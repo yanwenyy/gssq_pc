@@ -10,7 +10,7 @@
           <div class="left-list-one" :class="two_menu==item.name? 'left-list-one-act':''"  @click="list_one(item.name)">
             <div @click="menu_click(item.children!=''? 'yes':'no',item.labelId)">
               <!--<img :src="item.img" alt="">-->
-              <span class="inline-block left-list-one-icon"  :class="two_menu==item.name? 'left-list-one-icon-act':''" ><icon-svg :name="item.icon"></icon-svg></span>
+              <span class="inline-block left-list-one-icon" :class="two_menu==item.name? 'left-list-one-icon-act':''"><span class=""><icon-svg :name="item.icon"></icon-svg></span></span>
               <div class="inline-block">{{item.name}}</div>
               <img :src="two_menu==item.name? '../../../static/img/left-trange-click.png':'../../../static/img/left-trange.png'" alt="">
             </div>
@@ -18,8 +18,8 @@
           <div v-if="two_menu==item.name" class="left-list-two">
             <ul>
               <li v-for="two in item.children">
-                <div class="left-list-two-div" :class="three_menu==two.name? 'left-list-two-div-act':''" @click="list_two(two.name)">
-                  <div  @click="menu_click(two.children!=''? 'yes':'no',two.labelId)">
+                <div class="left-list-two-div" :class="three_menu==two.name? 'left-list-two-div-act':''" @click="list_two(two.name,two.children!=''? 'yes':'no',two.labelId)">
+                  <div >
                     <img :src="three_menu==two.name? '../../../static/img/left-trange-click-two.png':'../../../static/img/left-trange.png'" alt="">
                     <div class="inline-block">{{two.name}}</div>
                   </div>
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="main-right-footer">
-          <div class="inline-block iknown" @click="i_known()">我懂了</div>
+          <div class="inline-block iknown">我懂了</div>
           <div class="inline-block not-known orange" @click="not_known">我没懂，去向专家提问</div>
         </div>
       </div>
@@ -146,7 +146,6 @@
               cases:'',
               videos:''
             },
-            labelId:'',//标签id
           }
         },
         mounted(){
@@ -154,31 +153,20 @@
           this.ajax_nodata(this.http_url.url+"/biz/label/tree",function(data){
             console.log(data);
             that.menu_list=data.list;
-          });
-          this.two_menu=this.$route.query.one||"";
-          this.three_menu=this.$route.query.two||"";
-          this.three_status=this.$route.query.three||"";
+          })
         },
         methods:{
-          //我懂了
-          i_known:function(){
-            if(this.labelId!=""){
-              this.ajax_nodata_get(this.http_url.url+"/biz/lesson/info/clear/"+this.labelId,function(data){
-                console.log(data);
-              })
-            }
-          },
           //左边菜单点击
           menu_click:function(status,id){
             var that=this;
+            console.log(status);
             if(status=="no"){
-              this.labelId=id;
               this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
                   console.log(data);
                   if(data.msg=='success'){
-                    that.lesson.content=data.lesson.content||"";
-                    that.lesson.knowledge=data.lesson.knowledge||"";
-                    that.lesson.cases=data.lesson.cases||"";
+                    that.lesson.content=data.lesson.content;
+                    that.lesson.knowledge=data.lesson.knowledge;
+                    that.lesson.cases=data.lesson.cases;
                   }
               })
             }
@@ -193,16 +181,7 @@
           },
           //右边tab切换
           right_tab:function(val){
-            var that=this;
             this.right_tab_status=val;
-            if(val==4){
-              this.ajax_nodata_get(this.http_url.url+"/biz/lesson/info/video/"+this.labelId,function(data){
-                if(data.code==0){
-                  console.log(data);
-                  this.lesson.videos=data.videos;
-                }
-              })
-            }
           },
           //一级菜单点击
           list_one:function(val){
@@ -217,14 +196,32 @@
             }
           },
           //二级菜单点击
-          list_two:function(val){
-            if(this.three_menu==val){
+          list_two:function(val,child,id){
+            var that=this;
+            console.log(val);
+            console.log(this.three_menu);
+            if(child=="no"){
+              this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
+                console.log(data);
+                if(data.msg=='success'){
+                  that.lesson.content=data.lesson.content;
+                  that.lesson.knowledge=data.lesson.knowledge;
+                  that.lesson.cases=data.lesson.cases;
+                }
+              })
               this.three_menu="";
-              this.three_status="";
-            }else{
               this.three_menu=val;
               this.three_status="";
+            }else{
+              if(this.three_menu==val){
+                this.three_menu="";
+                this.three_status="";
+              }else{
+                this.three_menu=val;
+                this.three_status="";
+              }
             }
+
           },
           //三级菜单点击
           three_list:function(val){
@@ -235,16 +232,6 @@
 </script>
 
 <style scoped>
-  .icon-svg{
-    position: absolute;
-    top:15%;
-    left:15%;
-    width:70%;
-    height:70%;
-  }
-  .out{
-    display: none;
-  }
   .tex-video-list{
     width:30%;
     margin-right:3%;

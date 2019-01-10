@@ -2,18 +2,19 @@
   <div class="container">
     <div class="declare-body">
       <div class="declare-btn">
-        <img src="../../../static/img/declare-up.png" alt="">
-        <input type="file" >
+        <!--<img src="../../../static/img/declare-up.png" alt="">-->
+        <div id="upload" ></div>
       </div>
-      <div class="declare-process box-sizing">
+      <div class="declare-process box-sizing" v-if="file_name!=''">
         <div class="inline-block declare-process-msg">
           <img src="../../../static/img/exl.png" alt="">
-          个人所得税个人申报表格.excel
+          {{file_name}}
         </div>
-        <div class="inline-block declare-process-img">
-          <img src="" alt="">
-        </div>
-        <div class="inline-block succ">上传成功</div>
+        <img src="../../../static/img/up-process.gif" v-if="!file_succ" class="up-pro-img" alt="">
+        <div class="inline-block declare-process-img" v-if="file_succ">
+        <img src="" alt="">
+      </div>
+        <div class="inline-block succ" v-if="file_succ">上传成功</div>
         <div class="inline-block end-time">最后更新时间：2018-12-02</div>
       </div>
       <div class="relevant-exl">
@@ -35,11 +36,57 @@
 
 <script>
     export default {
-        name: "tax-declare"
+        name: "tax-declare",
+        data(){
+          return{
+            file_name:'',//文件名
+            file_succ:false,
+          }
+        },
+        mounted(){
+          var that=this;
+          $("#upload").zinoUpload({
+            method: "POST",
+            url: this.http_url.url+"/sys/oss/upload?token="+"5bd0475f620841ab05988ef949f14af3",
+            name: "file",
+            multiple: true,
+            change: function (event, ui) {
+              // console.log(event);
+              that.file_name=$(".zui-upload-file").val().split("fakepath")[1].replace("\\","");
+            },
+            submit: function (event, ui) {
+              //console.log(ui);
+              console.log()
+            },
+            complete: function (event, ui) {
+              // console.log(ui);
+              if(ui.response.code==0){
+                console.log(ui.response.url);
+                that.file_succ=true;
+                that.ajax(that.http_url.url+"/biz/reportrecord/save",{
+                  "excelUrl":ui.response.url
+                },function(data){
+                  // console.log(data);
+                })
+              }
+            }
+          });
+        },
+        methods:{
+          file:function(event){
+            var that=this;
+            // console.log(event.target.files);
+            this.file_name=this.$refs.file2.value.split("fakepath")[1].replace("\\","");
+          }
+        }
     }
 </script>
 
 <style scoped>
+  .up-pro-img{
+    vertical-align: middle;
+    margin: 0 1rem;
+  }
   .relevant-notice{
     font-size: 0.875rem;
     color:#999;
@@ -130,12 +177,23 @@
     top:0;
     left:29%;
   }
-  .declare-btn>input{
+  .declare-btn>div{
     width:42%;
     height:9.75rem;
     position: absolute;
     top:0;
     left:29%;
+    /*opacity: 0;*/
+    z-index: 10000;
+    background: url(../../../static/img/declare-up.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  #upload >>>input{
+    width:100%!important;
+    height:9.75rem!important;
+    opacity: 0;
+  }
+  >>>.zui-upload-label{
     opacity: 0;
   }
 </style>

@@ -1,7 +1,7 @@
 export default{
   install:function(Vue,options)
   {
-    sessionStorage.setItem("token","921fee5a51bbb8b96da57c4dfe1fcdf4");
+    sessionStorage.setItem("token","5bd0475f620841ab05988ef949f14af3");
     //接口变量
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com:8090/jsb_tax/',
