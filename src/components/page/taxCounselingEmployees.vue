@@ -9,7 +9,7 @@
         <li v-for="item in menu_list">
           <div class="left-list-one" :class="two_menu==item.name? 'left-list-one-act':''"  @click="list_one(item.name)">
             <!--<img :src="item.img" alt="">-->
-            <span class="inline-block left-list-one-icon" :class="two_menu==item.name? 'left-list-one-icon-act':''"><span class="fa fa-life-ring"></span></span>
+            <span class="inline-block left-list-one-icon" :class="two_menu==item.name? 'left-list-one-icon-act':''"><icon-svg :name="item.svg"></icon-svg></span>
             <div class="inline-block">{{item.name}}</div>
             <img :src="two_menu==item.name? '../../../static/img/left-trange-click.png':'../../../static/img/left-trange.png'" alt="">
           </div>
@@ -76,7 +76,7 @@
             right_tab_status:1,
             //左边菜单栏模拟数据
             menu_list:[
-              {name:"纳税人身份",img:"../../../static/img/tax-left1.png",children:[
+              {name:"纳税人身份",img:"../../../static/img/tax-left1.png",svg:'nashuirenshenfen',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'},{name:'三级菜单2'}
                     ]},
@@ -84,32 +84,32 @@
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"所得项目",img:"../../../static/img/tax-left2.png",children:[
+              {name:"所得项目",img:"../../../static/img/tax-left2.png",svg:'suodeixiangmu',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"扣除项目",img:"../../../static/img/tax-left3.png",children:[
+              {name:"扣除项目",img:"../../../static/img/tax-left3.png",svg:'kouchuxiangmu',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"税收优惠",img:"../../../static/img/tax-left4.png",children:[
+              {name:"税收优惠",img:"../../../static/img/tax-left4.png",svg:'shuishouyouhui',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"税收抵免",img:"../../../static/img/tax-left5.png",children:[
+              {name:"税收抵免",img:"../../../static/img/tax-left5.png",svg:'shuishoudimian',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"预扣预缴",img:"../../../static/img/tax-left6.png",children:[
+              {name:"预扣预缴",img:"../../../static/img/tax-left6.png",svg:'yukouyujiao',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
                 ]},
-              {name:"汇算清缴",img:"../../../static/img/tax-left7.png",children:[
+              {name:"汇算清缴",img:"../../../static/img/tax-left7.png",svg:'huijiaoqingsuan',children:[
                   {name:"二级菜单",children:[
                       {name:'三级菜单'}
                     ]}
