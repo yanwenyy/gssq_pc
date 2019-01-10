@@ -1,6 +1,7 @@
 export default{
   install:function(Vue,options)
   {
+    sessionStorage.setItem("token","921fee5a51bbb8b96da57c4dfe1fcdf4");
     //接口变量
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com:8090/jsb_tax/',
@@ -31,7 +32,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "token":"6c985883ed19e72b6f6382a95e9876c8",
+          "token":sessionStorage.getItem("token"),
         },
         data:JSON.stringify(data),
         success:function(data){
@@ -56,7 +57,31 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "token":"6c985883ed19e72b6f6382a95e9876c8",
+          "token":sessionStorage.getItem("token"),
+        },
+        success:function(data){
+          if(data.code=="2"){
+            alert(data.des);
+            // window.location.href="../html/register-next.html"
+          }else{
+            succ(data);
+          }
+
+        },
+        error:function(){
+          console.log("程序出错,请重试");
+        }
+      })
+    }
+    Vue.prototype.ajax_nodata_get=function(url,succ){
+      $.ajax({
+        type:"GET",
+        url:url,
+        dataType: "json",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8",
+          "token":sessionStorage.getItem("token"),
         },
         success:function(data){
           if(data.code=="2"){

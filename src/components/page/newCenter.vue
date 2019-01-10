@@ -5,17 +5,15 @@
     </div>
     <div class="new-center-title">新政速递</div>
     <ul class="gswd-ul">
-      <li class="gswd_list" v-for="item in 10">
-        <div class="new-list-title">《国家税务总局关于个人所得税自行纳税申报有 关问题的公告》国家税务总局【2018】62号</div>
+      <li class="gswd_list" v-for="item in list" @click="$router.push({name:'newDetail',query:{uuid:item.policyId}})">
+        <div class="new-list-title">{{item.title}}</div>
         <div><span class="new-list-line inline-block"></span></div>
         <div class="new-list-msg">
-          根据新修改的《中华人民共和国个人所得税法》及其实施条例，现就个人所得税自行纳税申报有关问题公告如下：一、取得综合所得需要办理汇算清缴的纳税申报
-          取得综合所得且符合下列情形之一的纳税人，应当依法办理汇算清缴：（一）从两处以上取得综合所得，且综合所得年收入额减除专项扣除后的额减除专项扣除后
-          余额超过6万元；
+          {{item.content}}
         </div>
         <div class="new-list-footer">
-          <span>2019-08-08</span>
-          <span class="look_new-detail" @click="$router.push({name:'newDetail'})">查看</span>
+          <span>{{format(item.createTime)}}</span>
+          <span class="look_new-detail" @click="$router.push({name:'newDetail'})">查看 <img src="../../../static/img/new-go.png" alt=""></span>
         </div>
       </li>
     </ul>
@@ -26,21 +24,50 @@
 <script>
     export default {
         name: "new-center",
-        mounted(){
-          $("#page").paging({
-              total: 10,
-              numberPage: 1
-            },
-            function(msg) {
-              //回调函数 msg为选中页码
-              // tab(msg);
-
-            });
+        data(){
+          return{
+            list:[]
+          }
         },
+        mounted(){
+          var that=this;
+          this.ajax(this.http_url.url+"/biz/policy/list",{
+            'page':'1',
+            'limit':'10',
+          },function(data){
+              console.log(data);
+            that.list=data.page.list;
+            that.page(data.page.totalPage);
+          })
+        },
+        methods:{
+          //分页
+          page:function(val){
+            var that=this;
+            $("#page").paging({
+                total: val,
+                numberPage: 1
+              },
+              function(msg) {
+                //回调函数 msg为选中页码
+                // tab(msg);
+                that.ajax(that.http_url.url+"/biz/policy/list",{
+                  'page':String(msg),
+                  'limit':'10',
+                },function(data){
+                  that.list=data.page.list;
+                })
+            });
+          }
+        }
     }
 </script>
 
 <style scoped>
+  .look_new-detail>img{
+    vertical-align: middle;
+    margin-top: -3px;
+  }
   .gswd_list{
     margin-bottom: 2.5rem;
   }

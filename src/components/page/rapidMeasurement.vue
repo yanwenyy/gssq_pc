@@ -4,41 +4,125 @@
       <div class="rapid-main">
         <div class="rapid-ques-model inline-block">
           <div>
-            <div class="rapid-ques-title">子女教育</div>
-            <div class="rapid-ques-body">
-              <div>
-                <div class="ques-list-title">1.你有孩子吗？</div>
-                <div class="ques-list-msg box-sizing">
-                  <div class="inline-block radio-div"><input name="if_child" type="radio" id="yes-child"><lable for="yes-child">有</lable></div>
-                  <div class="inline-block radio-div"><input name="if_child" type="radio" id="no-child"><lable for="no-child">没有</lable></div>
+            <div v-if="zn">
+              <div class="rapid-ques-title">子女教育</div>
+              <div class="rapid-ques-body">
+                <div v-if="zn_msg.status==1">
+                  <div class="ques-list-title">1.您有3岁以上的孩子吗？</div>
+                  <div class="ques-list-msg box-sizing">
+                    <div class="inline-block radio-div"><input v-model="zn_msg.child" value="有" type="radio" id="yes-child"><lable>有</lable></div>
+                    <div class="inline-block radio-div"><input v-model="zn_msg.child" value="没有" type="radio" id="no-child"><lable>没有</lable></div>
+                  </div>
+                </div>
+                <div v-if="zn_msg.status==2">
+                  <div class="ques-list-title">2.您有几个3岁以上的孩子？</div>
+                  <div class="ques-list-msg box-sizing">
+                    <select class="ques-sel" name="" id="" v-model="zn_msg.child_num">
+                      <option v-for="i in 10" :value="i">{{i}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div v-if="zn_msg.status==3">
+                  <div class="ques-list-title">3.您的孩子处于哪个阶段？以及您的扣缴比例！</div>
+                  <div class="ques-list-msg box-sizing child-list" v-for="i in zn_msg.child_num">
+                    <div>孩{{i}}:</div>
+                    <div>
+                      <div class="inline-block">
+                        <span>孩子所处阶段：</span>
+                        <select class="ques-sel child_stage" name="" id="">
+                          <option value="a">3周岁至学前</option>
+                          <option value="b">小学</option>
+                          <option value="c">初中</option>
+                          <option value="d">高中/技校/职业高中</option>
+                          <option value="e">专科/本科</option>
+                          <option value="f">硕士研究生</option>
+                          <option value="g">博士研究生</option>
+                          <option value="h">其他未包含学历</option>
+                        </select>
+                      </div>
+                      <div class="inline-block">
+                        <span>扣缴比例：</span>
+                        <select :data-num="i" class="ques-sel child-proportion" name="" id="">
+                          <option value="a">0%</option>
+                          <option value="b">50%</option>
+                          <option value="c">100%</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="jx">
+              <div class="rapid-ques-title">继续教育支出</div>
+              <div class="rapid-ques-body">
+                <div v-if="jx_msg.status==1">
+                  <div class="ques-list-title">1.您当月是否参加学历（学位）继续教育？</div>
+                  <div class="ques-list-msg box-sizing">
+                    <div class="inline-block radio-div"><input v-model="jx_msg.degree" value="是" type="radio" id="degree1"><lable>是</lable></div>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.degree" value="否" type="radio" id="degree2"><lable>否</lable></div>
+                  </div>
+                </div>
+                <div v-if="jx_msg.status==2">
+                  <div class="ques-list-title">2.您参加的是哪种学历（学位）继续教育？</div>
+                  <div class="ques-list-msg box-sizing">
+                    <select v-model="jx_msg.degree_class" class="ques-sel" name="" id="" >
+                      <option  value="a">高中/技校/职业高中</option>
+                      <option  value="b">大专</option>
+                      <option  value="c">本科</option>
+                      <option  value="d">研究生</option>
+                      <option  value="e">博士生</option>
+                      <option  value="f">以上未列举</option>
+                    </select>
+                  </div>
+                </div>
+                <div v-if="jx_msg.status==3">
+                  <div class="ques-list-title">3.您当月是否取得职业资格继续教育证书</div>
+                  <div class="ques-list-msg box-sizing">
+                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="是" type="radio"><lable>是</lable></div>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="否" type="radio"><lable>否</lable></div>
+                  </div>
+                </div>
+                <div v-if="jx_msg.status==4">
+                  <div class="ques-list-title">3.您参加的是哪种职业资格继续教育</div>
+                  <div class="ques-list-msg box-sizing">
+                    <select v-model="jx_msg.zyzg_class"  class="ques-sel" name="" id="" >
+                      <option  value="a">参加职业资格继续教育列表（人社部发[2017]68号）</option>
+                      <option  value="b">其他</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="ques-change">
-              <div class="inline-block prev-btn box-sizing">上一题</div>
-              <div class="inline-block next-btn box-sizing">下一题</div>
+              <!--<div class="inline-block prev-btn box-sizing" @click="prev_ques">上一题</div>-->
+              <div class="inline-block next-btn box-sizing"  @click="next_ques">下一题</div>
             </div>
           </div>
-          <div  v-if="false">
+          <div v-if="false" >
             <div class="rapid-ques-title">测试结果</div>
             <div class="rapid-result-title">
               恭喜您，您共计符合x项专项附加扣除标准
             </div>
             <table class="repid-table">
-              <tr>
+              <tr class="blue-bg">
                 <td class="table-title">扣除项</td>
                 <td class="table-title">是否符合</td>
                 <td class="table-title" colspan="2">本人扣缴比例</td>
                 <td class="table-title">扣缴金额</td>
               </tr>
               <tr>
-                <td>子女教育</td>
-                <td><img src="../../../static/img/if-fh.png" alt=""></td>
+                <td rowspan="2">子女教育</td>
+                <td rowspan="2"><img src="../../../static/img/if-fh.png" alt=""></td>
                 <td>x个孩子</td>
                 <td>50%</td>
-                <td>1000.00</td>
+                <td rowspan="2">1000.00</td>
               </tr>
               <tr>
+                <td>x个孩子</td>
+                <td>50%</td>
+              </tr>
+              <tr class="blue-bg">
                 <td>继续教育</td>
                 <td><img src="../../../static/img/if-fh.png" alt=""></td>
                 <td>2</td>
@@ -51,7 +135,7 @@
                 <td colspan="2"></td>
                 <td></td>
               </tr>
-              <tr>
+              <tr class="blue-bg">
                 <td>住房贷款利息</td>
                 <td></td>
                 <td colspan="2"></td>
@@ -63,7 +147,7 @@
                 <td colspan="2"></td>
                 <td></td>
               </tr>
-              <tr>
+              <tr class="blue-bg">
                 <td>赡养老人</td>
                 <td><img src="../../../static/img/if-fh.png" alt=""></td>
                 <td colspan="2">100%</td>
@@ -84,7 +168,7 @@
             <span>模糊地带</span>
           </div>
           <div class="rapid-notice-body">
-            <ul class="notice-ul">
+            <ul class="notice-ul"  v-if="zn">
               <li class="notice-li-title"><span>1.</span>可扣除情况：</li>
               <li><span></span>3周岁至学前未上幼儿园</li>
               <li><span></span>国外读书（资料备查存档）</li>
@@ -140,12 +224,165 @@
 </template>
 
 <script>
+  import {array_del} from '../../../static/js/puplic'
     export default {
-        name: "rapid-measurement"
+        name: "rapid-measurement",
+        data(){
+          return{
+            zn:true,//子女教育
+            zn_msg:{
+              status:1,
+              child:'',//是否有孩子
+              child_num:1,//孩子数量
+              child_50_num:[],//50%扣除数量
+              child_100_num:[],//100%扣除数量
+              result:''
+            },
+            jx:false,//继续教育
+            jx_msg:{
+              status:1,
+              degree:'',//是否学位教育
+              degree_class:'',//学位教育类型
+              degree_money:0,//学位教育扣除
+              zyzg:'',//是否职业资格
+              zyzg_class:'',//职业资格类型
+              zyzg_money:0,//职业资格扣除
+              result:''
+            }
+          }
+        },
+        mounted(){
+          var that=this;
+          Array.prototype.indexOf = function (val) {
+            for (var i = 0; i < this.length; i++) {
+              if (this[i] == val) return i;
+            }
+            return -1;
+          };
+          Array.prototype.remove = function (val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+              this.splice(index, 1);
+            }
+          };
+          //孩子阶段点击
+          $("body").on("change",".child_stage",function(){
+            if($(this).val()=='h'){
+              $(this).parent().next().hide();
+            }else{
+              $(this).parent().next().show();
+            }
+          });
+          //孩子扣除比例点击
+          $("body").on("change",".child-proportion",function(){
+              // console.log($(this).attr("data-num"));
+              if($(this).val()!='a'){
+                if($(this).val()=='b'){
+                  that.zn_msg.child_100_num.remove($(this).attr("data-num"));
+                  that.zn_msg.child_50_num.push($(this).attr("data-num"));
+                }else if($(this).val()=='c'){
+                  that.zn_msg.child_100_num.push($(this).attr("data-num"));
+                  that.zn_msg.child_50_num.remove($(this).attr("data-num"));
+                }
+              }else{
+                that.zn_msg.child_100_num.remove($(this).attr("data-num"));
+                that.zn_msg.child_50_num.remove($(this).attr("data-num"));
+              }
+
+          })
+        },
+        methods:{
+          //上一题
+          prev_ques:function(){
+            if(this.zn){
+              if(this.zn_msg.status>1){
+                this.zn_msg.status=this.zn_msg.status-1;
+              }
+            }
+            if(this.jx){
+              console.log(this.zn_msg.status);
+              if(this.jx_msg.status==1){
+                if(this.zn_msg.status==1){
+                  this.zn_msg.status=1;
+                }else{
+                  this.zn_msg.status=3;
+                }
+                this.zn_msg.child_50_num=[];
+                this.zn_msg.child_100_num=[];
+                this.zn=true;
+                this.jx=false;
+              }else{
+                this.jx_msg.status=this.jx_msg.status-1;
+              }
+            }
+          },
+          //下一题
+          next_ques:function(){
+            if(this.zn){
+              if(this.zn_msg.child==''){
+                alert("请选择")
+              }else{
+                if(this.zn_msg.child=='有'){
+                  this.zn_msg.status=this.zn_msg.status+1;
+                }else{
+                  this.zn_msg.result='';
+                  this.zn=false;
+                  this.jx=true;
+                }
+              }
+              if(this.zn_msg.status>3){
+                this.zn_msg.result=Number(this.zn_msg.child_50_num.length)*500+Number(this.zn_msg.child_100_num.length)*1000;
+                this.zn=false;
+                this.jx=true;
+              }
+            }
+            if(this.jx&&this.jx_msg.degree!=""){
+              if(this.jx_msg.status==1){
+                  if(this.jx_msg.degree=="是"){
+                    this.jx_msg.status=2
+                  }else{
+                    this.jx_msg.status=3;
+                    this.jx_msg.degree_money=0;
+                  }
+              }else if(this.jx_msg.status==2){
+                  if(this.jx_msg.degree_class=="f"){
+                    this.jx_msg.degree_money=0;
+                  }else{
+                    this.jx_msg.degree_money=400;
+                  }
+                  this.jx_msg.status=3;
+              }else if(this.jx_msg.status==3){
+                  if(this.jx_msg.zyzg=="是"){
+                    this.jx_msg.status=4;
+                  }else{
+                    this.jx=false;
+                    this.jx_msg.result=400;
+                  }
+              }else if(this.jx_msg.status==4){
+                  if(this.jx_msg.zyzg_class=="a"){
+                    this.jx_msg.zyzg_money=3600;
+                  }
+                  this.jx=false;
+                  this.jx_msg.result=Number(this.jx_msg.degree_money)+Number(this.jx_msg.zyzg_money);
+              }
+              console.log(this.jx_msg.result);
+            }
+          }
+        }
     }
 </script>
 
 <style scoped>
+  .child-list{
+    text-align: left!important;
+    margin-left: 100px;
+    margin-bottom: 10px;
+  }
+  .ques-sel{
+    width:100px;
+    height:30px;
+    font-size: 0.875rem;
+  }
   .way_two{
     width: 220px;
   }
@@ -242,13 +479,16 @@
   .table-title{
     font-weight: bold;
   }
-  .repid-table>tr:nth-child(odd){
+  /*.repid-table>tr:nth-child(odd){*/
+    /*background: #EFF3FF;*/
+  /*}*/
+  .blue-bg{
     background: #EFF3FF;
   }
   .repid-table>tr{
     border-bottom: 1px solid #eee;
   }
-  .repid-table td{
+  .repid-table>tr>td{
     border-right: 1px solid #eee;
     font-size: 0.875rem;
     text-align: center;
@@ -298,7 +538,7 @@
     text-align: center;
     font-size: 1rem;
     border-radius: 4px;
-    margin-right: 1.25rem;
+    /*margin-right: 1.25rem;*/
   }
   .ques-change{
     text-align: center;

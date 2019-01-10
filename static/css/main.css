@@ -9,7 +9,8 @@ input::-webkit-input-placeholder{
 /*小手显示*/
 .header-user-msg:hover,.close-login:hover,.main-right-body-title>div:hover,.left-list-one:hover,
 .left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover,.lookMK_btn:hover,
-.ques-change>div:hover,.look-more:hover,.look_new-detail:hover,.gswd_list:hover{
+.ques-change>div:hover,.look-more:hover,.look_new-detail:hover,.gswd_list:hover,.msg-main-left-li>div:hover,
+.msg-main-right-li>div:hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){
@@ -243,7 +244,7 @@ input::-webkit-input-placeholder{
   font-size: 1rem;
   margin-bottom: 2px;
 }
-.left-list-one>div{
+.left-list-one>div>div{
   width:40%;
 }
 .left-list-two-div-act{
@@ -258,7 +259,7 @@ input::-webkit-input-placeholder{
   background: #13B5B1;
   color:#fff;
 }
-.left-list-one>img{
+.left-list-one>div>img{
   vertical-align: middle;
 }
 .left-list-one-icon{
@@ -285,7 +286,6 @@ input::-webkit-input-placeholder{
  margin-left: 2rem;
 }
 .left-list-two>ul>li{
-  text-align: center;
   font-size: 0.81rem;
   color:#666;
   margin-bottom: 1px;
@@ -296,6 +296,7 @@ input::-webkit-input-placeholder{
   background: #FAFAFA;
   height:3rem;
   line-height: 3rem;
+  padding-left: 2.56rem;
 }
 .left-list-three>.left-list-three-list{
   line-height:auto;

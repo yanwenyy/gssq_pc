@@ -229,16 +229,15 @@
             <div class="inline-block look-more" @click="$router.push({name:'taxQuestionsAnswers'})">查看更多 ></div>
           </div>
           <ul>
-            <li v-for="i in 4" class="msg-main-left-li">
-              <img src="../../../static/img/user-img.png" alt="">
+            <li v-for="item in wd_list" class="msg-main-left-li"  @click="$router.push({name:'taxQADetail',query:{uuid:item.uuid}})">
+              <img :src="head_src+item.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
               <div class="inline-block">
                 <div>
-                  <span>用户名</span>
-                  <span>2018-10-18</span>
+                  <span>{{item.realName||'匿名用户'}}</span>
+                  <span>{{format(item.date)}}</span>
                 </div>
                 <div>
-                  关于发布个人所得税扣缴申报管理方法解读试行通报，四项综合所得、年度汇算清缴，父母有退休
-                  金也可以扣除是，金融机构与校为企业签订
+                  {{item.content}}
                 </div>
               </div>
             </li>
@@ -251,11 +250,11 @@
             <div class="inline-block look-more"  @click="$router.push({name:'newCenter'})">更多 ></div>
           </div>
           <ul>
-            <li class="msg-main-right-li box-sizing" v-for="i in 4">
+            <li class="msg-main-right-li box-sizing" v-for="i in zc_list"  @click="$router.push({name:'newDetail',query:{uuid:i.policyId}})">
               <div class="inline-block li-dot"></div>
               <div class="inline-block">
-                <div class="right-li-content">关于发布个人所得税扣缴申报管理方法解读试 行通报，四项综合所得、年度汇算清缴，代...</div>
-                <div>2018-12-28</div>
+                <div class="right-li-content">{{i.content}}</div>
+                <div>{{format(i.createTime)}}</div>
               </div>
             </li>
           </ul>
@@ -273,7 +272,7 @@
           <img src="../../../static/img/rocket_img.png">
         </div>
         <div class="tax_dialog_close">
-          <img src="../../../static/img/tax_dialog_close.png" @click="tax_dialog_show=!tax_dialog_show;mask_layer_show=!mask_layer_show">
+          <img style="z-index: 10000" src="../../../static/img/tax_dialog_close.png" @click="tax_dialog_show=!tax_dialog_show;mask_layer_show=!mask_layer_show">
         </div>
         <div class="tax_dialog_way">
           <div class="tax_dialog_title">
@@ -416,7 +415,11 @@
             excle_dialog_show:false,
             identity_dialog_show:false,
             identity_yes:false,
-            identity_no:false
+            identity_no:false,
+            //问答列表
+            wd_list:[],
+            //政策列表
+            zc_list:[]
           }
       },
         components : {
@@ -424,12 +427,29 @@
           headerTab
         },
         mounted(){
+          var that=this;
           //判断是否第一次登陆弹出框
           if(localStorage.getItem("if_login")=="true"){
             this.once_show=false
           }else{
             this.once_show=true
           }
+          //问答列表
+          this.ajax_wd("/onlook/onlookMsgList/share",{
+            "page":"1",
+            "limit":"5"
+          },function(data){
+            console.log(data);
+            that.wd_list=data.data.list;
+          });
+          //政策列表
+          this.ajax(this.http_url.url+"/biz/policy/list",{
+            'page':'1',
+            'limit':'4',
+          },function(data){
+            console.log(data);
+            that.zc_list=data.page.list;
+          })
         },
         methods:{
           //所得项目hover
@@ -658,6 +678,7 @@
     width:1.75rem;
     height:1.75rem;
     vertical-align: top;
+    border-radius: 50%;
   }
   .msg-main-left-li>div{
     width: 94%;

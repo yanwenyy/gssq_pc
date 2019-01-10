@@ -6,24 +6,28 @@
         <span @click="$router.push({name:'home'})">首页</span>
       </div>
       <ul class="left-list-ul">
-        <li v-for="item in menu_list">
+        <li v-for="item in menu_list" :data-last="item.children!=''? 'yes':'no'">
           <div class="left-list-one" :class="two_menu==item.name? 'left-list-one-act':''"  @click="list_one(item.name)">
-            <!--<img :src="item.img" alt="">-->
-            <span class="inline-block left-list-one-icon" :class="two_menu==item.name? 'left-list-one-icon-act':''"><span class="fa fa-life-ring"></span></span>
-            <div class="inline-block">{{item.name}}</div>
-            <img :src="two_menu==item.name? '../../../static/img/left-trange-click.png':'../../../static/img/left-trange.png'" alt="">
+            <div @click="menu_click(item.children!=''? 'yes':'no',item.labelId)">
+              <!--<img :src="item.img" alt="">-->
+              <span class="inline-block left-list-one-icon" :class="two_menu==item.name? 'left-list-one-icon-act':''"><span class="fa fa-life-ring"></span></span>
+              <div class="inline-block">{{item.name}}</div>
+              <img :src="two_menu==item.name? '../../../static/img/left-trange-click.png':'../../../static/img/left-trange.png'" alt="">
+            </div>
           </div>
           <div v-if="two_menu==item.name" class="left-list-two">
             <ul>
               <li v-for="two in item.children">
                 <div class="left-list-two-div" :class="three_menu==two.name? 'left-list-two-div-act':''" @click="list_two(two.name)">
-                  <img :src="three_menu==two.name? '../../../static/img/left-trange-click-two.png':'../../../static/img/left-trange.png'" alt="">
-                  <div class="inline-block">{{two.name}}</div>
+                  <div @click="menu_click(two.children!=''? 'yes':'no',two.labelId)">
+                    <img :src="three_menu==two.name? '../../../static/img/left-trange-click-two.png':'../../../static/img/left-trange.png'" alt="">
+                    <div class="inline-block">{{two.name}}</div>
+                  </div>
                 </div>
                 <div class="left-list-three" v-if="three_menu==two.name">
                   <div class="left-list-three-list" :class="three_status==three.name? 'left-list-three-list-act':''" @click="three_list(three.name)" v-for="three in two.children">
                     <div class="inline-block"><span :class="three_status==three.name? 'left-list-three-dot-act':''" class="inline-block left-list-three-dot"></span></div>
-                    <div class="inline-block left-list-three-div">
+                    <div class="inline-block left-list-three-div"  @click="menu_click(three.children!=''? 'yes':'no',three.labelId)">
                       {{three.name}}
                     </div>
                   </div>
@@ -49,7 +53,13 @@
         </div>
         <div class="main-right-msg box-sizing">
           <div v-if="right_tab_status==1">
-            <div v-for="i in 40">街坊邻居是深V而二手深V对的深V是发达</div>
+            <div>{{lesson.content||''}}</div>
+          </div>
+          <div v-if="right_tab_status==2">
+            <div>{{lesson.knowledge||''}}</div>
+          </div>
+          <div v-if="right_tab_status==3">
+            <div>{{lesson.cases||''}}</div>
           </div>
           <div v-if="right_tab_status==4" class="box-sizing">
             <div class="inline-block tex-video-list" v-for="i in 7">
@@ -83,52 +93,54 @@
             //右边tab栏显示状态
             right_tab_status:1,
             //左边菜单栏模拟数据
-            menu_list:[
-              {name:"纳税人身份",img:"../../../static/img/tax-left1.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'},{name:'三级菜单2'}
-                    ]},
-                  {name:"二级菜单2",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"所得项目",img:"../../../static/img/tax-left2.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"扣除项目",img:"../../../static/img/tax-left3.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"税收优惠",img:"../../../static/img/tax-left4.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"税收抵免",img:"../../../static/img/tax-left5.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"预扣预缴",img:"../../../static/img/tax-left6.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]},
-              {name:"汇算清缴",img:"../../../static/img/tax-left7.png",children:[
-                  {name:"二级菜单",children:[
-                      {name:'三级菜单'}
-                    ]}
-                ]}
-            ],
+            menu_list:[],
+            // menu_list:[
+            //   {name:"纳税人身份",img:"../../../static/img/tax-left1.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'},{name:'三级菜单2'}
+            //         ]},
+            //       {name:"二级菜单2",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"所得项目",img:"../../../static/img/tax-left2.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"扣除项目",img:"../../../static/img/tax-left3.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"税收优惠",img:"../../../static/img/tax-left4.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"税收抵免",img:"../../../static/img/tax-left5.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"预扣预缴",img:"../../../static/img/tax-left6.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]},
+            //   {name:"汇算清缴",img:"../../../static/img/tax-left7.png",children:[
+            //       {name:"二级菜单",children:[
+            //           {name:'三级菜单'}
+            //         ]}
+            //     ]}
+            // ],
             //左边二级菜单显示状态
             two_menu:"",
             //左边三级级菜单显示状态
             three_menu:"",
             //三级菜单内容
-            three_status:''
+            three_status:'',
+            lesson:''
           }
         },
         mounted(){
@@ -139,6 +151,19 @@
           })
         },
         methods:{
+          //左边菜单点击
+          menu_click:function(status,id){
+            var that=this;
+            console.log(status);
+            if(status=="no"){
+              this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
+                  console.log(data);
+                  if(data.msg=='success'){
+                    that.lesson=data.lesson;
+                  }
+              })
+            }
+          },
           //点击我没懂
           not_known:function () {
             this.code_show=true
@@ -172,7 +197,6 @@
               this.three_menu=val;
               this.three_status="";
             }
-            console.log(this.three_menu)
           },
           //三级菜单点击
           three_list:function(val){
