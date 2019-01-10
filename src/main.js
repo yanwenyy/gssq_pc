@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Public from '../static/js/puplic'
 import 'font-awesome/css/font-awesome.min.css'
+import './icons/index.js'
 import paging from "../static/js/paging"
 
 Vue.config.productionTip = false

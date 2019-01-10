@@ -3,7 +3,7 @@
     <div class="declare-body">
       <div class="declare-btn">
         <img src="../../../static/img/declare-up.png" alt="">
-        <input type="file" :change="">
+        <input type="file" >
       </div>
       <div class="declare-process box-sizing">
         <div class="inline-block declare-process-msg">
