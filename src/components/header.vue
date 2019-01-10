@@ -18,7 +18,7 @@
           <ul>
             <li @click="user_model()">员工账户管理</li>
             <li @click="user_model('taxCounselingEmployees')">员工个税辅导管理</li>
-            <li @click="user_model()">我的个税扣除申报</li>
+            <li @click="user_model('taxDeclare')">我的个税扣除申报</li>
             <li @click="user_model()">退出</li>
           </ul>
         </div>

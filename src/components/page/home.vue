@@ -149,7 +149,7 @@
                 <div class="lookMK_line"></div>
                 <div class="lookMK_msg">我都能扣什么？如何扣除最划算?</div>
                 <div class="lookMK_msg">定制辅导，根据您的实际情况，帮您解决 您的所有财税问题！</div>
-                <div class="lookMK_btn">开始</div>
+                <div class="lookMK_btn" @click="$router.push({name:'rapidMeasurement'})">开始</div>
               </div>
             </div>
             <img src="../../../static/img/shortcut_img.png" class="shortcut_excle" @click="mask_layer_show=!mask_layer_show;tax_dialog_show=!tax_dialog_show">
@@ -226,6 +226,7 @@
           <div class="home-title box-sizing">
             <div class="inline-block home-title-cn">个税咨询</div>
             <div class="inline-block home-title-en">Interlocution</div>
+            <div class="inline-block look-more" @click="$router.push({name:'taxQuestionsAnswers'})">查看更多 ></div>
           </div>
           <ul>
             <li v-for="i in 4" class="msg-main-left-li">
@@ -247,6 +248,7 @@
           <div class="home-title box-sizing">
             <div class="inline-block home-title-cn">新政速递</div>
             <div class="inline-block home-title-en">Tax News</div>
+            <div class="inline-block look-more"  @click="$router.push({name:'newCenter'})">更多 ></div>
           </div>
           <ul>
             <li class="msg-main-right-li box-sizing" v-for="i in 4">
@@ -443,6 +445,10 @@
 </script>
 
 <style scoped>
+  .look-more{
+    float: right;
+    color:#999;
+  }
   .six-special-fd-btn:hover{
     color:#fff;
     background: #13B5B1;

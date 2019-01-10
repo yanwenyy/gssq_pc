@@ -3,20 +3,26 @@ export default{
   {
     //接口变量
     Vue.prototype.http_url = {
+      test:'http://test.jieshuibao.com:8090/jsb_tax/',
+      formal: "https://api.jieshuibao.com/",
+      url:  "http://test.jieshuibao.com:8090/jsb_tax/",
+    };
+    //问答接口变量
+    //头像变量
+    Vue.prototype.http_url_wd = {
       test:'http://test.jieshuibao.com/jsb_webserver/',
       formal: "https://api.jieshuibao.com/",
       url:  "http://test.jieshuibao.com/jsb_webserver/",
     };
-    //头像变量
-    Vue.prototype.head_src = Vue.prototype.http_url.url+"showImg/head/";
+    Vue.prototype.head_src = Vue.prototype.http_url_wd.url+"showImg/head/";
     //问题图片
-    Vue.prototype.question_src = Vue.prototype.http_url.url+"showImg/question/";
+    Vue.prototype.question_src = Vue.prototype.http_url_wd.url+"showImg/question/";
     //会员卡图片
-    Vue.prototype.showImg_src = Vue.prototype.http_url.url+"showImg/card/";
+    Vue.prototype.showImg_src = Vue.prototype.http_url_wd.url+"showImg/card/";
     //视频封面图片
-    Vue.prototype.cover_src = Vue.prototype.http_url.url+"showImg/cover/";
+    Vue.prototype.cover_src = Vue.prototype.http_url_wd.url+"showImg/cover/";
     //证件图片
-    Vue.prototype.cert_src = Vue.prototype.http_url.url+"showImg/cert/";
+    Vue.prototype.cert_src = Vue.prototype.http_url_wd.url+"showImg/cert/";
     Vue.prototype.ajax=function(url,data,succ){
       $.ajax({
         type:"POST",
@@ -25,8 +31,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "cookieId":"oPUdI0pZbHIYBCHUn_aQPCJAmRIU",
-          "version":"1"
+          "token":"6c985883ed19e72b6f6382a95e9876c8",
         },
         data:JSON.stringify(data),
         success:function(data){
@@ -51,8 +56,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "cookieId":"oPUdI0pZbHIYBCHUn_aQPCJAmRIU",
-          "version":"1"
+          "token":"6c985883ed19e72b6f6382a95e9876c8",
         },
         success:function(data){
           if(data.code=="2"){
@@ -68,7 +72,31 @@ export default{
         }
       })
     }
-    //日期转换
+    //问答的ajax请求
+    Vue.prototype.ajax_wd=function(url,data,succ){
+      $.ajax({
+        type:"POST",
+        url:Vue.prototype.http_url_wd.url+url,
+        dataType: "json",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        data:JSON.stringify(data),
+        success:function(data){
+          if(data.code=="2"){
+            alert(data.des);
+            // window.location.href="../html/register-next.html"
+          }else{
+            succ(data);
+          }
+
+        },
+        error:function(){
+          console.log("程序出错,请重试");
+        }
+      })
+    }   //日期转换
     Vue.prototype.format=function(shijianchuo){
       function add0(m){return m<10?'0'+m:m };
       var time = new Date(shijianchuo);

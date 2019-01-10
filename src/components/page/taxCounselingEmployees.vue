@@ -48,7 +48,15 @@
           <div class="inline-block" :class="right_tab_status==4? 'main-right-body-title-act':''" @click="right_tab(4)">视频</div>
         </div>
         <div class="main-right-msg box-sizing">
-          <div v-for="i in 40">街坊邻居是深V而二手深V对的深V是发达</div>
+          <div v-if="right_tab_status==1">
+            <div v-for="i in 40">街坊邻居是深V而二手深V对的深V是发达</div>
+          </div>
+          <div v-if="right_tab_status==4" class="box-sizing">
+            <div class="inline-block tex-video-list" v-for="i in 7">
+              <img src="../../../static/img/test.jpg" alt="">
+              <div>纯干货，六项专项附加扣除到底该怎 么扣？权威解读《个人所得税... </div>
+            </div>
+          </div>
         </div>
         <div class="main-right-footer">
           <div class="inline-block iknown">我懂了</div>
@@ -124,7 +132,11 @@
           }
         },
         mounted(){
-
+          var that=this;
+          this.ajax_nodata(this.http_url.url+"/biz/label/tree",function(data){
+            console.log(data);
+            that.menu_list=data.list;
+          })
         },
         methods:{
           //点击我没懂
@@ -171,6 +183,18 @@
 </script>
 
 <style scoped>
+  .tex-video-list{
+    width:30%;
+    margin-right:3%;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color:#333;
+    line-height:1.31rem;
+  }
+  .tex-video-list>img{
+    width:100%;
+    margin-bottom: 1rem;
+  }
   .code{
     position: absolute;
     width:300px;
