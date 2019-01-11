@@ -471,8 +471,10 @@
           },
           //我的身份
           submit_identity:function(){
+            var that=this
             this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
-              if(data.code==0){
+              if(data.code===0){
+                alert("操作成功")
                 that.mask_layer_show=false;
                 that.identity_dialog_show=false
               }else{
