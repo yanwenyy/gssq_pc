@@ -25,6 +25,7 @@
           know:function(){
             this.show=false;
             localStorage.setItem("if_login","true")
+            this.$emit('checkRole')
           }
         }
     }
