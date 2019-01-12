@@ -48,6 +48,7 @@
       },
       mounted(){
         var that=this;
+        // console.log(that.$route.query.msg)
         this.ajax_wd("/onlook/onlookMsgList/share",{
             "page":"1",
             "limit":"10",
@@ -57,7 +58,6 @@
             that.list=data.data.list;
             for(var i=0;i<that.list.length;i++){
               that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
-              console.log(that.list[i].content)
             }
             that.page(data.data.totalPage)
         });
@@ -88,7 +88,6 @@
           this.list=data.data.list;
           for(var i=0;i<list.length;i++){
             list[i].content=list[i].content.replace(this.$route.query.msg,'<span style="color:#2FBEB9">'+this.$route.query.msg+'</span>');
-            console.log(list[i].content)
           }
         },
       }

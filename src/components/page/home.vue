@@ -22,7 +22,7 @@
           <div class="inline-block sf_determination-msg">
             <div>我的身份：</div>
             <div>
-              <span>居民纳税人</span>
+              <span>{{user_msg.taxPayerRoleName}}</span>
               <a class="edit_sf_deter_msg" @click="mask_layer_show=!mask_layer_show;identity_dialog_show=!identity_dialog_show">[ 修改 ]</a>
             </div>
             <div>个税缴纳条款中，部分条款针对不同身份有不同适用定义</div>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="gsfd_system_title box-sizing">
-          <img src="../../../static/img/xt_title-01.png" alt="">
+          <img src="../../../static/img/xt_title-03.png" alt="">
           <div class="inline-block box-sizing">
             <span>扣除项目</span>
             <span>计算第三步：根据自身情况判断可扣除项目</span>
@@ -216,9 +216,9 @@
         <div class="inline-block home-title-en">Video Tutoring</div>
       </div>
       <div class="gsfd-video">
-        <div class="gsfd-video-list" v-for="i in 3">
-          <img src="../../../static/img/test.jpg" alt="">
-          <div>个税大师李佳德告诉你六项附加扣除到底怎么扣- 共六讲</div>
+        <div class="gsfd-video-list" v-for="i in video" @click="$router.push({name:'video',query:{vid:i.ccId}})">
+          <img :src="'http://'+i.coverimgurl" alt="">
+          <div>{{i.title}}</div>
         </div>
       </div>
       <div class="msg-main box-sizing">
@@ -411,6 +411,8 @@
         name: "home",
       data(){
           return{
+            //用户信息
+            user_msg:'',
             taxPayerRole:0,
             once_show:false,
             mask_layer_show:false,
@@ -422,7 +424,9 @@
             //问答列表
             wd_list:[],
             //政策列表
-            zc_list:[]
+            zc_list:[],
+            //视频列表
+            video:[]
           }
       },
         components : {
@@ -454,6 +458,7 @@
           });
           //获取用户登录信息
           this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            that.user_msg=data.user;
             if(data.user.taxPayerRole==0){
               that.mask_layer_show=true;
               that.identity_dialog_show=true
@@ -461,7 +466,12 @@
               that.mask_layer_show=false;
               that.identity_dialog_show=false
             }
-          })
+          });
+          //首页视频
+          this.ajax_nodata(this.http_url.url+"/biz/video/pc/list",function(data){
+            console.log(data);
+            that.video=data.page.list;
+          });
         },
         methods:{
           //所得项目hover
@@ -479,7 +489,7 @@
               if(data.code===0){
                 alert("操作成功")
                 that.mask_layer_show=false;
-                that.identity_dialog_show=false
+                that.identity_dialog_show=false;
               }else{
                 alert(data.msg)
               }

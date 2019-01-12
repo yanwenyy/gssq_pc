@@ -62,7 +62,7 @@
             <div>{{lesson.cases||''}}</div>
           </div>
           <div v-if="right_tab_status==4" class="box-sizing">
-            <div class="inline-block tex-video-list" v-for="i in lesson.videos">
+            <div class="inline-block tex-video-list" v-for="i in lesson.videos"  @click="$router.push({name:'video',query:{vid:i.ccId}})">
               <img :src="'http://'+i.coverimgurl" alt="">
               <!--<img src="jsb-tax.oss-cn-beijing.aliyuncs.com/20190110/a05401df51df45969e1b62e3f769011f.png" alt="">-->
               <div>{{i.title}}</div>

@@ -81,10 +81,12 @@
                 <div v-if="jx_msg.status==3">
                   <div class="ques-list-title">3.您选择谁扣除？</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="jx_msg.fm_cc" class="ques-sel" name="" id="" >
-                      <option  value="a">父母</option>
-                      <option  value="b">自己</option>
-                    </select>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.fm_cc" value="a" type="radio"><lable>父母</lable></div>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.fm_cc" value="b" type="radio"><lable>自己</lable></div>
+                    <!--<select v-model="jx_msg.fm_cc" class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">父母</option>-->
+                      <!--<option  value="b">自己</option>-->
+                    <!--</select>-->
                   </div>
                 </div>
                 <div v-if="jx_msg.status==4">
@@ -120,12 +122,16 @@
                 <div v-if="zfdk_msg.status==2">
                   <div class="ques-list-title">2.您属于以下哪种情况？</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="zfdk_msg.loan_class" class="ques-sel" name="" id="" >
-                      <option  value="a">未婚首套贷款</option>
-                      <option  value="b">“婚前”本人首套贷款，配偶无贷款</option>
-                      <option  value="c">“婚前”各自首套贷款</option>
-                      <option  value="d">“婚后”首套贷款（本人/配偶/共同购房）</option>
-                    </select>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="a" type="radio"><lable>未婚首套贷款</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="b" type="radio"><lable>“婚前”本人首套贷款，配偶无贷款</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="c" type="radio"><lable>“婚前”各自首套贷款</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="d" type="radio"><lable>“婚后”首套贷款（本人/配偶/共同购房）</lable></div>
+                    <!--<select v-model="zfdk_msg.loan_class" class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">未婚首套贷款</option>-->
+                      <!--<option  value="b">“婚前”本人首套贷款，配偶无贷款</option>-->
+                      <!--<option  value="c">“婚前”各自首套贷款</option>-->
+                      <!--<option  value="d">“婚后”首套贷款（本人/配偶/共同购房）</option>-->
+                    <!--</select>-->
                   </div>
                 </div>
                 <div v-if="zfdk_msg.status==3">
@@ -142,11 +148,14 @@
                 <div v-if="zfdk_msg.status==4">
                   <div class="ques-list-title">4.您的扣缴比例？</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="zfdk_msg.hh_ch"  class="ques-sel" name="" id="" >
-                      <option  value="a">0%（配偶扣除）</option>
-                      <option  value="b">50% （我和配偶共同扣除）</option>
-                      <option  value="c">100%（我扣除）</option>
-                    </select>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="a" type="radio"><lable>0%（配偶扣除）</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="b" type="radio"><lable>50% （我和配偶共同扣除）</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="c" type="radio"><lable>100%（我扣除）</lable></div>
+                    <!--<select v-model="zfdk_msg.hh_ch"  class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">0%（配偶扣除）</option>-->
+                      <!--<option  value="b">50% （我和配偶共同扣除）</option>-->
+                      <!--<option  value="c">100%（我扣除）</option>-->
+                    <!--</select>-->
                   </div>
                 </div>
               </div>
@@ -164,20 +173,25 @@
                 <div v-if="fwzj_msg.status==2">
                   <div class="ques-list-title">2.您的主要工作市属于哪一种？</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="fwzj_msg.fw_city" class="ques-sel" name="" id="" >
-                      <option  value="a">直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</option>
-                      <option  value="b">市辖区户籍人口超过100万的城市</option>
-                      <option  value="c">市辖区户籍人口不超过100万的城市</option>
-                    </select>
+                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="a" type="radio"><lable>直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="b" type="radio"><lable>市辖区户籍人口超过100万的城市</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="c" type="radio"><lable>市辖区户籍人口不超过100万的城市</lable></div>
+                    <!--<select v-model="fwzj_msg.fw_city" class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</option>-->
+                      <!--<option  value="b">市辖区户籍人口超过100万的城市</option>-->
+                      <!--<option  value="c">市辖区户籍人口不超过100万的城市</option>-->
+                    <!--</select>-->
                   </div>
                 </div>
                 <div v-if="fwzj_msg.status==3">
                   <div class="ques-list-title">3.“住房贷款”与“房屋租住”只能扣除一项，您选择扣除？</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="fwzj_msg.dk_or_zf"  class="ques-sel" name="" id="" >
-                      <option  value="a">住房贷款（您预计可扣除{{zfdk_msg.result}}元）</option>
-                      <option  value="b">房屋租住（您预计可扣除{{fwzj_msg.result}}元）</option>
-                    </select>
+                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.dk_or_zf" value="a" type="radio"><lable>住房贷款（您预计可扣除{{zfdk_msg.result}}元）</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.dk_or_zf" value="b" type="radio"><lable>房屋租住（您预计可扣除{{fwzj_msg.result}}元）</lable></div>
+                    <!--<select v-model="fwzj_msg.dk_or_zf"  class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">住房贷款（您预计可扣除{{zfdk_msg.result}}元）</option>-->
+                      <!--<option  value="b">房屋租住（您预计可扣除{{fwzj_msg.result}}元）</option>-->
+                    <!--</select>-->
                   </div>
                 </div>
               </div>
@@ -221,11 +235,14 @@
                 <div v-if="dbyl_msg.status==1">
                   <div class="ques-list-title" style="width: 80%;margin: 0 auto 2rem auto">1.您的家庭（本人、配偶、子女）本年度是否产生了需要申报扣除的大病医疗费用？（可扣除范围：与基本医保相关的医药费用支出，扣除医保报销后个人负担（指医保目录范围内的自付部分）累计超过15000元的部分）</div>
                   <div class="ques-list-msg box-sizing">
-                    <select v-model="dbyl_msg.if_cc" class="ques-sel" name="" id="" >
-                      <option  value="a">有，本人扣除</option>
-                      <option  value="b">有，配偶扣除</option>
-                      <option  value="c">无 </option>
-                    </select>
+                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="a" type="radio"><lable>有，本人扣除</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="b" type="radio"><lable>有，配偶扣除</lable></div>
+                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="c" type="radio"><lable>无</lable></div>
+                    <!--<select v-model="dbyl_msg.if_cc" class="ques-sel" name="" id="" >-->
+                      <!--<option  value="a">有，本人扣除</option>-->
+                      <!--<option  value="b">有，配偶扣除</option>-->
+                      <!--<option  value="c">无 </option>-->
+                    <!--</select>-->
                   </div>
                 </div>
                 <div v-if="dbyl_msg.status==2">
@@ -723,7 +740,7 @@
               if(this.dbyl_msg.status==1){
                 if(this.dbyl_msg.if_cc=='a'){
                   this.dbyl_msg.status=2;
-                  this.sub=true;
+                  // this.sub=true;
                 }else if(this.dbyl_msg.if_cc=='c'||this.dbyl_msg.if_cc=='b'){
                   this.sub=true;
                   this.dbyl=false;
@@ -748,33 +765,31 @@
                   }
                 }
               }else if(this.dbyl_msg.status==2){
-                this.sub=true;
+                // this.sub=true;
                 if(this.dbyl_msg.cc_money>80000){
                   alert("请填写小于80000的数字");
-                  return false;
                 }else{
                   this.dbyl_msg.result=this.dbyl_msg.cc_money;
-                  if(this.zn_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.jx_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.zfdk_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.fwzj_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.sylr_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.dbyl_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
                   this.dbyl=false;
                   this.total_result=true;
-                  //this.fh_num=$(".if_fh").size();
+                }
+                if(this.zn_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
+                }
+                if(this.jx_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
+                }
+                if(this.zfdk_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
+                }
+                if(this.fwzj_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
+                }
+                if(this.sylr_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
+                }
+                if(this.dbyl_msg.result!=0){
+                  this.fh_num=this.fh_num+1;
                 }
               }
               //console.log(this.dbyl_msg.result)
@@ -848,6 +863,11 @@
 </script>
 
 <style scoped>
+  .radio-div-long{
+    text-align: left;
+    padding-left:9rem;
+    margin-bottom: 1rem!important;
+  }
   .child-list{
     text-align: left!important;
     margin-left: 100px;

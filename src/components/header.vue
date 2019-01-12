@@ -10,16 +10,16 @@
           <div class="header-title">北京解税宝科技有限公司</div>
           <div class="header-user-msg" @click="close_status=!close_status">
             <img src="../../static/img/user-img.png" alt="">
-            <span>王晓文</span>
+            <span>{{user_msg.username}}</span>
             <img src="../../static/img/header-down.png" alt="">
           </div>
         </div>
         <div class="close-login" v-if="close_status">
           <ul>
-            <li @click="user_model()">员工账户管理</li>
-            <li @click="user_model('taxCounselingEmployees')">员工个税辅导管理</li>
-            <li @click="user_model('taxDeclare')">我的个税扣除申报</li>
-            <li @click="user_model()">退出</li>
+            <li @click="user_model('',1)">员工账户管理</li>
+            <li @click="user_model('',2)">员工个税辅导管理</li>
+            <li @click="user_model('taxDeclare',3)">我的个税扣除申报</li>
+            <li @click="user_model('',4)">退出</li>
           </ul>
         </div>
       </div>
@@ -34,10 +34,16 @@
           return{
             tab_class:1,//tab状态值
             close_status:false,//退出框是否显示
+            user_msg:''
           }
         },
         mounted(){
-
+          var that=this;
+          //获取用户登录信息
+          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            // console.log(data);
+            that.user_msg=data.user;
+          })
         },
         methods:{
           //tab切换
@@ -50,8 +56,15 @@
             this.$router.push({name:"login"});
           },
           //用户框点击
-          user_model:function(val){
-            this.$router.push({name:val});
+          user_model:function(val,id){
+            if(id==1||id==2){
+              window.location.href="http://test.jieshuibao.com/GSSQ_back"
+            }else if(id==3){
+              this.$router.push({name:val});
+            }else if(id==4){
+              window.location.href="http://test.jieshuibao.com/GSSQ_back";
+              this.$cookie.set('token', '')
+            }
             this.close_status=false;
           }
         }

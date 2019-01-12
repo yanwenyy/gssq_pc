@@ -4,7 +4,9 @@
       <div class="declare-btn">
         <!--<img src="../../../static/img/declare-up.png" alt="">-->
         <div id="upload" ></div>
+
       </div>
+      <div class="inline-block end-time">上次更新时间：2018-12-02</div>
       <div class="declare-process box-sizing" v-if="file_name!=''">
         <div class="inline-block declare-process-msg">
           <img src="../../../static/img/exl.png" alt="">
@@ -15,7 +17,6 @@
         <img src="" alt="">
       </div>
         <div class="inline-block succ" v-if="file_succ">上传成功</div>
-        <div class="inline-block end-time">最后更新时间：2018-12-02</div>
       </div>
       <div class="relevant-exl">
         <div class="relevant-exl-title">下载相关文档</div>
@@ -76,6 +77,10 @@
         },
         mounted(){
           var that=this;
+          //上次更新时间
+          this.ajax_nodata(this.http_url.url+"/biz/reportrecord/info",function(data){
+            console.log(data);
+          });
           $("#upload").zinoUpload({
             method: "POST",
             url: this.http_url.url+"/sys/oss/upload?token="+Vue.cookie.get('token'),
@@ -162,9 +167,10 @@
     margin-top: 3.75rem;
   }
   .end-time{
-    color:#333;
+    color:#999;
     float:right;
-    margin-right: 2.19rem;
+    margin-right: 8.19rem;
+    margin-top: -1rem;
   }
   .succ{
     color:#13B5B1;
@@ -191,12 +197,12 @@
     vertical-align: top;
   }
   .declare-process{
-    width:100%;
+    width:44rem;
+    margin: 2rem auto;
     height:3.625rem;
     background: #F9F9F9;
     font-size: 0.875rem;
     line-height: 3.625rem;
-    margin-top: 2rem;
   }
   .declare-body{
     margin-top:2.06rem;
