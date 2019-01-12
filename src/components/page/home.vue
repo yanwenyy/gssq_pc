@@ -265,7 +265,7 @@
         <div class="inline-block"><img src="../../../static/img/footer-banner2.png" alt=""></div>
       </div>
     </div>
-    <FirstLoginDialog v-show="once_show"></FirstLoginDialog>
+    <FirstLoginDialog v-show="once_show" v-on:checkRole="checkRole"></FirstLoginDialog>
     <div class="mask-layer" v-show="mask_layer_show">
       <div class="tax_dialog" v-show="tax_dialog_show">
         <div class="rocket">
@@ -384,14 +384,14 @@
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_yes?'identity_blue':''"><img src="../../../static/img/indentity_img1.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="taxPayerRole" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
+              <label><input type="radio" name="taxPayerRole_btn" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="taxPayerRole" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
+              <label><input type="radio" name="taxPayerRole_btn" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
@@ -434,7 +434,19 @@
             this.once_show=false
           }else{
             this.once_show=true
-          }
+          };
+          //获取用户登录信息
+          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            that.taxPayerRole=data.user.taxPayerRole;
+            if(that.taxPayerRole==0&&that.once_show==false){
+              that.mask_layer_show=true;
+              that.identity_dialog_show=true
+            }else if(that.taxPayerRole==0&&that.once_show==true){
+              that.identity_dialog_show=false
+            }else if(that.taxPayerRole!=0){
+              that.identity_dialog_show=false
+            }
+          });
           //问答列表
           this.ajax_wd("/onlook/onlookMsgList/share",{
             "page":"1",
@@ -449,18 +461,19 @@
           },function(data){
             that.zc_list=data.page.list;
           });
-          //获取用户登录信息
-          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
-            if(data.user.taxPayerRole==0){
-              that.mask_layer_show=true;
-              that.identity_dialog_show=true
-            }else{
-              that.mask_layer_show=false;
-              that.identity_dialog_show=false
-            }
-          })
         },
         methods:{
+          //知道了检查身份
+          checkRole:function () {
+            console.log(this.taxPayerRole)
+            if(this.taxPayerRole==0){
+              this.mask_layer_show=true;
+              this.identity_dialog_show=true
+            }else{
+              this.mask_layer_show=false;
+              this.identity_dialog_show=false
+            }
+          },
           //所得项目hover
           classfication_hvoer:function(event){
             // console.log(event.currentTarget.firstElementChild.dataset.src);
