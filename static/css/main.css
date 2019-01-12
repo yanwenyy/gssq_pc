@@ -368,16 +368,16 @@ input::-webkit-input-placeholder{
 }
 .main-right-msg{
   padding:2.75rem 0;
-  height:40.63rem;
+  height:28rem;
   overflow: auto;
   font-size: 0.94rem;
 }
 .main-right-footer{
   text-align: center;
   font-size: 0.875rem;
-  position: fixed;
-  bottom:3rem;
-  width: 70%;
+  /*position: fixed;*/
+  /*bottom:3rem;*/
+  /*width: 70%;*/
 }
 .iknown{
   width:6.81rem;

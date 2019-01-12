@@ -6,7 +6,7 @@
         <div id="upload" ></div>
 
       </div>
-      <div class="inline-block end-time">上次更新时间：2018-12-02</div>
+      <div class="inline-block end-time" v-if="updateTime!=''">上次更新时间：{{updateTime}}</div>
       <div class="declare-process box-sizing" v-if="file_name!=''">
         <div class="inline-block declare-process-msg">
           <img src="../../../static/img/exl.png" alt="">
@@ -24,37 +24,37 @@
           <div class="inline-block">
             <img src="../../../static/img/exl-big.png" alt="">
             <div>专项附加扣除信息电子模版</div>
-            <div class="elx-download"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></div>
+            <div class="elx-download"><a href="./static/download/1.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>电子模板填写常见问题</div>
-            <div class="elx-download"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/2.pdf" download="电子模板填写常见问题.pdf">下载文件</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>个人所得税扣缴申报指引（辅导培训版）</div>
-            <div class="elx-download"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/3.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>个人所得税专项附加扣除操作指引（辅导培训版）</div>
-            <div class="elx-download"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/4.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>个人所得税专项附加扣除条件(辅导培训版)</div>
-            <div class="elx-download"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/5.pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>专项附加扣除电子模板填写样例说明</div>
-            <div class="elx-download"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/6.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></div>
           </div>
           <div class="inline-block">
             <img src="../../../static/img/pdf_icon.png" alt="">
             <div>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</div>
-            <div class="elx-download"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></div>
+            <div class="elx-download"><a href="./static/download/7.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></div>
           </div>
         </div>
         <div class="relevant-notice">
@@ -73,6 +73,7 @@
           return{
             file_name:'',//文件名
             file_succ:false,
+            updateTime:''
           }
         },
         mounted(){
@@ -80,6 +81,7 @@
           //上次更新时间
           this.ajax_nodata(this.http_url.url+"/biz/reportrecord/info",function(data){
             console.log(data);
+            that.updateTime=data.userLessonReportRecordEntity.updateTime||"";
           });
           $("#upload").zinoUpload({
             method: "POST",

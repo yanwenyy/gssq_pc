@@ -322,7 +322,7 @@
             <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
             <p>个人所得税专项附加扣除条件(辅导培训版)</p>
           </div>
-          <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
+          <span class="download_btn"><a href="./static/download/5.pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
         </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -330,7 +330,7 @@
               <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
               <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/4.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -338,7 +338,7 @@
               <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
               <p>个人所得税扣缴申报指引（辅导培训版）</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/3.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/excel_icon.png">
@@ -346,7 +346,7 @@
               <h4 class="">4－1：专项附加扣除信息电子模版</h4>
               <p>专项附加扣除信息电子模版</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
+            <span class="download_btn"><a href="./static/download/1.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -354,7 +354,7 @@
               <h4 class="">4－2：电子模板填写常见问题</h4>
               <p>电子模板填写常见问题</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/2.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -362,7 +362,7 @@
               <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
               <p>专项附加扣除电子模板填写样例说明</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/6.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -370,7 +370,7 @@
               <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
               <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/7.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
           </div>
         </div>
 

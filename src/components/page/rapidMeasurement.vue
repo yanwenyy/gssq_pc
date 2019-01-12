@@ -263,7 +263,7 @@
           <div v-if="total_result" >
             <div class="rapid-ques-title" style="top:2.44rem">测试结果</div>
             <div class="rapid-result-title">
-              恭喜您，您共计符合x项专项附加扣除标准
+              恭喜您，您共计符合{{fh_num}}项专项附加扣除标准
             </div>
             <table class="repid-table">
               <tr class="blue-bg">
@@ -384,17 +384,17 @@
             <span class="inline-block line"></span>
           </div>
           <div class="tax-login-body inline-block">
-            <div class="login-title">
-              <span class="notice-line inline-block"></span>
-              <span>方式一：</span>
-            </div>
+            <!--<div class="login-title">-->
+              <!--<span class="notice-line inline-block"></span>-->
+              <!--<span>方式一：</span>-->
+            <!--</div>-->
             <div class="tax_excle">
               <h4 class="border-blue">方式一：</h4>
               <div class="tax_excle_img">
                 <div class="inline-block">
                   <img src="../../../static/img/tax_dialog_img1.png">
                   <p>1.下载信息采集表格</p>
-                  <span class="download_btn" @click="excle_dialog_show=!excle_dialog_show;tax_dialog_show=!tax_dialog_show">下载表格</span>
+                  <span class="download_btn" @click="excle_dialog_show=!excle_dialog_show">下载表格</span>
                 </div>
                 <img src="../../../static/img/arrows_icon.png"/>
                 <div class="inline-block">
@@ -419,6 +419,74 @@
           </div>
         </div>
       </div>
+      <div class="mask-layer"  v-if="excle_dialog_show">
+        <div class="excle_download">
+          <div class="excle_download_title">
+            <h4>下载表格</h4>
+            <img src="../../../static/img/excel_dialog_close.png" @click="excle_dialog_show=!excle_dialog_show"/>
+          </div>
+          <div class="excle_list_box">
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
+                <p>个人所得税专项附加扣除条件(辅导培训版)</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/5.pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
+                <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/4.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
+                <p>个人所得税扣缴申报指引（辅导培训版）</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/3.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/excel_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">4－1：专项附加扣除信息电子模版</h4>
+                <p>专项附加扣除信息电子模版</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/1.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">4－2：电子模板填写常见问题</h4>
+                <p>电子模板填写常见问题</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/2.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
+                <p>专项附加扣除电子模板填写样例说明</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/6.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
+            </div>
+            <div class="excle_list">
+              <img class="inline-block" src="../../../static/img/pdf_icon.png">
+              <div class="inline-block file_detail">
+                <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
+                <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
+              </div>
+              <span class="download_btn"><a href="./static/download/7.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 </template>
 
@@ -428,6 +496,9 @@
         name: "rapid-measurement",
         data(){
           return{
+            mask_layer_show:false,
+            excle_dialog_show:false,
+            tax_dialog_show:false,
             zn:true,//子女教育
             zn_msg:{
               status:1,
@@ -863,6 +934,87 @@
 </script>
 
 <style scoped>
+  .excle_download_title{
+    position: relative;
+    line-height: 50px;
+    border-bottom: 1px solid rgba(238,238,238,1);;
+  }
+  .excle_download_title h4{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgba(51, 51, 51, 1);
+  }
+  .excle_download_title>img{
+    position: absolute;
+    width: 12px;
+    top: 20px;
+    right: 19px;
+  }
+  .excle_list{
+    position: relative;
+    margin: 10px 30px 0 20px;
+  }
+  .excle_list::after{
+    content: '';
+    width: 490px;
+    display: block;
+    height: 0px;
+    border-top: 1px dashed rgba(238,238,238,1);
+    margin:10px 0;
+    margin-left: 35px;
+  }
+  .excle_list>img{
+    width: 100px;
+  }
+  .excle_list .download_btn{
+    position: absolute;
+    right: 0px;
+    top:15px;
+  }
+  .excle_list .file_detail{
+    width: 300px;
+    margin-top: 12px;
+  }
+  .excle_list .file_detail h4{
+    font-size: 14px;
+    color:#000
+  }
+  .excle_list .file_detail p{
+    color: rgba(153, 153, 153, 1);
+    margin-top: 8px;
+  }
+  .excle_list_box{
+    height: 320px;
+    overflow-y: scroll;
+  }
+  .excle_list_box::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+  .excle_list_box::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.1);
+  }
+  .excle_list_box::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0);
+  }
+   .excle_download{
+    position: fixed;
+    width: 600px;
+    height: 360px;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
   .radio-div-long{
     text-align: left;
     padding-left:9rem;
@@ -892,6 +1044,9 @@
   .way_three p{
     text-decoration: underline;
     padding-top: 10px;
+  }
+  .download_btn>a{
+    color:#fff;
   }
   .download_btn{
     display: inline-block;

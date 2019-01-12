@@ -9,8 +9,6 @@
       name: "test",
       mounted () {
         creatH(this.$route.query.vid);
-        // alert(this.http_url.url);
-        // alert(this.$route.query.name);
       }
     }
 
