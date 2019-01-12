@@ -62,9 +62,10 @@
             <div>{{lesson.cases||''}}</div>
           </div>
           <div v-if="right_tab_status==4" class="box-sizing">
-            <div class="inline-block tex-video-list" v-for="i in 7">
-              <img src="../../../static/img/test.jpg" alt="">
-              <div>纯干货，六项专项附加扣除到底该怎 么扣？权威解读《个人所得税... </div>
+            <div class="inline-block tex-video-list" v-for="i in lesson.videos">
+              <img :src="'http://'+i.coverimgurl" alt="">
+              <!--<img src="jsb-tax.oss-cn-beijing.aliyuncs.com/20190110/a05401df51df45969e1b62e3f769011f.png" alt="">-->
+              <div>{{i.title}}</div>
             </div>
           </div>
         </div>
@@ -199,7 +200,7 @@
               this.ajax_nodata_get(this.http_url.url+"/biz/lesson/info/video/"+this.labelId,function(data){
                 if(data.code==0){
                   console.log(data);
-                  this.lesson.videos=data.videos;
+                  that.lesson.videos=data.videos;
                 }
               })
             }
@@ -255,6 +256,7 @@
   }
   .tex-video-list>img{
     width:100%;
+    height:8.125rem;
     margin-bottom: 1rem;
   }
   .code{

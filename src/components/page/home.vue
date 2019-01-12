@@ -37,13 +37,13 @@
               </div>
             </div>
           </div>
-          <div class="inline-block gs_calculator">
-            <img src="../../../static/img/jsq_bannar.png" alt="">
-            <div>
-              <span>个税计算器</span>
-              <span class="go_calculator">测测个税省多少？</span>
-            </div>
-          </div>
+          <!--<div class="inline-block gs_calculator">-->
+            <!--<img src="../../../static/img/jsq_bannar.png" alt="">-->
+            <!--<div>-->
+              <!--<span>个税计算器</span>-->
+              <!--<span class="go_calculator">测测个税省多少？</span>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
         <div class="gsfd_system_title box-sizing">
           <img src="../../../static/img/xt_title-02.png" alt="">
@@ -253,7 +253,7 @@
             <li class="msg-main-right-li box-sizing" v-for="i in zc_list"  @click="$router.push({name:'newDetail',query:{uuid:i.policyId}})">
               <div class="inline-block li-dot"></div>
               <div class="inline-block">
-                <div class="right-li-content">{{i.content}}</div>
+                <div class="right-li-content">{{i.content.length>60? i.content.slice(0,60)+"...":i.content}}</div>
                 <div>{{format(i.createTime)}}</div>
               </div>
             </li>
@@ -322,7 +322,7 @@
             <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
             <p>个人所得税专项附加扣除条件(辅导培训版)</p>
           </div>
-          <span class="download_btn">下载文件</span>
+          <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
         </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -330,7 +330,7 @@
               <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
               <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -338,7 +338,7 @@
               <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
               <p>个人所得税扣缴申报指引（辅导培训版）</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/excel_icon.png">
@@ -346,7 +346,7 @@
               <h4 class="">4－1：专项附加扣除信息电子模版</h4>
               <p>专项附加扣除信息电子模版</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -354,7 +354,7 @@
               <h4 class="">4－2：电子模板填写常见问题</h4>
               <p>电子模板填写常见问题</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -362,7 +362,7 @@
               <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
               <p>专项附加扣除电子模板填写样例说明</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -370,7 +370,7 @@
               <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
               <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
           </div>
         </div>
 
@@ -384,19 +384,19 @@
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_yes?'identity_blue':''"><img src="../../../static/img/indentity_img1.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="name" value="0" @click="identity_no=false;identity_yes=true;"/>居民纳税人</label>
+              <label><input type="radio" v-model="taxPayerRole" name="name" value="1" @click="identity_no=false;identity_yes=true;"/>居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="name" value="1" @click="identity_no=true;identity_yes=false;"/>非居民纳税人</label>
+              <label><input type="radio" v-model="taxPayerRole" name="name" value="2" @click="identity_no=true;identity_yes=false;"/>非居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
         </div>
-        <span class="submit_identity download_btn">确定</span>
+        <span class="submit_identity download_btn" @click="tax_role()">确定</span>
       </div>
     </div>
   </div>
@@ -409,6 +409,10 @@
         name: "home",
       data(){
           return{
+            //纳税人身份信息
+            taxMsg:'',
+            //纳税人身份值
+            taxPayerRole:'',
             once_show:false,
             mask_layer_show:false,
             tax_dialog_show:false,
@@ -428,6 +432,10 @@
         },
         mounted(){
           var that=this;
+          //获取用户信息
+          this.ajax_nodata(this.http_url.url+"/sys/user/info",function(data){
+            console.log(data)
+          });
           //判断是否第一次登陆弹出框
           if(localStorage.getItem("if_login")=="true"){
             this.once_show=false
@@ -439,7 +447,7 @@
             "page":"1",
             "limit":"5"
           },function(data){
-            console.log(data);
+            //console.log(data);
             that.wd_list=data.data.list;
           });
           //政策列表
@@ -447,7 +455,7 @@
             'page':'1',
             'limit':'4',
           },function(data){
-            console.log(data);
+            //console.log(data);
             that.zc_list=data.page.list;
           })
         },
@@ -459,6 +467,24 @@
           },
           classfication_leave:function(event){
             event.currentTarget.firstElementChild.src=event.currentTarget.firstElementChild.dataset.src;
+          },
+          //提交纳税人身份
+          tax_role:function(){
+            var that=this;
+              console.log(this.taxPayerRole);
+            if(this.taxPayerRole==""){
+                alert("请选择")
+            }else{
+                this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
+                  that.identity_dialog_show=false;
+                  that.mask_layer_show=false;
+                    if(data.code==0){
+                      alert("提交成功");
+                    }else{
+                      alert(data.msg);
+                    }
+                })
+            }
           }
         }
     }
@@ -633,6 +659,7 @@
     margin-bottom: 0.94rem;
     line-height: 1.31rem;
     margin-top: -0.4rem;
+    word-break: break-all;
   }
   .msg-main-right-li{
     display: flex;
@@ -938,6 +965,9 @@
     font-size: 14px;
     line-height: 20px;
     padding-top: 10px;
+  }
+  .download_btn>a{
+    color:#fff;
   }
   .download_btn{
     display: inline-block;

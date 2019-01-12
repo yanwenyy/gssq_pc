@@ -3,7 +3,7 @@
     <div class="header-logo box-sizing">
       <div class="container">
         <div class="inline-block">
-          <img src="../../static/img/logo.png" class="logo-img" alt="">
+          <img src="../../static/img/logo.png" @click="$router.push({name:'home'})" class="logo-img" alt="">
           <span class="inline-block logo-name">个人所得税专家服务系统</span>
         </div>
         <div class="inline-block header-user">

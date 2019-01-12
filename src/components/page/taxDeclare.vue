@@ -20,10 +20,40 @@
       <div class="relevant-exl">
         <div class="relevant-exl-title">下载相关文档</div>
         <div class="relevant-exl-list box-sizing">
-          <div class="inline-block" v-for="i in 4">
+          <div class="inline-block">
             <img src="../../../static/img/exl-big.png" alt="">
-            <div>个税所得法专项扣除表格</div>
-            <div class="elx-download">下载表格</div>
+            <div>专项附加扣除信息电子模版</div>
+            <div class="elx-download"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>电子模板填写常见问题</div>
+            <div class="elx-download"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>个人所得税扣缴申报指引（辅导培训版）</div>
+            <div class="elx-download"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>个人所得税专项附加扣除操作指引（辅导培训版）</div>
+            <div class="elx-download"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>个人所得税专项附加扣除条件(辅导培训版)</div>
+            <div class="elx-download"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>专项附加扣除电子模板填写样例说明</div>
+            <div class="elx-download"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></div>
+          </div>
+          <div class="inline-block">
+            <img src="../../../static/img/pdf_icon.png" alt="">
+            <div>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</div>
+            <div class="elx-download"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></div>
           </div>
         </div>
         <div class="relevant-notice">
@@ -35,6 +65,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
     export default {
         name: "tax-declare",
         data(){
@@ -47,7 +78,7 @@
           var that=this;
           $("#upload").zinoUpload({
             method: "POST",
-            url: this.http_url.url+"/sys/oss/upload?token="+"5bd0475f620841ab05988ef949f14af3",
+            url: this.http_url.url+"/sys/oss/upload?token="+Vue.cookie.get('token'),
             name: "file",
             multiple: true,
             change: function (event, ui) {
@@ -110,9 +141,14 @@
   }
   .relevant-exl-list>div{
     width:20%;
-    margin-right: 5%;
+    margin-right: 4%;
     font-size: 0.875rem;
     text-align: center;
+    vertical-align: top;
+    height:185px;
+  }
+  .relevant-exl-list>div>div:nth-child(2){
+    height:42px;
   }
   .relevant-exl-list{
     margin-top: 2.57rem;

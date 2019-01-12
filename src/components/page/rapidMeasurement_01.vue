@@ -79,23 +79,14 @@
                   </div>
                 </div>
                 <div v-if="jx_msg.status==3">
-                  <div class="ques-list-title">3.您选择谁扣除？</div>
-                  <div class="ques-list-msg box-sizing">
-                    <select v-model="jx_msg.fm_cc" class="ques-sel" name="" id="" >
-                      <option  value="a">父母</option>
-                      <option  value="b">自己</option>
-                    </select>
-                  </div>
-                </div>
-                <div v-if="jx_msg.status==4">
-                  <div class="ques-list-title">4.您当月是否取得职业资格继续教育证书</div>
+                  <div class="ques-list-title">3.您当月是否取得职业资格继续教育证书</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="是" type="radio"><lable>是</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="否" type="radio"><lable>否</lable></div>
                   </div>
                 </div>
-                <div v-if="jx_msg.status==5">
-                  <div class="ques-list-title">5.您参加的是哪种职业资格继续教育</div>
+                <div v-if="jx_msg.status==4">
+                  <div class="ques-list-title">4.您参加的是哪种职业资格继续教育</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="a" type="radio"><lable>参加职业资格继续教育列表（人社部发[2017]68号）</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="b" type="radio"><lable>其他</lable></div>
@@ -111,7 +102,7 @@
               <div class="rapid-ques-title">住房贷款</div>
               <div class="rapid-ques-body">
                 <div v-if="zfdk_msg.status==1">
-                  <div class="ques-list-title">1.您本人或者配偶是否有首套(非商业房)住房贷款利息支出？</div>
+                  <div class="ques-list-title">1.您本人或者配偶是否有首套住房贷款利息支出？</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="zfdk_msg.loan" value="有" type="radio" ><lable>有</lable></div>
                     <div class="inline-block radio-div"><input v-model="zfdk_msg.loan" value="没有" type="radio"><lable>没有</lable></div>
@@ -426,7 +417,6 @@
               degree:'',//是否学位教育
               degree_class:'',//学位教育类型
               degree_money:0,//学位教育扣除
-              fm_cc:'',
               zyzg:'',//是否职业资格
               zyzg_class:'',//职业资格类型
               zyzg_money:0,//职业资格扣除
@@ -554,6 +544,9 @@
                 this.zn_msg.result=Number(this.zn_msg.child_50_num.length)*500+Number(this.zn_msg.child_100_num.length)*1000;
                 this.zn=false;
                 this.jx=true;
+                if(this.zn_msg.result!=0){
+                  this.fh_num+=1;
+                }
               }
 
             }
@@ -562,44 +555,37 @@
                   if(this.jx_msg.degree=="是"){
                     this.jx_msg.status=2
                   }else{
-                    this.jx_msg.status=4;
+                    this.jx_msg.status=3;
                     this.jx_msg.degree_money=0;
                   }
               }else if(this.jx_msg.status==2){
                   if(this.jx_msg.degree_class=="f"){
                     this.jx_msg.degree_money=0;
-                    this.jx_msg.status=4;
-                  }else if(this.jx_msg.degree_class=="d"||this.jx_msg.degree_class=="e"){
-                    this.jx_msg.degree_money=400;
-                    this.jx_msg.status=4;
                   }else{
-                    this.jx_msg.status=3;
+                    this.jx_msg.degree_money=400;
                   }
-
+                  this.jx_msg.status=3;
               }else if(this.jx_msg.status==3){
-                if(this.jx_msg.fm_cc=="a"){
-                  this.jx_msg.degree_money=0;
-                }else{
-                  this.jx_msg.degree_money=400;
-                }
-                this.jx_msg.status=4;
-              }else if(this.jx_msg.status==4){
                   if(this.jx_msg.zyzg=="是"){
-                    this.jx_msg.status=5;
+                    this.jx_msg.status=4;
                   }else{
                     this.jx=false;
                     this.zfdk=true;
                     this.jx_msg.result=this.jx_msg.degree_money;
-
+                    if(this.jx_msg.result!=0){
+                      this.fh_num+=1;
+                    }
                   }
-              }else if(this.jx_msg.status==5){
+              }else if(this.jx_msg.status==4){
                   if(this.jx_msg.zyzg_class=="a"){
                     this.jx_msg.zyzg_money=3600;
                   }
                   this.jx=false;
                   this.zfdk=true;
                   this.jx_msg.result=Number(this.jx_msg.degree_money)+Number(this.jx_msg.zyzg_money);
-
+                  if(this.jx_msg.result!=0){
+                    this.fh_num+=1;
+                  }
               }
               // console.log(this.jx_msg.result);
             }
@@ -612,11 +598,14 @@
                   this.fwzj=true;
                 }
               }else if(this.zfdk_msg.status==2){
-                if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="a"){
+                if(this.zfdk_msg.loan_class=="a"){
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
-                }else if(this.zfdk_msg.loan_class=="d"){
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
+                }else if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="d"){
                   this.zfdk_msg.status=3
                 }else if(this.zfdk_msg.loan_class=="c"){
                   this.zfdk_msg.status=4
@@ -630,6 +619,9 @@
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }else if(this.zfdk_msg.status==4){
                 if(this.zfdk_msg.hh_ch=="a"){
@@ -640,12 +632,16 @@
                   this.zfdk_msg.result=500;
                   this.zfdk=false;
                   this.fwzj=true;
-
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }else if(this.zfdk_msg.hh_ch=="c"){
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
-
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
 
               }
@@ -679,6 +675,9 @@
                   this.fwzj_msg.result=this.fwzj_msg.result;
                   this.fwzj=false;
                   this.sylr=true;
+                  if(this.fwzj_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
 
               }
@@ -703,6 +702,9 @@
                   this.sylr=false;
                   this.dbyl=true;
                   this.sylr_msg.result=2000;
+                  if(this.sylr_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }else if(this.sylr_msg.single_children=="否"){
                   this.sylr_msg.status=4;
                 }
@@ -715,6 +717,9 @@
                   this.sylr_msg.result=this.sylr_msg.sylr_cc;
                   this.sylr=false;
                   this.dbyl=true;
+                  if(this.sylr_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }
               // console.log(this.sylr_msg.result)
@@ -728,24 +733,6 @@
                   this.sub=true;
                   this.dbyl=false;
                   this.total_result=true;
-                  if(this.zn_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.jx_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.zfdk_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.fwzj_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.sylr_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.dbyl_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
                 }
               }else if(this.dbyl_msg.status==2){
                 this.sub=true;
@@ -754,27 +741,12 @@
                   return false;
                 }else{
                   this.dbyl_msg.result=this.dbyl_msg.cc_money;
-                  if(this.zn_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.jx_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.zfdk_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.fwzj_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.sylr_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.dbyl_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
                   this.dbyl=false;
                   this.total_result=true;
                   //this.fh_num=$(".if_fh").size();
+                  if(this.dbyl_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }
               //console.log(this.dbyl_msg.result)
