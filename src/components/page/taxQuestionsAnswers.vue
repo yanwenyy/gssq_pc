@@ -12,15 +12,21 @@
             <span>{{item.realName||'匿名用户'}}</span>
             <span>{{format(item.date)}}</span>
           </div>
-          <div>
-            {{item.content}}
+          <div v-html="item.content">
+            <!--{{item.content}}-->
           </div>
         </div>
       </li>
     </ul>
     <!--我要提问浮标-->
-    <div class="buoy"></div>
+    <div class="buoy" @click="code_show=!code_show"></div>
     <div id="page" class="paging"></div>
+    <div class="mask-layer" v-if="code_show">
+      <div class="code">
+        <img src="../../../static/img/code_img_close.png" class="close" @click="code_show=!code_show">
+        <img src="../../../static/img/code_img.png" class="code_img">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,16 +41,24 @@
         return{
           list:[],
           start:1,
-          end:10
+          end:10,
+          //点击我没懂二维码显示
+          code_show:false,
         }
       },
       mounted(){
         var that=this;
+        // console.log(that.$route.query.msg)
         this.ajax_wd("/onlook/onlookMsgList/share",{
             "page":"1",
-            "limit":"10"},function(data){
+            "limit":"10",
+            "content":this.$route.query.msg||""
+        },function(data){
             console.log(data);
             that.list=data.data.list;
+            for(var i=0;i<that.list.length;i++){
+              that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+            }
             that.page(data.data.totalPage)
         });
       },
@@ -72,12 +86,35 @@
         //分页围观回调
         get_wg_page:function(data){
           this.list=data.data.list;
+          for(var i=0;i<list.length;i++){
+            list[i].content=list[i].content.replace(this.$route.query.msg,'<span style="color:#2FBEB9">'+this.$route.query.msg+'</span>');
+          }
         },
       }
     }
 </script>
 
 <style scoped>
+  .code{
+    position: absolute;
+    width:300px;
+    height:361px ;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .code_img{
+    width: 100%;
+  }
+  .close {
+    width: 13px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+  }
   .gswd-ul{
     margin-top: 1.31rem;
   }

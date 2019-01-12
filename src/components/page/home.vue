@@ -22,7 +22,7 @@
           <div class="inline-block sf_determination-msg">
             <div>我的身份：</div>
             <div>
-              <span>居民纳税人</span>
+              <span>{{user_msg.taxPayerRoleName}}</span>
               <a class="edit_sf_deter_msg" @click="mask_layer_show=!mask_layer_show;identity_dialog_show=!identity_dialog_show">[ 修改 ]</a>
             </div>
             <div>个税缴纳条款中，部分条款针对不同身份有不同适用定义</div>
@@ -37,13 +37,13 @@
               </div>
             </div>
           </div>
-          <div class="inline-block gs_calculator">
-            <img src="../../../static/img/jsq_bannar.png" alt="">
-            <div>
-              <span>个税计算器</span>
-              <span class="go_calculator">测测个税省多少？</span>
-            </div>
-          </div>
+          <!--<div class="inline-block gs_calculator">-->
+            <!--<img src="../../../static/img/jsq_bannar.png" alt="">-->
+            <!--<div>-->
+              <!--<span>个税计算器</span>-->
+              <!--<span class="go_calculator">测测个税省多少？</span>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
         <div class="gsfd_system_title box-sizing">
           <img src="../../../static/img/xt_title-02.png" alt="">
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="gsfd_system_title box-sizing">
-          <img src="../../../static/img/xt_title-01.png" alt="">
+          <img src="../../../static/img/xt_title-03.png" alt="">
           <div class="inline-block box-sizing">
             <span>扣除项目</span>
             <span>计算第三步：根据自身情况判断可扣除项目</span>
@@ -216,9 +216,9 @@
         <div class="inline-block home-title-en">Video Tutoring</div>
       </div>
       <div class="gsfd-video">
-        <div class="gsfd-video-list" v-for="i in 3">
-          <img src="../../../static/img/test.jpg" alt="">
-          <div>个税大师李佳德告诉你六项附加扣除到底怎么扣- 共六讲</div>
+        <div class="gsfd-video-list" v-for="i in video" @click="$router.push({name:'video',query:{vid:i.ccId}})">
+          <img :src="'http://'+i.coverimgurl" alt="">
+          <div>{{i.title}}</div>
         </div>
       </div>
       <div class="msg-main box-sizing">
@@ -253,7 +253,7 @@
             <li class="msg-main-right-li box-sizing" v-for="i in zc_list"  @click="$router.push({name:'newDetail',query:{uuid:i.policyId}})">
               <div class="inline-block li-dot"></div>
               <div class="inline-block">
-                <div class="right-li-content">{{i.content}}</div>
+                <div class="right-li-content">{{i.content.length>60? i.content.slice(0,60)+"...":i.content}}</div>
                 <div>{{format(i.createTime)}}</div>
               </div>
             </li>
@@ -322,7 +322,7 @@
             <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
             <p>个人所得税专项附加扣除条件(辅导培训版)</p>
           </div>
-          <span class="download_btn">下载文件</span>
+          <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
         </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -330,7 +330,7 @@
               <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
               <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -338,7 +338,7 @@
               <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
               <p>个人所得税扣缴申报指引（辅导培训版）</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/excel_icon.png">
@@ -346,7 +346,7 @@
               <h4 class="">4－1：专项附加扣除信息电子模版</h4>
               <p>专项附加扣除信息电子模版</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -354,7 +354,7 @@
               <h4 class="">4－2：电子模板填写常见问题</h4>
               <p>电子模板填写常见问题</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -362,7 +362,7 @@
               <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
               <p>专项附加扣除电子模板填写样例说明</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -370,7 +370,7 @@
               <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
               <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
             </div>
-            <span class="download_btn">下载文件</span>
+            <span class="download_btn"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
           </div>
         </div>
 
@@ -384,14 +384,14 @@
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_yes?'identity_blue':''"><img src="../../../static/img/indentity_img1.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="taxPayerRole_btn" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
+              <label><input type="radio" name="taxPayerRole" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" name="taxPayerRole_btn" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
+              <label><input type="radio" name="taxPayerRole" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
@@ -409,6 +409,8 @@
         name: "home",
       data(){
           return{
+            //用户信息
+            user_msg:'',
             taxPayerRole:0,
             once_show:false,
             mask_layer_show:false,
@@ -420,7 +422,9 @@
             //问答列表
             wd_list:[],
             //政策列表
-            zc_list:[]
+            zc_list:[],
+            //视频列表
+            video:[]
           }
       },
         components : {
@@ -459,7 +463,24 @@
             'page':'1',
             'limit':'4',
           },function(data){
+            //console.log(data);
             that.zc_list=data.page.list;
+          });
+          //获取用户登录信息
+          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            that.user_msg=data.user;
+            if(data.user.taxPayerRole==0){
+              that.mask_layer_show=true;
+              that.identity_dialog_show=true
+            }else{
+              that.mask_layer_show=false;
+              that.identity_dialog_show=false
+            }
+          });
+          //首页视频
+          this.ajax_nodata(this.http_url.url+"/biz/video/pc/list",function(data){
+            console.log(data);
+            that.video=data.page.list;
           });
         },
         methods:{
@@ -484,12 +505,12 @@
           },
           //我的身份
           submit_identity:function(){
-            var that=this
+            var that=this;
             this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
               if(data.code===0){
                 alert("操作成功")
                 that.mask_layer_show=false;
-                that.identity_dialog_show=false
+                that.identity_dialog_show=false;
               }else{
                 alert(data.msg)
               }
@@ -668,6 +689,7 @@
     margin-bottom: 0.94rem;
     line-height: 1.31rem;
     margin-top: -0.4rem;
+    word-break: break-all;
   }
   .msg-main-right-li{
     display: flex;
@@ -973,6 +995,9 @@
     font-size: 14px;
     line-height: 20px;
     padding-top: 10px;
+  }
+  .download_btn>a{
+    color:#fff;
   }
   .download_btn{
     display: inline-block;

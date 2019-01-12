@@ -3,8 +3,12 @@
 </template>
 
 <script>
+  import Vue from 'vue'
     export default {
-        name: "login"
+        name: "login",
+        mounted(){
+          console.log(Vue.cookie.get('token'));
+        }
     }
 </script>
 

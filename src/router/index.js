@@ -10,6 +10,7 @@ import rapidMeasurement from '@/components/page/rapidMeasurement'//快速测
 import taxDeclare from '@/components/page/taxDeclare'//我的个税扣除申报
 import newCenter from '@/components/page/newCenter'//新闻中心
 import newDetail from '@/components/page/newDetail'//新闻详情
+import video from '@/components/page/video'//新闻详情
 Vue.use(Router);
 
 export default new Router({
@@ -28,7 +29,8 @@ export default new Router({
         {path:'/rapidMeasurement',component: rapidMeasurement, name: 'rapidMeasurement', meta: { title: '快速测' }},
         {path:'/taxDeclare',component: taxDeclare, name: 'taxDeclare', meta: { title: '我的个税扣除申报' }},
         {path:'/newCenter',component: newCenter, name: 'newCenter', meta: { title: '新闻中心' }},
-        {path:'/newDetail',component: newDetail, name: 'newDetail', meta: { title: '新闻详情' }}
+        {path:'/newDetail',component: newDetail, name: 'newDetail', meta: { title: '新闻详情' }},
+        {path:'/video',component: video, name: 'video', meta: { title: '视频播放' }}
         ],
     },
     {

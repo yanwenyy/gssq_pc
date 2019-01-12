@@ -79,25 +79,14 @@
                   </div>
                 </div>
                 <div v-if="jx_msg.status==3">
-                  <div class="ques-list-title">3.您选择谁扣除？</div>
-                  <div class="ques-list-msg box-sizing">
-                    <div class="inline-block radio-div"><input v-model="jx_msg.fm_cc" value="a" type="radio"><lable>父母</lable></div>
-                    <div class="inline-block radio-div"><input v-model="jx_msg.fm_cc" value="b" type="radio"><lable>自己</lable></div>
-                    <!--<select v-model="jx_msg.fm_cc" class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">父母</option>-->
-                      <!--<option  value="b">自己</option>-->
-                    <!--</select>-->
-                  </div>
-                </div>
-                <div v-if="jx_msg.status==4">
-                  <div class="ques-list-title">4.您当月是否取得职业资格继续教育证书</div>
+                  <div class="ques-list-title">3.您当月是否取得职业资格继续教育证书</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="是" type="radio"><lable>是</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="否" type="radio"><lable>否</lable></div>
                   </div>
                 </div>
-                <div v-if="jx_msg.status==5">
-                  <div class="ques-list-title">5.您参加的是哪种职业资格继续教育</div>
+                <div v-if="jx_msg.status==4">
+                  <div class="ques-list-title">4.您参加的是哪种职业资格继续教育</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="a" type="radio"><lable>参加职业资格继续教育列表（人社部发[2017]68号）</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="b" type="radio"><lable>其他</lable></div>
@@ -113,7 +102,7 @@
               <div class="rapid-ques-title">住房贷款</div>
               <div class="rapid-ques-body">
                 <div v-if="zfdk_msg.status==1">
-                  <div class="ques-list-title">1.您本人或者配偶是否有首套(非商业房)住房贷款利息支出？</div>
+                  <div class="ques-list-title">1.您本人或者配偶是否有首套住房贷款利息支出？</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="zfdk_msg.loan" value="有" type="radio" ><lable>有</lable></div>
                     <div class="inline-block radio-div"><input v-model="zfdk_msg.loan" value="没有" type="radio"><lable>没有</lable></div>
@@ -122,16 +111,12 @@
                 <div v-if="zfdk_msg.status==2">
                   <div class="ques-list-title">2.您属于以下哪种情况？</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="a" type="radio"><lable>未婚首套贷款</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="b" type="radio"><lable>“婚前”本人首套贷款，配偶无贷款</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="c" type="radio"><lable>“婚前”各自首套贷款</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.loan_class" value="d" type="radio"><lable>“婚后”首套贷款（本人/配偶/共同购房）</lable></div>
-                    <!--<select v-model="zfdk_msg.loan_class" class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">未婚首套贷款</option>-->
-                      <!--<option  value="b">“婚前”本人首套贷款，配偶无贷款</option>-->
-                      <!--<option  value="c">“婚前”各自首套贷款</option>-->
-                      <!--<option  value="d">“婚后”首套贷款（本人/配偶/共同购房）</option>-->
-                    <!--</select>-->
+                    <select v-model="zfdk_msg.loan_class" class="ques-sel" name="" id="" >
+                      <option  value="a">未婚首套贷款</option>
+                      <option  value="b">“婚前”本人首套贷款，配偶无贷款</option>
+                      <option  value="c">“婚前”各自首套贷款</option>
+                      <option  value="d">“婚后”首套贷款（本人/配偶/共同购房）</option>
+                    </select>
                   </div>
                 </div>
                 <div v-if="zfdk_msg.status==3">
@@ -148,14 +133,11 @@
                 <div v-if="zfdk_msg.status==4">
                   <div class="ques-list-title">4.您的扣缴比例？</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="a" type="radio"><lable>0%（配偶扣除）</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="b" type="radio"><lable>50% （我和配偶共同扣除）</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="zfdk_msg.hh_ch" value="c" type="radio"><lable>100%（我扣除）</lable></div>
-                    <!--<select v-model="zfdk_msg.hh_ch"  class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">0%（配偶扣除）</option>-->
-                      <!--<option  value="b">50% （我和配偶共同扣除）</option>-->
-                      <!--<option  value="c">100%（我扣除）</option>-->
-                    <!--</select>-->
+                    <select v-model="zfdk_msg.hh_ch"  class="ques-sel" name="" id="" >
+                      <option  value="a">0%（配偶扣除）</option>
+                      <option  value="b">50% （我和配偶共同扣除）</option>
+                      <option  value="c">100%（我扣除）</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -173,25 +155,20 @@
                 <div v-if="fwzj_msg.status==2">
                   <div class="ques-list-title">2.您的主要工作市属于哪一种？</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="a" type="radio"><lable>直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="b" type="radio"><lable>市辖区户籍人口超过100万的城市</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.fw_city" value="c" type="radio"><lable>市辖区户籍人口不超过100万的城市</lable></div>
-                    <!--<select v-model="fwzj_msg.fw_city" class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</option>-->
-                      <!--<option  value="b">市辖区户籍人口超过100万的城市</option>-->
-                      <!--<option  value="c">市辖区户籍人口不超过100万的城市</option>-->
-                    <!--</select>-->
+                    <select v-model="fwzj_msg.fw_city" class="ques-sel" name="" id="" >
+                      <option  value="a">直辖市、省会（首府）城市、计划单列市以及国务院确定的其他城市</option>
+                      <option  value="b">市辖区户籍人口超过100万的城市</option>
+                      <option  value="c">市辖区户籍人口不超过100万的城市</option>
+                    </select>
                   </div>
                 </div>
                 <div v-if="fwzj_msg.status==3">
                   <div class="ques-list-title">3.“住房贷款”与“房屋租住”只能扣除一项，您选择扣除？</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.dk_or_zf" value="a" type="radio"><lable>住房贷款（您预计可扣除{{zfdk_msg.result}}元）</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="fwzj_msg.dk_or_zf" value="b" type="radio"><lable>房屋租住（您预计可扣除{{fwzj_msg.result}}元）</lable></div>
-                    <!--<select v-model="fwzj_msg.dk_or_zf"  class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">住房贷款（您预计可扣除{{zfdk_msg.result}}元）</option>-->
-                      <!--<option  value="b">房屋租住（您预计可扣除{{fwzj_msg.result}}元）</option>-->
-                    <!--</select>-->
+                    <select v-model="fwzj_msg.dk_or_zf"  class="ques-sel" name="" id="" >
+                      <option  value="a">住房贷款（您预计可扣除{{zfdk_msg.result}}元）</option>
+                      <option  value="b">房屋租住（您预计可扣除{{fwzj_msg.result}}元）</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -235,14 +212,11 @@
                 <div v-if="dbyl_msg.status==1">
                   <div class="ques-list-title" style="width: 80%;margin: 0 auto 2rem auto">1.您的家庭（本人、配偶、子女）本年度是否产生了需要申报扣除的大病医疗费用？（可扣除范围：与基本医保相关的医药费用支出，扣除医保报销后个人负担（指医保目录范围内的自付部分）累计超过15000元的部分）</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="a" type="radio"><lable>有，本人扣除</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="b" type="radio"><lable>有，配偶扣除</lable></div>
-                    <div class="radio-div-long radio-div"><input v-model="dbyl_msg.if_cc" value="c" type="radio"><lable>无</lable></div>
-                    <!--<select v-model="dbyl_msg.if_cc" class="ques-sel" name="" id="" >-->
-                      <!--<option  value="a">有，本人扣除</option>-->
-                      <!--<option  value="b">有，配偶扣除</option>-->
-                      <!--<option  value="c">无 </option>-->
-                    <!--</select>-->
+                    <select v-model="dbyl_msg.if_cc" class="ques-sel" name="" id="" >
+                      <option  value="a">有，本人扣除</option>
+                      <option  value="b">有，配偶扣除</option>
+                      <option  value="c">无 </option>
+                    </select>
                   </div>
                 </div>
                 <div v-if="dbyl_msg.status==2">
@@ -443,7 +417,6 @@
               degree:'',//是否学位教育
               degree_class:'',//学位教育类型
               degree_money:0,//学位教育扣除
-              fm_cc:'',
               zyzg:'',//是否职业资格
               zyzg_class:'',//职业资格类型
               zyzg_money:0,//职业资格扣除
@@ -571,6 +544,9 @@
                 this.zn_msg.result=Number(this.zn_msg.child_50_num.length)*500+Number(this.zn_msg.child_100_num.length)*1000;
                 this.zn=false;
                 this.jx=true;
+                if(this.zn_msg.result!=0){
+                  this.fh_num+=1;
+                }
               }
 
             }
@@ -579,44 +555,37 @@
                   if(this.jx_msg.degree=="是"){
                     this.jx_msg.status=2
                   }else{
-                    this.jx_msg.status=4;
+                    this.jx_msg.status=3;
                     this.jx_msg.degree_money=0;
                   }
               }else if(this.jx_msg.status==2){
                   if(this.jx_msg.degree_class=="f"){
                     this.jx_msg.degree_money=0;
-                    this.jx_msg.status=4;
-                  }else if(this.jx_msg.degree_class=="d"||this.jx_msg.degree_class=="e"){
-                    this.jx_msg.degree_money=400;
-                    this.jx_msg.status=4;
                   }else{
-                    this.jx_msg.status=3;
+                    this.jx_msg.degree_money=400;
                   }
-
+                  this.jx_msg.status=3;
               }else if(this.jx_msg.status==3){
-                if(this.jx_msg.fm_cc=="a"){
-                  this.jx_msg.degree_money=0;
-                }else{
-                  this.jx_msg.degree_money=400;
-                }
-                this.jx_msg.status=4;
-              }else if(this.jx_msg.status==4){
                   if(this.jx_msg.zyzg=="是"){
-                    this.jx_msg.status=5;
+                    this.jx_msg.status=4;
                   }else{
                     this.jx=false;
                     this.zfdk=true;
                     this.jx_msg.result=this.jx_msg.degree_money;
-
+                    if(this.jx_msg.result!=0){
+                      this.fh_num+=1;
+                    }
                   }
-              }else if(this.jx_msg.status==5){
+              }else if(this.jx_msg.status==4){
                   if(this.jx_msg.zyzg_class=="a"){
                     this.jx_msg.zyzg_money=3600;
                   }
                   this.jx=false;
                   this.zfdk=true;
                   this.jx_msg.result=Number(this.jx_msg.degree_money)+Number(this.jx_msg.zyzg_money);
-
+                  if(this.jx_msg.result!=0){
+                    this.fh_num+=1;
+                  }
               }
               // console.log(this.jx_msg.result);
             }
@@ -629,11 +598,14 @@
                   this.fwzj=true;
                 }
               }else if(this.zfdk_msg.status==2){
-                if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="a"){
+                if(this.zfdk_msg.loan_class=="a"){
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
-                }else if(this.zfdk_msg.loan_class=="d"){
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
+                }else if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="d"){
                   this.zfdk_msg.status=3
                 }else if(this.zfdk_msg.loan_class=="c"){
                   this.zfdk_msg.status=4
@@ -647,6 +619,9 @@
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }else if(this.zfdk_msg.status==4){
                 if(this.zfdk_msg.hh_ch=="a"){
@@ -657,12 +632,16 @@
                   this.zfdk_msg.result=500;
                   this.zfdk=false;
                   this.fwzj=true;
-
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }else if(this.zfdk_msg.hh_ch=="c"){
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
-
+                  if(this.zfdk_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
 
               }
@@ -696,6 +675,9 @@
                   this.fwzj_msg.result=this.fwzj_msg.result;
                   this.fwzj=false;
                   this.sylr=true;
+                  if(this.fwzj_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
 
               }
@@ -720,6 +702,9 @@
                   this.sylr=false;
                   this.dbyl=true;
                   this.sylr_msg.result=2000;
+                  if(this.sylr_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }else if(this.sylr_msg.single_children=="否"){
                   this.sylr_msg.status=4;
                 }
@@ -732,6 +717,9 @@
                   this.sylr_msg.result=this.sylr_msg.sylr_cc;
                   this.sylr=false;
                   this.dbyl=true;
+                  if(this.sylr_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }
               // console.log(this.sylr_msg.result)
@@ -740,56 +728,25 @@
               if(this.dbyl_msg.status==1){
                 if(this.dbyl_msg.if_cc=='a'){
                   this.dbyl_msg.status=2;
-                  // this.sub=true;
+                  this.sub=true;
                 }else if(this.dbyl_msg.if_cc=='c'||this.dbyl_msg.if_cc=='b'){
                   this.sub=true;
                   this.dbyl=false;
                   this.total_result=true;
-                  if(this.zn_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.jx_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.zfdk_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.fwzj_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.sylr_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
-                  if(this.dbyl_msg.result!=0){
-                    this.fh_num=this.fh_num+1;
-                  }
                 }
               }else if(this.dbyl_msg.status==2){
-                // this.sub=true;
+                this.sub=true;
                 if(this.dbyl_msg.cc_money>80000){
                   alert("请填写小于80000的数字");
+                  return false;
                 }else{
                   this.dbyl_msg.result=this.dbyl_msg.cc_money;
                   this.dbyl=false;
                   this.total_result=true;
-                }
-                if(this.zn_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
-                }
-                if(this.jx_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
-                }
-                if(this.zfdk_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
-                }
-                if(this.fwzj_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
-                }
-                if(this.sylr_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
-                }
-                if(this.dbyl_msg.result!=0){
-                  this.fh_num=this.fh_num+1;
+                  //this.fh_num=$(".if_fh").size();
+                  if(this.dbyl_msg.result!=0){
+                    this.fh_num+=1;
+                  }
                 }
               }
               //console.log(this.dbyl_msg.result)
@@ -863,11 +820,6 @@
 </script>
 
 <style scoped>
-  .radio-div-long{
-    text-align: left;
-    padding-left:9rem;
-    margin-bottom: 1rem!important;
-  }
   .child-list{
     text-align: left!important;
     margin-left: 100px;

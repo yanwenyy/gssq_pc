@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueCookie from 'vue-cookie'
 import Public from '../static/js/puplic'
 import 'font-awesome/css/font-awesome.min.css'
 import './icons/index.js'
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 Vue.use(Public)
 Vue.use(paging)
 Vue.use(ajaxfile)
+Vue.use(VueCookie)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

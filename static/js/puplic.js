@@ -1,7 +1,8 @@
+import Vue from 'vue'
 export default{
   install:function(Vue,options)
   {
-    sessionStorage.setItem("token","5bd0475f620841ab05988ef949f14af3");
+    sessionStorage.setItem("token","5dd41261adce1cc19ce07e2e000aa6c5");
     //接口变量
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com:8090/jsb_tax/',
@@ -32,7 +33,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "token":sessionStorage.getItem("token"),
+          "token":Vue.cookie.get('token'),
         },
         data:JSON.stringify(data),
         success:function(data){
@@ -57,7 +58,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "token":sessionStorage.getItem("token"),
+          "token":Vue.cookie.get('token'),
         },
         success:function(data){
           if(data.code=="2"){
@@ -81,7 +82,7 @@ export default{
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json;charset=utf-8",
-          "token":sessionStorage.getItem("token"),
+          "token":Vue.cookie.get('token'),
         },
         success:function(data){
           if(data.code=="2"){

@@ -24,8 +24,8 @@
         </router-link>
       </div>
       <div class="inline-block header-search-group box-sizing">
-        <input placeholder="请搜索问题" type="text" class="box-sizing">
-        <img src="../../static/img/header-search.png">
+        <input placeholder="请搜索问题" v-model="search" type="text" class="box-sizing">
+        <img src="../../static/img/header-search.png" @click="$router.push({name:'taxQuestionsAnswers',query:{msg:search}})">
       </div>
     </div>
   </div>
@@ -37,6 +37,11 @@
         props: {
           msg: String,
           required: true
+        },
+        data(){
+            return{
+              search:''
+            }
         },
         methods:{
           //tab切换

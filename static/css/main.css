@@ -11,7 +11,8 @@ input::-webkit-input-placeholder{
 .left-list-two>ul>li:hover,.main-left-title>span:hover,.iknown:hover,.not-known:hover,.lookMK_btn:hover,
 .ques-change>div:hover,.look-more:hover,.look_new-detail:hover,.gswd_list:hover,.msg-main-left-li>div:hover,
 .msg-main-right-li>div:hover,.jm-fd-btn>a:hover,.fjm-fd-btn>a:hover,.sl-classification-list>div:hover,
-.cc_fd_btn:hover,.six-special-fd-btn:hover,.total-gs-class-list>div[data-v-4cd1a4ff]:nth-child(3):hover{
+.cc_fd_btn:hover,.six-special-fd-btn:hover,.total-gs-class-list>div[data-v-4cd1a4ff]:nth-child(3):hover,
+.logo-img:hover,.edit_sf_deter_msg:hover{
   cursor: pointer;
 }
 @media screen and (min-width: 1200px){
@@ -374,6 +375,9 @@ input::-webkit-input-placeholder{
 .main-right-footer{
   text-align: center;
   font-size: 0.875rem;
+  position: fixed;
+  bottom:3rem;
+  width: 70%;
 }
 .iknown{
   width:6.81rem;
