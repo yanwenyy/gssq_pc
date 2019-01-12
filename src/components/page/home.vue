@@ -384,19 +384,21 @@
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_yes?'identity_blue':''"><img src="../../../static/img/indentity_img1.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" v-model="taxPayerRole" name="name" value="1" @click="identity_no=false;identity_yes=true;"/>居民纳税人</label>
+
+              <label><input type="radio" name="taxPayerRole" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
             <div class="identity_choose">
-              <label><input type="radio" v-model="taxPayerRole" name="name" value="2" @click="identity_no=true;identity_yes=false;"/>非居民纳税人</label>
+
+              <label><input type="radio" name="taxPayerRole" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
             </div>
             <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
           </div>
         </div>
-        <span class="submit_identity download_btn" @click="tax_role()">确定</span>
+        <span class="submit_identity download_btn" @click="submit_identity">确定</span>
       </div>
     </div>
   </div>
@@ -409,10 +411,7 @@
         name: "home",
       data(){
           return{
-            //纳税人身份信息
-            taxMsg:'',
-            //纳税人身份值
-            taxPayerRole:'',
+            taxPayerRole:0,
             once_show:false,
             mask_layer_show:false,
             tax_dialog_show:false,
@@ -432,10 +431,6 @@
         },
         mounted(){
           var that=this;
-          //获取用户信息
-          this.ajax_nodata(this.http_url.url+"/sys/user/info",function(data){
-            console.log(data)
-          });
           //判断是否第一次登陆弹出框
           if(localStorage.getItem("if_login")=="true"){
             this.once_show=false
@@ -447,7 +442,6 @@
             "page":"1",
             "limit":"5"
           },function(data){
-            //console.log(data);
             that.wd_list=data.data.list;
           });
           //政策列表
@@ -457,6 +451,16 @@
           },function(data){
             //console.log(data);
             that.zc_list=data.page.list;
+          });
+          //获取用户登录信息
+          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            if(data.user.taxPayerRole==0){
+              that.mask_layer_show=true;
+              that.identity_dialog_show=true
+            }else{
+              that.mask_layer_show=false;
+              that.identity_dialog_show=false
+            }
           })
         },
         methods:{
@@ -468,23 +472,18 @@
           classfication_leave:function(event){
             event.currentTarget.firstElementChild.src=event.currentTarget.firstElementChild.dataset.src;
           },
-          //提交纳税人身份
-          tax_role:function(){
+          //我的身份
+          submit_identity:function(){
             var that=this;
-              console.log(this.taxPayerRole);
-            if(this.taxPayerRole==""){
-                alert("请选择")
-            }else{
-                this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
-                  that.identity_dialog_show=false;
-                  that.mask_layer_show=false;
-                    if(data.code==0){
-                      alert("提交成功");
-                    }else{
-                      alert(data.msg);
-                    }
-                })
-            }
+            this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
+              if(data.code===0){
+                alert("操作成功")
+                that.mask_layer_show=false;
+                that.identity_dialog_show=false
+              }else{
+                alert(data.msg)
+              }
+            })
           }
         }
     }
