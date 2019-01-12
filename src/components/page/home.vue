@@ -441,6 +441,7 @@
           };
           //获取用户登录信息
           this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+            that.user_msg=data.user;
             that.taxPayerRole=data.user.taxPayerRole;
             if(that.taxPayerRole==0&&that.once_show==false){
               that.mask_layer_show=true;
