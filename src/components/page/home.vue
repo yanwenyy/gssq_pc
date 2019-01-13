@@ -54,28 +54,28 @@
         </div>
         <div class="sl-classification box-sizing">
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/gzsd.png" data-hover="../../../static/img/gzsd_hover.png" data-src="../../../static/img/gzsd.png" alt="">
+            <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴'}})">
               <div>工资、薪酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list"  @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/lwbc.png" data-src="../../../static/img/lwbc.png" data-hover="../../../static/img/lwbc_hover.png" alt="">
+            <img src="../../../static/img/lwbc.png" data-src="./static/img/lwbc.png" data-hover="./static/img/lwbc_hover.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>劳务报酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/gzsd.png" data-hover="../../../static/img/gzsd_hover.png" data-src="../../../static/img/gzsd.png" alt="">
+            <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>稿酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/txqsd.png" data-hover="../../../static/img/txqsd_hover.png" data-src="../../../static/img/txqsd.png" alt="">
+            <img src="../../../static/img/txqsd.png" data-hover="./static/img/txqsd_hover.png" data-src="./static/img/txqsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>特许权使用费所得</div>
               <div>我要辅导</div>
@@ -322,7 +322,7 @@
             <h4 class="">1－个人所得税专项附加扣除条件(辅导培训版)</h4>
             <p>个人所得税专项附加扣除条件(辅导培训版)</p>
           </div>
-          <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除条件(辅导培训版).pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
+          <span class="download_btn"><a href="./static/download/5.pdf" download="个人所得税专项附加扣除条件(辅导培训版).pdf">下载文件</a></span>
         </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -330,7 +330,7 @@
               <h4 class="">2－个人所得税专项附加扣除操作指引（辅导培训版）</h4>
               <p>个人所得税专项附加扣除操作指引（辅导培训版）</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/个人所得税专项附加扣除操作指引（辅导培训版）.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/4.pdf" download="个人所得税专项附加扣除操作指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -338,7 +338,7 @@
               <h4 class="">3－个人所得税扣缴申报指引（辅导培训版）</h4>
               <p>个人所得税扣缴申报指引（辅导培训版）</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/个人所得税扣缴申报指引（辅导培训版）.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/3.pdf" download="个人所得税扣缴申报指引（辅导培训版）.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/excel_icon.png">
@@ -346,7 +346,7 @@
               <h4 class="">4－1：专项附加扣除信息电子模版</h4>
               <p>专项附加扣除信息电子模版</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/专项附加扣除信息电子模版.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
+            <span class="download_btn"><a href="./static/download/1.xls" download="专项附加扣除信息电子模版.xls">下载表格</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -354,7 +354,7 @@
               <h4 class="">4－2：电子模板填写常见问题</h4>
               <p>电子模板填写常见问题</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/电子模板填写常见问题.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/2.pdf" download="电子模板填写常见问题.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -362,7 +362,7 @@
               <h4 class="">5－专项附加扣除电子模板填写样例说明</h4>
               <p>专项附加扣除电子模板填写样例说明</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/专项附加扣除电子模板填写样例说明.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/6.pdf" download="专项附加扣除电子模板填写样例说明.pdf">下载文件</a></span>
           </div>
           <div class="excle_list">
             <img class="inline-block" src="../../../static/img/pdf_icon.png">
@@ -370,7 +370,7 @@
               <h4 class="">6－自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</h4>
               <p>自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0</p>
             </div>
-            <span class="download_btn"><a href="../../../static/download/自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
+            <span class="download_btn"><a href="./static/download/7.pdf" download="自然人税收管理系统扣缴客户端用户操作手册（专项附加扣除信息采集篇）V1.0.pdf">下载文件</a></span>
           </div>
         </div>
 
@@ -507,11 +507,12 @@
           //我的身份
           submit_identity:function(){
             var that=this;
-            this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
+            this.ajax_nodata(this.http_url.url+"/biz/user/update/"+this.taxPayerRole,function(data){
               if(data.code===0){
-                alert("操作成功")
+                // alert("操作成功")
                 that.mask_layer_show=false;
                 that.identity_dialog_show=false;
+                that.user_msg.taxPayerRoleName=data.taxPayerRoleName;
               }else{
                 alert(data.msg)
               }
@@ -779,6 +780,7 @@
     color:#fff;
     background: url("../../../static/img/total-gs-class-bg-hover.png") no-repeat;
     background-size: 100% 100%;
+    cursor: pointer;
   }
   .total-gs-class-list>div:nth-child(3){
     margin-top: 1.25rem;

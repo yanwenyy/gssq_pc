@@ -137,7 +137,8 @@ input::-webkit-input-placeholder{
 }
 .close-login{
   width:9.63rem;
-  height:10.31rem;
+  min-height: 4.5rem;
+  height:auto;
   background: url(../../static/img/header-user-bg.png) no-repeat;
   background-size: 100% 100%;
   line-height: 2rem;
@@ -146,7 +147,7 @@ input::-webkit-input-placeholder{
   color:#333;
   box-shadow:0px 1px 10px 0px rgba(0, 0, 0, 0.04);
   position: absolute;
-  bottom:-10.31rem;
+  top:5rem;
   right:-3rem;
   z-index: 10000;
 }
@@ -368,21 +369,31 @@ input::-webkit-input-placeholder{
 }
 .main-right-msg{
   padding:2.75rem 0;
-  height:40.63rem;
+  height:28rem;
   overflow: auto;
   font-size: 0.94rem;
 }
 .main-right-footer{
   text-align: center;
   font-size: 0.875rem;
-  position: fixed;
-  bottom:3rem;
-  width: 70%;
+  /*position: fixed;*/
+  /*bottom:3rem;*/
+  /*width: 70%;*/
 }
 .iknown{
   width:6.81rem;
   height:1.94rem;
   background: #13B5B1;
+  color:#fff;
+  line-height: 1.94rem;
+  text-align: center;
+  border-radius:4px;
+  margin-right: 0.94rem;
+}
+.iknown-yes{
+  width:6.81rem;
+  height:1.94rem;
+  background: #eee;
   color:#fff;
   line-height: 1.94rem;
   text-align: center;

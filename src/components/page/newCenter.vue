@@ -9,7 +9,7 @@
         <div class="new-list-title">{{item.title}}</div>
         <div><span class="new-list-line inline-block"></span></div>
         <div class="new-list-msg">
-          {{item.content}}
+          {{item.content.length>210? item.content.slice(0,210)+"...":item.content}}
         </div>
         <div class="new-list-footer">
           <span>{{format(item.createTime)}}</span>
@@ -84,6 +84,7 @@
     color:#666;
     line-height:23px;
     margin-bottom: 0.5rem;
+    word-break: break-all;
   }
   .new-list-title{
     font-size: 0.94rem;
