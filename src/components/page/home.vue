@@ -447,8 +447,10 @@
               that.mask_layer_show=true;
               that.identity_dialog_show=true
             }else if(that.taxPayerRole==0&&that.once_show==true){
+              that.mask_layer_show=false;
               that.identity_dialog_show=false
             }else if(that.taxPayerRole!=0){
+              that.mask_layer_show=false;
               that.identity_dialog_show=false
             }
           });
