@@ -932,7 +932,6 @@
   .rocket{
     position: absolute;
     width: 100%;
-    height: 281px;
     text-align: center;
     z-index: 2;
   }
@@ -1038,6 +1037,128 @@
     width: 23px;
     top: 2px;
   }
+  @media screen and (max-width: 1366px) {
+    .tax_dialog{
+      width:600px;
+      height: 600px;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .rocket{
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
+    .rocket img{
+      width: 320px;
+    }
+    .tax_dialog_way{
+      width: 100%;
+      height: 400px;
+      background: #fff;
+      border-radius:4px;
+      position: absolute;
+      top: 150px;
+    }
+    .tax_dialog_title{
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      text-align: center;
+      top: 30px;
+    }
+    .tax_dialog_title span{
+      color: rgba(19, 181, 177, 1);
+      font-size: 1rem;
+      padding:0 5px ;
+    }
+    .tax_dialog_title img{
+      padding-top: 5.5px;
+    }
+    .tax_excle h4{
+      font-size: 14px;
+      color: rgba(51, 51, 51, 1);
+    }
+    .border-blue{
+      border-left: 3px solid rgba(19, 181, 177, 1);
+      text-indent: 3px;
+    }
+    .tax_excle{
+      padding: 0 30px;
+      margin-top: 70px;
+    }
+    .tax_excle_img{
+      text-align: center;
+      margin: 20px 0;
+    }
+    .tax_excle_img>img{
+      padding-top: 138px;
+    }
+    .tax_excle_img .inline-block{
+      width:140px;
+      height:180px;
+      background:rgba(242,242,242,1);
+      border-radius:4px;
+      vertical-align: top;
+    }
+    .tax_excle_img .inline-block>img{
+      padding-top: 5px;
+      width: 130px;
+    }
+    .tax_excle_img .inline-block>p{
+      color: rgba(102, 102, 102, 1);
+      font-size: 14px;
+      line-height: 20px;
+      padding-top: 5px;
+    }
+    .download_btn>a{
+      color:#fff;
+    }
+    .download_btn{
+      display: inline-block;
+      width:78px;
+      height:27px;
+      background:rgba(19,181,177,1);
+      border-radius:4px;
+      color: #fff;
+      line-height: 27px;
+      margin-top: 5px;
+      text-align: center;
+      cursor: default;
+    }
+    .way_two{
+      width: 220px;
+    }
+    .way_two img{
+      width: 69px;
+      padding-left: 80px;
+      padding-top: 8px;
+    }
+    .way_three{
+      vertical-align: top;
+    }
+    .way_three p{
+      text-decoration: underline;
+      padding-top: 10px;
+    }
+    .mask-layer .tax_dialog_close{
+      width: 100%;
+      position: absolute;
+      top: 145px;
+    }
+    .mask-layer .tax_dialog_close img{
+      position: absolute;
+      right: -9px;
+      width: 20px;
+      top: -26px;
+    }
+  }
+
   .mask-layer  .excle_download{
     position: absolute;
     width: 600px;
