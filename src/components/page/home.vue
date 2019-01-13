@@ -509,9 +509,10 @@
             var that=this;
             this.ajax_nodata(this.http_url.url+"/biz/user/update/"+this.taxPayerRole,function(data){
               if(data.code===0){
-                alert("操作成功")
+                // alert("操作成功")
                 that.mask_layer_show=false;
                 that.identity_dialog_show=false;
+                that.user_msg.taxPayerRoleName=data.taxPayerRoleName;
               }else{
                 alert(data.msg)
               }
