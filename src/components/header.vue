@@ -65,7 +65,7 @@
             }else if(id==3){
               this.$router.push({name:val});
             }else if(id==4){
-              window.open("http://test.jieshuibao.com/GSSQ_back");
+              window.location.href="http://test.jieshuibao.com/GSSQ_back";
               this.$cookie.set('token', '')
             }
             this.close_status=false;
