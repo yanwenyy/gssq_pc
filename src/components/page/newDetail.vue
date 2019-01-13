@@ -8,7 +8,7 @@
         <div>{{msg.title}}</div>
         <div class="new-detail-date">{{msg.createTime}}</div>
       </div>
-      <div>{{msg.content}}</div>
+      <div v-html="msg.content"></div>
     </div>
   </div>
 </template>
@@ -52,5 +52,6 @@
     padding:2.75rem 2.56rem;
     color:#333;
     font-size: 1rem;
+    word-break: break-all;
   }
 </style>

@@ -627,9 +627,9 @@
           next_ques:function(){
             var that=this;
             if(this.zn){
-              if(this.zn_msg.child==''){
-                alert("请选择")
-              }else{
+              // if(this.zn_msg.child==''){
+              //   alert("请选择")
+              // }else{
                 if(this.zn_msg.child=='有'){
                   this.zn_msg.status=this.zn_msg.status+1;
                 }else{
@@ -637,7 +637,7 @@
                   this.zn=false;
                   this.jx=true;
                 }
-              }
+              // }
               if(this.zn_msg.status>3){
                 this.zn_msg.result=Number(this.zn_msg.child_50_num.length)*500+Number(this.zn_msg.child_100_num.length)*1000;
                 this.zn=false;

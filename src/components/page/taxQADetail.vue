@@ -100,6 +100,7 @@
     padding:0.5rem 0 ;
     padding-top: 1.5rem;
     position: relative;
+    cursor:auto
   }
   .gswd_list:not(:last-child){
     border-bottom: 1px solid rgba(242,242,242,1);;

@@ -8,8 +8,8 @@
       <li class="gswd_list" v-for="item in list" @click="$router.push({name:'newDetail',query:{uuid:item.policyId}})">
         <div class="new-list-title">{{item.title}}</div>
         <div><span class="new-list-line inline-block"></span></div>
-        <div class="new-list-msg">
-          {{item.content.length>210? item.content.slice(0,210)+"...":item.content}}
+        <div class="new-list-msg" v-html="item.content.length>210? item.content.slice(0,210)+'...':item.content">
+
         </div>
         <div class="new-list-footer">
           <span>{{format(item.createTime)}}</span>

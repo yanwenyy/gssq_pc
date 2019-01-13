@@ -253,7 +253,7 @@
             <li class="msg-main-right-li box-sizing" v-for="i in zc_list"  @click="$router.push({name:'newDetail',query:{uuid:i.policyId}})">
               <div class="inline-block li-dot"></div>
               <div class="inline-block">
-                <div class="right-li-content">{{i.content.length>60? i.content.slice(0,60)+"...":i.content}}</div>
+                <div class="right-li-content" v-html='i.title.length>60? i.title.slice(0,60)+"...":i.title'></div>
                 <div>{{format(i.createTime)}}</div>
               </div>
             </li>

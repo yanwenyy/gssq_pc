@@ -179,6 +179,7 @@
           //左边菜单点击
           menu_click:function(status,id){
             var that=this;
+            that.if_know=false;
             if(status=="no"){
               this.labelId=id;
               this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
