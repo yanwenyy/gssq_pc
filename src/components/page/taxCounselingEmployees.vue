@@ -12,7 +12,7 @@
               <!--<img :src="item.img" alt="">-->
               <span class="inline-block left-list-one-icon"  :class="two_menu==item.name? 'left-list-one-icon-act':''" ><icon-svg :name="item.icon"></icon-svg></span>
               <div class="inline-block">{{item.name}}</div>
-              <img :src="two_menu==item.name? '../../../static/img/left-trange-click.png':'../../../static/img/left-trange.png'" alt="">
+              <img :src="two_menu==item.name? './static/img/left-trange-click.png':'./static/img/left-trange.png'" alt="">
             </div>
           </div>
           <div v-if="two_menu==item.name" class="left-list-two">
@@ -20,7 +20,7 @@
               <li v-for="two in item.children">
                 <div class="left-list-two-div" :class="three_menu==two.name? 'left-list-two-div-act':''" @click="list_two(two.name)">
                   <div  @click="menu_click(two.children!=''? 'yes':'no',two.labelId)">
-                    <img :src="three_menu==two.name? '../../../static/img/left-trange-click-two.png':'../../../static/img/left-trange.png'" alt="">
+                    <img :src="three_menu==two.name? './static/img/left-trange-click-two.png':'./static/img/left-trange.png'" alt="">
                     <div class="inline-block">{{two.name}}</div>
                   </div>
                 </div>
@@ -70,7 +70,8 @@
           </div>
         </div>
         <div class="main-right-footer">
-          <div class="inline-block iknown" @click="i_known()">我懂了</div>
+          <div class="inline-block iknown" v-if="!if_know" @click="i_known()">我懂了</div>
+          <div class="inline-block iknown-yes" v-if="if_know">我懂了 √</div>
           <div class="inline-block not-known orange" @click="not_known">我没懂，去向专家提问</div>
         </div>
       </div>
@@ -89,6 +90,8 @@
         name: "tax-counseling-employees",
         data(){
           return{
+            //是否懂了
+            if_know:false,
             //点击我没懂二维码显示
             code_show:false,
             //右边tab栏显示状态
@@ -163,9 +166,13 @@
         methods:{
           //我懂了
           i_known:function(){
+            var that=this;
             if(this.labelId!=""){
               this.ajax_nodata_get(this.http_url.url+"/biz/lesson/info/clear/"+this.labelId,function(data){
                 console.log(data);
+                if(data.code==0){
+                  that.if_know=true;
+                }
               })
             }
           },

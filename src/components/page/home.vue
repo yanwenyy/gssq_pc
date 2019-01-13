@@ -54,28 +54,28 @@
         </div>
         <div class="sl-classification box-sizing">
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/gzsd.png" data-hover="../../../static/img/gzsd_hover.png" data-src="../../../static/img/gzsd.png" alt="">
+            <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴'}})">
               <div>工资、薪酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list"  @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/lwbc.png" data-src="../../../static/img/lwbc.png" data-hover="../../../static/img/lwbc_hover.png" alt="">
+            <img src="../../../static/img/lwbc.png" data-src="./static/img/lwbc.png" data-hover="./static/img/lwbc_hover.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>劳务报酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/gzsd.png" data-hover="../../../static/img/gzsd_hover.png" data-src="../../../static/img/gzsd.png" alt="">
+            <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>稿酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
-            <img src="../../../static/img/txqsd.png" data-hover="../../../static/img/txqsd_hover.png" data-src="../../../static/img/txqsd.png" alt="">
+            <img src="../../../static/img/txqsd.png" data-hover="./static/img/txqsd_hover.png" data-src="./static/img/txqsd.png" alt="">
             <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬、稿酬、特许权使用费的预扣预缴'}})">
               <div>特许权使用费所得</div>
               <div>我要辅导</div>
@@ -507,7 +507,7 @@
           //我的身份
           submit_identity:function(){
             var that=this;
-            this.ajax_nodata(this.http_url.url+"/sys/user/update/"+this.taxPayerRole,function(data){
+            this.ajax_nodata(this.http_url.url+"/biz/user/update/"+this.taxPayerRole,function(data){
               if(data.code===0){
                 alert("操作成功")
                 that.mask_layer_show=false;
@@ -779,6 +779,7 @@
     color:#fff;
     background: url("../../../static/img/total-gs-class-bg-hover.png") no-repeat;
     background-size: 100% 100%;
+    cursor: pointer;
   }
   .total-gs-class-list>div:nth-child(3){
     margin-top: 1.25rem;

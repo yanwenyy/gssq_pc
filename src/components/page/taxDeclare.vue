@@ -80,7 +80,7 @@
           var that=this;
           //上次更新时间
           this.ajax_nodata(this.http_url.url+"/biz/reportrecord/info",function(data){
-            console.log(data);
+            // console.log(data);
             that.updateTime=data.userLessonReportRecordEntity.updateTime||"";
           });
           $("#upload").zinoUpload({
@@ -94,12 +94,12 @@
             },
             submit: function (event, ui) {
               //console.log(ui);
-              console.log()
+              // console.log()
             },
             complete: function (event, ui) {
               // console.log(ui);
               if(ui.response.code==0){
-                console.log(ui.response.url);
+                // console.log(ui.response.url);
                 that.file_succ=true;
                 that.ajax(that.http_url.url+"/biz/reportrecord/save",{
                   "excelUrl":ui.response.url
@@ -171,7 +171,7 @@
   .end-time{
     color:#999;
     float:right;
-    margin-right: 8.19rem;
+    margin-right: 4.19rem;
     margin-top: -1rem;
   }
   .succ{
