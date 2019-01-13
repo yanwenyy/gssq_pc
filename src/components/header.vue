@@ -7,7 +7,7 @@
           <span class="inline-block logo-name">个人所得税专家服务系统</span>
         </div>
         <div class="inline-block header-user">
-          <div class="header-title">北京解税宝科技有限公司</div>
+          <div class="header-title">{{user_msg.companyName}}</div>
           <div class="header-user-msg" @click="close_status=!close_status">
             <img src="../../static/img/user-img.png" alt="">
             <span>{{user_msg.username}}</span>
