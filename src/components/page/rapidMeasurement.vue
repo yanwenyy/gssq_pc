@@ -97,10 +97,10 @@
                   </div>
                 </div>
                 <div v-if="jx_msg.status==5">
-                  <div class="ques-list-title">5.您参加的是哪种职业资格继续教育</div>
+                  <div class="ques-list-title" style="width: 80%;margin-left: 10%">5.您本年度取得的技能职业资格继续教育、专业职业资格继续教育的证书是否在<a class="rsb_msg" href="./static/download/reb.pdf" target="_blank">（人社部发[2017]68号）</a>文件范围</div>
                   <div class="ques-list-msg box-sizing">
-                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="a" type="radio"><lable>参加职业资格继续教育列表（人社部发[2017]68号）</lable></div>
-                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="b" type="radio"><lable>其他</lable></div>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="a" type="radio"><lable>是</lable></div>
+                    <div class="inline-block radio-div"><input v-model="jx_msg.zyzg_class" value="b" type="radio"><lable>否</lable></div>
                     <!--<select v-model="jx_msg.zyzg_class"  class="ques-sel" name="" id="" >-->
                       <!--<option  value="a">参加职业资格继续教育列表（人社部发[2017]68号）</option>-->
                       <!--<option  value="b">其他</option>-->
@@ -700,11 +700,11 @@
                   this.fwzj=true;
                 }
               }else if(this.zfdk_msg.status==2){
-                if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="a"){
+                if(this.zfdk_msg.loan_class=="a"){
                   this.zfdk_msg.result=1000;
                   this.zfdk=false;
                   this.fwzj=true;
-                }else if(this.zfdk_msg.loan_class=="d"){
+                }else if(this.zfdk_msg.loan_class=="b"||this.zfdk_msg.loan_class=="d"){
                   this.zfdk_msg.status=3
                 }else if(this.zfdk_msg.loan_class=="c"){
                   this.zfdk_msg.status=4
@@ -934,6 +934,10 @@
 </script>
 
 <style scoped>
+  .rsb_msg{
+    text-decoration: underline;
+    color:#13B5B1;
+  }
   .excle_download_title{
     position: relative;
     line-height: 50px;
