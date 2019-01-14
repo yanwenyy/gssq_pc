@@ -143,14 +143,14 @@
             </div>
           </div>
           <div class="msg-main-right">
-            <div class="look-my-kc box-sizing">
-              <div>
-                <div class="lookMK_name">看看我的6项专项附加扣除到底扣多少？</div>
-                <div class="lookMK_line"></div>
-                <div class="lookMK_msg">我都能扣什么？如何扣除最划算?</div>
-                <div class="lookMK_msg">定制辅导，根据您的实际情况，帮您解决 您的所有财税问题！</div>
-                <div class="lookMK_btn" @click="$router.push({name:'rapidMeasurement'})">开始</div>
-              </div>
+            <div class="look-my-kc box-sizing" @click="$router.push({name:'rapidMeasurement'})">
+              <!--<div>-->
+                <!--<div class="lookMK_name">看看我的6项专项附加扣除到底扣多少？</div>-->
+                <!--<div class="lookMK_line"></div>-->
+                <!--<div class="lookMK_msg">我都能扣什么？如何扣除最划算?</div>-->
+                <!--<div class="lookMK_msg">定制辅导，根据您的实际情况，帮您解决 您的所有财税问题！</div>-->
+                <!--<div class="lookMK_btn" @click="$router.push({name:'rapidMeasurement'})">开始</div>-->
+              <!--</div>-->
             </div>
             <img src="../../../static/img/shortcut_img.png" class="shortcut_excle" @click="mask_layer_show=!mask_layer_show;tax_dialog_show=!tax_dialog_show">
           </div>
@@ -660,9 +660,13 @@
   }
   .look-my-kc{
     height:14.2rem;
-    background: #064964;
+    background: url(../../../static/img/ksc_bg_home.png) no-repeat;
+    background-size: 100% 100%;
     margin-top: 1.5rem;
     font-size: 0.81rem;
+  }
+  .look-my-kc:hover{
+    cursor: pointer;
   }
   .special-deduction>div:nth-child(odd){
     margin-right: 5%;
