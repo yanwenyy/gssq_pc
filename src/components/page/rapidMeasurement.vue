@@ -24,7 +24,7 @@
                 </div>
                 <div v-if="zn_msg.status==3">
                   <div class="ques-list-title">3.您的孩子处于哪个阶段？以及您的扣缴比例！</div>
-                  <div style="height: 150px;width:70%;overflow: auto">
+                  <div style="height: 150px;width:78%;overflow: auto">
                     <div class="ques-list-msg box-sizing child-list"  v-for="i in zn_msg.child_num">
                       <div>孩{{i}}:</div>
                       <div>

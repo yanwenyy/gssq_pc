@@ -23,7 +23,7 @@
       </div>
       <div class="inline-block header-search-group box-sizing">
         <input placeholder="请搜索问题" v-model="search" type="text" class="box-sizing">
-        <img src="../../static/img/header-search.png" @click="$router.push({name:'taxQuestionsAnswers',query:{msg:search}})">
+        <img class="search-img" src="../../static/img/header-search.png" @click="$router.push({name:'taxQuestionsAnswers',query:{msg:search}})">
       </div>
     </div>
   </div>
@@ -51,6 +51,9 @@
 </script>
 
 <style scoped>
+  .search-img:hover{
+    cursor: pointer;
+  }
   .gsch:hover{
     cursor: pointer;
   }

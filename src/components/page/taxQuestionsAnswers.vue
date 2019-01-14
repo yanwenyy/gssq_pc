@@ -44,23 +44,47 @@
           end:10,
           //点击我没懂二维码显示
           code_show:false,
+          content:'',
+          msg:''
         }
       },
       mounted(){
         var that=this;
-        // console.log(that.$route.query.msg)
+        this.content=this.$route.query.msg;
+        console.log(this.content);
+        // console.log(that.$route.query.msg);
         this.ajax_wd("/onlook/onlookMsgList/share",{
+          "page":"1",
+          "limit":"10",
+          "content":this.content||""
+        },function(data){
+          // console.log(data);
+          that.list=data.data.list;
+          for(var i=0;i<that.list.length;i++){
+            that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+          }
+          that.page(data.data.totalPage)
+        });
+
+        $("body").on("click",".search-img",function(){
+          that.msg=$(".header-search-group>input").val();
+          that.ajax_wd("/onlook/onlookMsgList/share",{
             "page":"1",
             "limit":"10",
-            "content":this.$route.query.msg||""
-        },function(data){
+            "content":that.msg
+          },function(data){
             console.log(data);
-            that.list=data.data.list;
-            for(var i=0;i<that.list.length;i++){
-              that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+            if(data.data.list!=""&&data.data.list!=null){
+              that.list=data.data.list;
+              for(var i=0;i<that.list.length;i++){
+                that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+              }
+              that.page(data.data.totalPage)
+            }else{
+              that.list=""
             }
-            that.page(data.data.totalPage)
-        });
+          });
+        })
       },
       methods:{
         go_detail:function(id){
