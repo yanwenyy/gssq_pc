@@ -55,28 +55,28 @@
         <div class="sl-classification box-sizing">
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
             <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
-            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴',labelId:75}})">
+            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'所得项目',two:'工资薪金',labelId:48}})">
               <div>工资、薪酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list"  @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
             <img src="../../../static/img/lwbc.png" data-src="./static/img/lwbc.png" data-hover="./static/img/lwbc_hover.png" alt="">
-            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'劳务报酬的预扣预缴',labelId:76}})">
+            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'所得项目',two:'劳务报酬',labelId:49}})">
               <div>劳务报酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
             <img src="../../../static/img/gzsd.png" data-hover="./static/img/gzsd_hover.png" data-src="./static/img/gzsd.png" alt="">
-            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'稿酬的预扣预缴',labelId:77}})">
+            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'所得项目',two:'稿酬',labelId:50}})">
               <div>稿酬所得</div>
               <div>我要辅导</div>
             </div>
           </div>
           <div class="inline-block sl-classification-list" @mouseover="classfication_hvoer($event)"  @mouseleave="classfication_leave($event)">
             <img src="../../../static/img/txqsd.png" data-hover="./static/img/txqsd_hover.png" data-src="./static/img/txqsd.png" alt="">
-            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'特许权使用费的预扣预缴',labelId:78}})">
+            <div class="inline-block box-sizing" @click="$router.push({name:'taxCounselingEmployees',query:{one:'所得项目',two:'特许使用费',labelId:51}})">
               <div>特许权使用费所得</div>
               <div>我要辅导</div>
             </div>
@@ -121,7 +121,7 @@
                   <div class="cc_name">
                     <img src="../../../static/img/ccxm-fjcc.png" alt="">
                   </div>
-                  <div class="cc_fd_btn" @click="$router.push({name:'taxCounselingEmployees',query:{one:'扣除项目',two:'六项专项附加扣除',labelId:56}})">立即辅导</div>
+                  <div class="cc_fd_btn" @click="$router.push({name:'taxCounselingEmployees',query:{one:'扣除项目',two:'六项专项附加扣除',three:'子女教育',labelId:57}})">立即辅导</div>
                 </div>
                 <div class="inline-block cc_msg_show">
                   <div>六项专项附加扣除</div>
@@ -133,7 +133,7 @@
                   <div class="cc_name">
                     <img src="../../../static/img/ccxm-qtcc.png" alt="">
                   </div>
-                  <div class="cc_fd_btn" @click="$router.push({name:'taxCounselingEmployees',query:{one:'扣除项目',two:'其他扣除项目',labelId:63}})">立即辅导</div>
+                  <div class="cc_fd_btn" @click="$router.push({name:'taxCounselingEmployees',query:{one:'扣除项目',two:'其他扣除项目',three:'企业年金',labelId:64}})">立即辅导</div>
                 </div>
                 <div class="inline-block cc_msg_show">
                   <div>其他扣除</div>
@@ -193,7 +193,7 @@
         <div class="inline-block total-gs-class-list">
           <div>税收优惠</div>
           <div>快速查阅是否减免</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收优惠',labelId:68}})">立即辅导</div>
+          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收优惠',two:'免征个人所得税的情形',labelId:69}})">立即辅导</div>
         </div>
         <div class="inline-block total-gs-class-list">
           <div>税收抵免</div>
@@ -203,7 +203,7 @@
         <div class="inline-block total-gs-class-list">
           <div>预扣预缴/代扣代缴</div>
           <div>预扣代缴/代扣代缴适用对象</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',labelId:73}})">立即辅导</div>
+          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴',labelId:75}})">立即辅导</div>
         </div>
         <div class="inline-block total-gs-class-list">
           <div>汇算清缴</div>
