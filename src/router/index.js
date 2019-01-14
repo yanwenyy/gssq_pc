@@ -11,6 +11,7 @@ import taxDeclare from '@/components/page/taxDeclare'//我的个税扣除申报
 import newCenter from '@/components/page/newCenter'//新闻中心
 import newDetail from '@/components/page/newDetail'//新闻详情
 import video from '@/components/page/video'//新闻详情
+import taxPlan from '@/components/page/taxPlan'//个税筹划
 Vue.use(Router);
 
 export default new Router({
@@ -30,7 +31,8 @@ export default new Router({
         {path:'/taxDeclare',component: taxDeclare, name: 'taxDeclare', meta: { title: '我的个税扣除申报' }},
         {path:'/newCenter',component: newCenter, name: 'newCenter', meta: { title: '新闻中心' }},
         {path:'/newDetail',component: newDetail, name: 'newDetail', meta: { title: '新闻详情' }},
-        {path:'/video',component: video, name: 'video', meta: { title: '视频播放' }}
+        {path:'/video',component: video, name: 'video', meta: { title: '视频播放' }},
+        {path:'/taxPlan',component: taxPlan, name: 'taxPlan', meta: { title: '个税筹划' }}
         ],
     },
     {
