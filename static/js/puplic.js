@@ -14,7 +14,7 @@ export default{
     Vue.prototype.http_url_wd = {
       test:'http://test.jieshuibao.com/jsb_webserver/',
       formal: "https://api.jieshuibao.com/",
-      url:  "https://api.jieshuibao.com/",
+      url:  "http://test.jieshuibao.com/jsb_webserver/",
     };
     Vue.prototype.head_src = Vue.prototype.http_url_wd.url+"showImg/head/";
     //问题图片

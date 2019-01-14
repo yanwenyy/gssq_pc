@@ -7,7 +7,7 @@
             首&nbsp;&nbsp;&nbsp;&nbsp;页
           </div>
         </router-link>
-        <router-link :to="{name:'taxCounselingEmployees'}">
+        <router-link :to="{name:'taxCounselingEmployees',query:{one:'纳税人身份',two:'居民纳税人',labelId:45}}">
           <div class="inline-block" :class="msg=='个税辅导'? 'header-tab-act':''">
             个税辅导
           </div>

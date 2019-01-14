@@ -190,11 +190,11 @@
           //左边菜单点击
           menu_click:function(status,id){
             var that=this;
-            that.if_know=false;
-            that.lesson.content="";
-            that.lesson.knowledge="";
-            that.lesson.cases="";
             if(status=="no"){
+              that.if_know=false;
+              that.lesson.content="";
+              that.lesson.knowledge="";
+              that.lesson.cases="";
               this.labelId=id;
               this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
                   console.log(data);
