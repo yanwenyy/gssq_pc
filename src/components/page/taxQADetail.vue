@@ -3,7 +3,7 @@
     <headerTab  msg="个税咨询"></headerTab>
     <ul class="gswd-ul gswd-ul-yw box-sizing">
       <li class="gswd_list" @click="">
-        <img :src="head_src+questionUsers.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
+        <img :src="questionUsers.isAnon==1? head_src+questionUsers.headImage:'./static/img/user-img.png'"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
         <div class="inline-block">
           <div class="gswd-user">
             <span>{{questionUsers.realName||'匿名用户'}}</span>

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <BreadNav msg="我的个税扣除申报"></BreadNav>
     <div class="declare-body">
       <div class="declare-btn">
         <!--<img src="../../../static/img/declare-up.png" alt="">-->
@@ -67,8 +68,12 @@
 
 <script>
   import Vue from 'vue'
+  import BreadNav from '@/components/breadNav';
     export default {
         name: "tax-declare",
+        components:{
+          BreadNav
+        },
         data(){
           return{
             file_name:'',//文件名

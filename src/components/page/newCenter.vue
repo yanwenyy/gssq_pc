@@ -3,6 +3,7 @@
     <div class="banner">
       <img src="../../../static/img/banner-gswd.png" alt="">
     </div>
+    <BreadNav msg="新政速递"></BreadNav>
     <div class="new-center-title">新政速递</div>
     <ul class="gswd-ul">
       <li class="gswd_list" v-for="item in list" @click="$router.push({name:'newDetail',query:{uuid:item.policyId}})">
@@ -22,8 +23,12 @@
 </template>
 
 <script>
+  import BreadNav from '@/components/breadNav';
     export default {
         name: "new-center",
+        components:{
+          BreadNav
+        },
         data(){
           return{
             list:[]

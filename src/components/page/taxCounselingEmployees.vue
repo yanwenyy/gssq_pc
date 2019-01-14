@@ -39,11 +39,7 @@
       </ul>
     </div>
     <div class="main-right inline-block box-sizing">
-      <div class="bread-nav">
-        <!--<span class="fa fa-address-book"></span>-->
-        <img src="../../../static/img/tax-home-right.png" alt="">
-        首页>六项专项扣除
-      </div>
+      <BreadNav msg="六项专项扣除"></BreadNav>
       <div class="main-right-body">
         <div class="main-right-body-title">
           <div class="inline-block" :class="right_tab_status==1? 'main-right-body-title-act':''" @click="right_tab(1)">政策原文</div>
@@ -53,13 +49,13 @@
         </div>
         <div class="main-right-msg box-sizing">
           <div v-if="right_tab_status==1">
-            <div>{{lesson.content||''}}</div>
+            <div v-html="lesson.content||''">{{}}</div>
           </div>
           <div v-if="right_tab_status==2">
-            <div>{{lesson.knowledge||''}}</div>
+            <div v-html="lesson.knowledge||''">{{}}</div>
           </div>
           <div v-if="right_tab_status==3">
-            <div>{{lesson.cases||''}}</div>
+            <div v-html="lesson.cases||''">{{}}</div>
           </div>
           <div v-if="right_tab_status==4" class="box-sizing">
             <div class="inline-block tex-video-list" v-for="i in lesson.videos"  @click="$router.push({name:'video',query:{vid:i.ccId}})">
@@ -86,8 +82,12 @@
 </template>
 
 <script>
+  import BreadNav from '@/components/breadNav';
     export default {
         name: "tax-counseling-employees",
+        components:{
+          BreadNav
+        },
         data(){
           return{
             //是否懂了
@@ -180,6 +180,9 @@
           menu_click:function(status,id){
             var that=this;
             that.if_know=false;
+            that.lesson.content="";
+            that.lesson.knowledge="";
+            that.lesson.cases="";
             if(status=="no"){
               this.labelId=id;
               this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){

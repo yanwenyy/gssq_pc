@@ -230,7 +230,7 @@
           </div>
           <ul>
             <li v-for="item in wd_list" class="msg-main-left-li"  @click="$router.push({name:'taxQADetail',query:{uuid:item.uuid}})">
-              <img :src="head_src+item.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
+              <img :src="item.isAnon==1? head_src+item.headImage:'./static/img/user-img.png'"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
               <div class="inline-block">
                 <div>
                   <span>{{item.realName||'匿名用户'}}</span>

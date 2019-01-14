@@ -17,11 +17,9 @@
             个税咨询
           </div>
         </router-link>
-        <router-link :to="{name:'taxQuestionsAnswers'}">
-          <div class="inline-block" :class="msg=='个税筹划'? 'header-tab-act':''">
+          <div class="inline-block gsch" :class="msg=='个税筹划'? 'header-tab-act':''">
             个税筹划
           </div>
-        </router-link>
       </div>
       <div class="inline-block header-search-group box-sizing">
         <input placeholder="请搜索问题" v-model="search" type="text" class="box-sizing">
@@ -53,5 +51,7 @@
 </script>
 
 <style scoped>
-
+  .gsch:hover{
+    cursor: pointer;
+  }
 </style>

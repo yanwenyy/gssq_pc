@@ -59,7 +59,7 @@
               <div class="rapid-ques-title">继续教育支出</div>
               <div class="rapid-ques-body">
                 <div v-if="jx_msg.status==1">
-                  <div class="ques-list-title">1.您当月是否参加学历（学位）继续教育？</div>
+                  <div class="ques-list-title">1.您本年度是否参加学历（学位）继续教育？</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.degree" value="是" type="radio" id="degree1"><lable>是</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.degree" value="否" type="radio" id="degree2"><lable>否</lable></div>
@@ -90,7 +90,7 @@
                   </div>
                 </div>
                 <div v-if="jx_msg.status==4">
-                  <div class="ques-list-title">4.您当月是否取得职业资格继续教育证书</div>
+                  <div class="ques-list-title">4.您本年度是否取得职业资格继续教育证书</div>
                   <div class="ques-list-msg box-sizing">
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="是" type="radio"><lable>是</lable></div>
                     <div class="inline-block radio-div"><input v-model="jx_msg.zyzg" value="否" type="radio"><lable>否</lable></div>

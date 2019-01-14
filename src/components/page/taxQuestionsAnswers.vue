@@ -6,7 +6,7 @@
     </div>
     <ul class="gswd-ul">
       <li class="gswd_list" v-for="item in list" @click="go_detail(item.uuid)">
-        <img :src="head_src+item.headImage"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
+        <img :src="item.isAnon==1? head_src+item.headImage:'./static/img/user-img.png'"  onerror="javascript:this.src='./static/img/user-img.png';" alt="">
         <div class="inline-block">
           <div class="gswd-user">
             <span>{{item.realName||'匿名用户'}}</span>

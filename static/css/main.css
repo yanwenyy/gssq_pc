@@ -224,7 +224,6 @@ input::-webkit-input-placeholder{
   vertical-align: top;
 }
 .main-right{
-  margin-top: 1rem;
   vertical-align: top;
   width:74%;
 }
@@ -347,6 +346,7 @@ input::-webkit-input-placeholder{
   padding-left:1.06rem;
   background: #F9F9F9;
   margin-bottom: 1.06rem;
+  margin-top: 1rem;
 }
 .bread-nav>img{
   width:0.875rem;

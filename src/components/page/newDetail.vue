@@ -3,6 +3,7 @@
     <div class="banner">
       <img src="../../../static/img/banner-gswd.png" alt="">
     </div>
+    <BreadNav msg="新政速递"></BreadNav>
     <div class="new-detail-body box-sizing">
       <div class="new-detail-title">
         <div>{{msg.title}}</div>
@@ -14,8 +15,12 @@
 </template>
 
 <script>
+  import BreadNav from '@/components/breadNav';
     export default {
         name: "new-detail",
+        components:{
+          BreadNav
+        },
         data(){
           return{
             msg:''
