@@ -20,7 +20,7 @@
               <li v-for="two in item.children">
                 <div class="left-list-two-div" :class="three_menu==two.name? 'left-list-two-div-act':''" @click="list_two(two.name)">
                   <div  @click="menu_click(two.children!=''? 'yes':'no',two.labelId)">
-                    <img :src="three_menu==two.name? './static/img/left-trange-click-two.png':'./static/img/left-trange.png'" alt="">
+                    <img v-if="two.children!=''" :src="three_menu==two.name? './static/img/left-trange-click-two.png':'./static/img/left-trange.png'" alt="">
                     <div class="inline-block">{{two.name}}</div>
                   </div>
                 </div>
@@ -86,8 +86,8 @@
     export default {
         name: "tax-counseling-employees",
         components:{
-          BreadNav
-        },
+        BreadNav
+      },
         data(){
           return{
             //是否懂了
@@ -162,6 +162,17 @@
           this.two_menu=this.$route.query.one||"";
           this.three_menu=this.$route.query.two||"";
           this.three_status=this.$route.query.three||"";
+          if(this.$route.query.labelId!=""){
+            this.labelId=this.$route.query.labelId;
+            this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+this.labelId,function(data){
+              console.log(data);
+              if(data.msg=='success'){
+                that.lesson.content=data.lesson.content||"";
+                that.lesson.knowledge=data.lesson.knowledge||"";
+                that.lesson.cases=data.lesson.cases||"";
+              }
+            })
+          }
         },
         methods:{
           //我懂了
