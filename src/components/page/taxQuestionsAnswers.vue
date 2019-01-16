@@ -31,6 +31,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import headerTab from '@/components/headerTab'
     export default {
       name: "tax-questions-answers",
@@ -50,40 +51,61 @@
       },
       mounted(){
         var that=this;
-        this.content=this.$route.query.msg;
+        this.content=this.$route.query.msg||"";
         console.log(this.content);
         // console.log(that.$route.query.msg);
-        this.ajax_wd("/onlook/onlookMsgList/share",{
-          "page":"1",
-          "limit":"10",
-          "content":this.content||""
-        },function(data){
-          // console.log(data);
-          that.list=data.data.list;
-          for(var i=0;i<that.list.length;i++){
-            that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+        // this.ajax_wd("/onlook/onlookMsgList/share",{
+        //   "page":"1",
+        //   "limit":"10",
+        //   "content":this.content||""
+        // },function(data){
+        //   // console.log(data);
+        //   that.list=data.data.list;
+        //   for(var i=0;i<that.list.length;i++){
+        //     that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+        //   }
+        //   that.page(data.data.totalPage)
+        // });
+        this.ajax_nodata_get(this.http_url.url+"/biz/qa/list?page=1&limit=10&token="+Vue.cookie.get('token')+"&content="+this.content,function(data){
+          if(data.code==0){
+            that.list=data.page.list;
+            for(var i=0;i<that.list.length;i++){
+              that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+            }
+            that.page(data.page.totalPage)
           }
-          that.page(data.data.totalPage)
         });
-
         $("body").on("click",".search-img",function(){
           that.msg=$(".header-search-group>input").val();
-          that.ajax_wd("/onlook/onlookMsgList/share",{
-            "page":"1",
-            "limit":"10",
-            "content":that.msg
-          },function(data){
-            console.log(data);
-            if(data.data.list!=""&&data.data.list!=null){
-              that.list=data.data.list;
-              for(var i=0;i<that.list.length;i++){
-                that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+          that.ajax_nodata_get(that.http_url.url+"/biz/qa/list?page=1&limit=10&token="+Vue.cookie.get('token')+"&content="+that.msg,function(data){
+            if(data.code==0){
+              if(data.page.list!=""&&data.page.list!=null){
+                that.list=data.page.list;
+                for(var i=0;i<that.list.length;i++){
+                  that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+                }
+                that.page(data.page.totalPage)
+              }else{
+                that.list=""
               }
-              that.page(data.data.totalPage)
-            }else{
-              that.list=""
             }
           });
+          // that.ajax_wd("/onlook/onlookMsgList/share",{
+          //   "page":"1",
+          //   "limit":"10",
+          //   "content":that.msg
+          // },function(data){
+          //   console.log(data);
+          //   if(data.data.list!=""&&data.data.list!=null){
+          //     that.list=data.data.list;
+          //     for(var i=0;i<that.list.length;i++){
+          //       that.list[i].content=that.list[i].content.replace(that.$route.query.msg,'<span style="color:#2FBEB9">'+that.$route.query.msg+'</span>');
+          //     }
+          //     that.page(data.data.totalPage)
+          //   }else{
+          //     that.list=""
+          //   }
+          // });
         })
       },
       methods:{
@@ -102,14 +124,12 @@
               // tab(msg);
               that.start=msg;
               that.end=10;
-              that.ajax_wd("/onlook/onlookMsgList/share",{
-                "page":that.start,
-                "limit":that.end},that.get_wg_page);
+              that.ajax_nodata_get(that.http_url.url+"/biz/qa/list?page="+that.start+"&limit="+that.end,that.get_wg_page);
             });
         },
         //分页围观回调
         get_wg_page:function(data){
-          this.list=data.data.list;
+          this.list=data.page.list;
           for(var i=0;i<list.length;i++){
             list[i].content=list[i].content.replace(this.$route.query.msg,'<span style="color:#2FBEB9">'+this.$route.query.msg+'</span>');
           }

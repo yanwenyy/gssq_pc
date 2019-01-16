@@ -190,25 +190,25 @@
         </div>
       </div>
       <div class="total-gs-class">
-        <div class="inline-block total-gs-class-list">
+        <div class="inline-block total-gs-class-list" @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收优惠',two:'免征个人所得税的情形',labelId:69}})">
           <div>税收优惠</div>
           <div>快速查阅是否减免</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收优惠',two:'免征个人所得税的情形',labelId:69}})">立即辅导</div>
+          <div>立即辅导</div>
         </div>
-        <div class="inline-block total-gs-class-list">
+        <div class="inline-block total-gs-class-list" @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收抵免',labelId:72}})">
           <div>税收抵免</div>
           <div>有境外收入的点开看看</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'税收抵免',labelId:72}})">立即辅导</div>
+          <div>立即辅导</div>
         </div>
-        <div class="inline-block total-gs-class-list">
+        <div class="inline-block total-gs-class-list" @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴',labelId:75}})">
           <div>预扣预缴/代扣代缴</div>
           <div>预扣代缴/代扣代缴适用对象</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'预扣预缴',two:'居民个人的预扣预缴法',three:'工资薪金的预扣预缴',labelId:75}})">立即辅导</div>
+          <div>立即辅导</div>
         </div>
-        <div class="inline-block total-gs-class-list">
+        <div class="inline-block total-gs-class-list" @click="$router.push({name:'taxCounselingEmployees',query:{one:'汇算清缴',labelId:84}})">
           <div>汇算清缴</div>
           <div>年终汇算清缴总结大全</div>
-          <div @click="$router.push({name:'taxCounselingEmployees',query:{one:'汇算清缴',labelId:84}})">立即辅导</div>
+          <div>立即辅导</div>
         </div>
       </div>
       <div class="home-title box-sizing">
@@ -405,6 +405,7 @@
 <script>
   import FirstLoginDialog from '@/components/page/firstLoginDialog';
   import headerTab from '@/components/headerTab';
+  import Vue from 'vue'
     export default {
         name: "home",
       data(){
@@ -455,18 +456,23 @@
             }
           });
           //问答列表
-          this.ajax_wd("/onlook/onlookMsgList/share",{
-            "page":"1",
-            "limit":"5"
-          },function(data){
-            that.wd_list=data.data.list;
+          // this.ajax_wd("/onlook/onlookMsgList/share",{
+          //   "page":"1",
+          //   "limit":"5"
+          // },function(data){
+          //   that.wd_list=data.data.list;
+          // });
+          this.ajax_nodata_get(this.http_url.url+"/biz/qa/list?page=1&limit=5&token="+Vue.cookie.get('token'),function(data){
+             if(data.code==0){
+               that.wd_list=data.page.list;
+             }
           });
           //政策列表
           this.ajax(this.http_url.url+"/biz/policy/list",{
             'page':'1',
             'limit':'4',
           },function(data){
-            //console.log(data);
+            // console.log(data);
             that.zc_list=data.page.list;
           });
           //获取用户登录信息

@@ -6,16 +6,16 @@ export default{
     //接口变量
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com:8090/jsb_tax/',
-      formal: "https://api.jieshuibao.com/",
-      url:  "http://test.jieshuibao.com:8090/jsb_tax/",
+      formal: "http://bsb.jieshuibao.com/jsb_tax/",
+      url:  "https://test.jieshuibao.com/jsb_tax/",
     };
     //问答接口变量
-    //头像变量
     Vue.prototype.http_url_wd = {
       test:'http://test.jieshuibao.com/jsb_webserver/',
       formal: "https://api.jieshuibao.com/",
-      url:  "http://test.jieshuibao.com/jsb_webserver/",
+      url:  "https://api.jieshuibao.com/",
     };
+    //头像变量
     Vue.prototype.head_src = Vue.prototype.http_url_wd.url+"showImg/head/";
     //问题图片
     Vue.prototype.question_src = Vue.prototype.http_url_wd.url+"showImg/question/";

@@ -53,13 +53,11 @@
       },
       mounted(){
         var that=this;
-        this.ajax_wd("/onlook/onlookDetail/share",{
-          "questionUuid":this.$route.query.uuid
-        },function(data){
+        this.ajax_nodata_get(this.http_url.url+"/biz/qa/info/"+this.$route.query.uuid,function(data){
           console.log(data);
-          that.answerUsers=data.data.answerUsers;
-          that.questionUsers=data.data.questionUsers;
-        })
+          that.answerUsers=data.qa.answerUsers;
+          that.questionUsers=data.qa.questionUsers;
+        });
       }
     }
 </script>

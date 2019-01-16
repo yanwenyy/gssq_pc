@@ -65,11 +65,11 @@
           //用户框点击
           user_model:function(val,id){
             if(id==1||id==2||id==5){
-              window.open("http://test.jieshuibao.com/GSSQ_back");
+              window.open("https://test.jieshuibao.com/GSSQ_back");
             }else if(id==3){
               this.$router.push({name:val});
             }else if(id==4){
-              window.location.href="http://test.jieshuibao.com/GSSQ_back";
+              window.location.href="https://test.jieshuibao.com/GSSQ_back";
               this.$cookie.set('token', '')
             }
             this.close_status=false;
