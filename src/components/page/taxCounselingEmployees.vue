@@ -39,7 +39,7 @@
       </ul>
     </div>
     <div class="main-right inline-block box-sizing">
-      <BreadNav msg="六项专项扣除"></BreadNav>
+      <BreadNav msg="个税辅导"></BreadNav>
       <div class="main-right-body">
         <div class="main-right-body-title">
           <div class="inline-block" :class="right_tab_status==1? 'main-right-body-title-act':''" @click="right_tab(1)">政策原文</div>
@@ -197,11 +197,17 @@
               that.lesson.cases="";
               this.labelId=id;
               this.ajax_nodata_get(this.http_url.url+'/biz/lesson/info/'+id,function(data){
-                  console.log(data);
+                  // console.log(data);
                   if(data.msg=='success'){
                     that.lesson.content=data.lesson.content||"";
                     that.lesson.knowledge=data.lesson.knowledge||"";
                     that.lesson.cases=data.lesson.cases||"";
+                    console.log(data.lesson.ifClear);
+                   if(data.lesson.ifClear==1){
+                     that.if_know=false;
+                   }else if(data.lesson.ifClear==0){
+                     that.if_know=true;
+                   }
                   }
               })
             }

@@ -18,7 +18,7 @@
               <li v-if="permissions.indexOf('biz:user:list')!=-1||permissions.indexOf('biz:user:info')!=-1" @click="user_model('',1)">员工账户管理</li>
               <li v-if="permissions.indexOf('biz:reportrecord:list')!=-1||permissions.indexOf('biz:reportrecord:info')!=-1"  @click="user_model('',2)">员工个税辅导管理</li>
               <li v-if="permissions.indexOf('biz:company:business:list')!=-1||permissions.indexOf('biz:company:business:info')!=-1"  @click="user_model('',5)">企业管理</li>
-              <li @click="user_model('taxDeclare',3)">我的个税扣除申报</li>
+              <li v-if="user_msg.companyType==2" @click="user_model('taxDeclare',3)">我的个税扣除申报</li>
               <li @click="user_model('',4)">退出</li>
             </ul>
           </div>
@@ -65,11 +65,13 @@
           //用户框点击
           user_model:function(val,id){
             if(id==1||id==2||id==5){
-              window.open("https://test.jieshuibao.com/GSSQ_back");
+              // window.open("http://test.jieshuibao.com/GSSQ_back");
+              window.open("http://tax.jieshuibao.com/manage");//正式
             }else if(id==3){
               this.$router.push({name:val});
             }else if(id==4){
-              window.location.href="https://test.jieshuibao.com/GSSQ_back";
+              // window.location.href="http://test.jieshuibao.com/GSSQ_back";
+              window.location.href="http://tax.jieshuibao.com/manage";//正式
               this.$cookie.set('token', '')
             }
             this.close_status=false;

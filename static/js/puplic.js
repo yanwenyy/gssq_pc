@@ -2,12 +2,11 @@ import Vue from 'vue'
 export default{
   install:function(Vue,options)
   {
-    sessionStorage.setItem("token","5dd41261adce1cc19ce07e2e000aa6c5");
     //接口变量
     Vue.prototype.http_url = {
-      test:'http://test.jieshuibao.com:8090/jsb_tax/',
-      formal: "http://bsb.jieshuibao.com/jsb_tax/",
-      url:  "https://test.jieshuibao.com/jsb_tax/",
+      test:'http://test.jieshuibao.com/jsb_tax/',
+      formal: "http://tax.jieshuibao.com/jsb_tax/",
+      url:  "http://test.jieshuibao.com/jsb_tax/",
     };
     //问答接口变量
     Vue.prototype.http_url_wd = {

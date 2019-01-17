@@ -6,7 +6,7 @@
         <img src="../../../static/img/banner-gswd.png" alt="">
       </div>
       <div class="home-title box-sizing">
-        <div class="inline-block home-title-cn">个税签约辅导系统</div>
+        <div class="inline-block home-title-cn">个税辅导系统</div>
         <div class="inline-block home-title-en">Personal Tax Counseling System</div>
       </div>
       <div class="gsfd_system">
@@ -475,17 +475,17 @@
             // console.log(data);
             that.zc_list=data.page.list;
           });
-          //获取用户登录信息
-          this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
-            that.user_msg=data.user;
-            if(data.user.taxPayerRole==0){
-              that.mask_layer_show=true;
-              that.identity_dialog_show=true
-            }else{
-              that.mask_layer_show=false;
-              that.identity_dialog_show=false
-            }
-          });
+          // //获取用户登录信息
+          // this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
+          //   that.user_msg=data.user;
+          //   if(data.user.taxPayerRole==0){
+          //     that.mask_layer_show=true;
+          //     that.identity_dialog_show=true
+          //   }else{
+          //     that.mask_layer_show=false;
+          //     that.identity_dialog_show=false
+          //   }
+          // });
           //首页视频
           this.ajax_nodata(this.http_url.url+"/biz/video/pc/list",function(data){
             console.log(data);

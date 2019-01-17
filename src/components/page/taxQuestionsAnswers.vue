@@ -124,14 +124,17 @@
               // tab(msg);
               that.start=msg;
               that.end=10;
-              that.ajax_nodata_get(that.http_url.url+"/biz/qa/list?page="+that.start+"&limit="+that.end,that.get_wg_page);
+              // that.ajax_nodata_get(that.http_url.url+"/biz/qa/list?page="+that.start+"&limit="+that.end,that.get_wg_page);
+              that.ajax_nodata_get(that.http_url.url+"/biz/qa/list?page="+that.start+"&limit="+that.end+"&token="+Vue.cookie.get('token')+"&content="+that.msg,that.get_wg_page);
             });
         },
         //分页围观回调
         get_wg_page:function(data){
+          var that=this;
+          that.msg=$(".header-search-group>input").val();
           this.list=data.page.list;
-          for(var i=0;i<list.length;i++){
-            list[i].content=list[i].content.replace(this.$route.query.msg,'<span style="color:#2FBEB9">'+this.$route.query.msg+'</span>');
+          for(var i=0;i<this.list.length;i++){
+            that.list[i].content=that.list[i].content.replace(that.msg,'<span style="color:#2FBEB9">'+that.msg+'</span>');
           }
         },
       }

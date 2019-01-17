@@ -34,6 +34,14 @@ export default new Router({
         {path:'/video',component: video, name: 'video', meta: { title: '视频播放' }},
         {path:'/taxPlan',component: taxPlan, name: 'taxPlan', meta: { title: '个税筹划' }}
         ],
+        beforeEnter (to, from, next) {
+          let token = Vue.cookie.get('token');
+          if (!token || !/\S/.test(token)) {
+            // window.location.href="http://test.jieshuibao.com/GSSQ_back";
+            window.location.href="http://tax.jieshuibao.com/manage";//正式
+          }
+          next()
+        },
     },
     {
       path: '/login',
