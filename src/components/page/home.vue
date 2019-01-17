@@ -475,7 +475,7 @@
             // console.log(data);
             that.zc_list=data.page.list;
           });
-          //获取用户登录信息
+          /*//获取用户登录信息
           this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
             that.user_msg=data.user;
             if(data.user.taxPayerRole==0){
@@ -485,7 +485,7 @@
               that.mask_layer_show=false;
               that.identity_dialog_show=false
             }
-          });
+          });*/
           //首页视频
           this.ajax_nodata(this.http_url.url+"/biz/video/pc/list",function(data){
             console.log(data);
