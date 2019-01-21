@@ -38,7 +38,7 @@ export default new Router({
           let token = Vue.cookie.get('token');
           if (!token || !/\S/.test(token)) {
             // window.location.href="http://test.jieshuibao.com/GSSQ_back";
-            window.location.href="http://tax.jieshuibao.com/manage";//正式
+            window.location.href=this.pass_url.url;//正式
           }
           next()
         },

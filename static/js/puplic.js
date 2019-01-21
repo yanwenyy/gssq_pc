@@ -6,7 +6,13 @@ export default{
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com/jsb_tax/',
       formal: "http://tax.jieshuibao.com/jsb_tax/",
-      url:  "http://test.jieshuibao.com/jsb_tax/",
+      url:  "http://tax.jieshuibao.com/jsb_tax/",
+    };
+    //跳转地址
+    Vue.prototype.pass_url = {
+      test:'http://test.jieshuibao.com/GSSQ_back',
+      formal: "http://tax.jieshuibao.com/manage",
+      url:  "http://tax.jieshuibao.com/manage",
     };
     //问答接口变量
     Vue.prototype.http_url_wd = {
@@ -36,9 +42,9 @@ export default{
         },
         data:JSON.stringify(data),
         success:function(data){
-          if(data.code=="2"){
-            alert(data.des);
-            // window.location.href="../html/register-next.html"
+          if(data.code=="401"){
+            // window.location.href="../html/register-next.html";
+            window.location.href= Vue.prototype.pass_url.url;
           }else{
             succ(data);
           }
@@ -60,9 +66,9 @@ export default{
           "token":Vue.cookie.get('token'),
         },
         success:function(data){
-          if(data.code=="2"){
-            alert(data.des);
-            // window.location.href="../html/register-next.html"
+          if(data.code=="401"){
+            // window.location.href="../html/register-next.html";
+            window.location.href= Vue.prototype.pass_url.url;
           }else{
             succ(data);
           }
@@ -84,9 +90,9 @@ export default{
           "token":Vue.cookie.get('token'),
         },
         success:function(data){
-          if(data.code=="2"){
-            alert(data.des);
+          if(data.code=="401"){
             // window.location.href="../html/register-next.html"
+            window.location.href= Vue.prototype.pass_url.url;
           }else{
             succ(data);
           }
@@ -109,9 +115,9 @@ export default{
         },
         data:JSON.stringify(data),
         success:function(data){
-          if(data.code=="2"){
-            alert(data.des);
+          if(data.code=="401"){
             // window.location.href="../html/register-next.html"
+            window.location.href= Vue.prototype.pass_url.url;
           }else{
             succ(data);
           }

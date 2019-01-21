@@ -399,6 +399,19 @@
         <span class="submit_identity download_btn" @click="submit_identity">确定</span>
       </div>
     </div>
+    <div class="kf_phone">
+      <div class="kf_msg ">
+        <div class="kf_msg_title inline-block">
+          <span class="inline-block">联系电话</span>
+        </div>
+        <div class="kf_msg_num inline-block">
+          <div class="inline-block">010-98787887</div>
+          <div class="inline-block">010-98787887</div>
+          <div class="inline-block">010-98787887</div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -531,6 +544,51 @@
 </script>
 
 <style scoped>
+  .kf_msg_num>div{
+    margin-bottom: 28px;
+  }
+  .kf_msg_num{
+    width:172px;
+    background: #13B5B1;
+    padding:19px 0;
+    text-align: center;
+    font-size: 1.125rem;
+  }
+  .kf_msg_title{
+    width:179px;
+    height:42px;
+    background:url("../../../static/img/phone-num-head.png") no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 42px;
+  }
+  .kf_msg{
+    position: absolute;
+    top:0.5rem;
+    right:5rem;
+    color:#fff;
+    display: none;
+  }
+  .kf_phone:hover .kf_msg{
+    display: block;
+  }
+  .kf_phone:hover{
+    width:5.19rem;
+    height:5.19rem;
+    background: url(../../../static/img/kf_phone_hover.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+  }
+  .kf_phone{
+    width:5.19rem;
+    height:5.19rem;
+    background: url(../../../static/img/kf_phone.png) no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 50%;
+    right:0;
+  }
   .look-more{
     float: right;
     color:#999;

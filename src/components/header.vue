@@ -66,12 +66,12 @@
           user_model:function(val,id){
             if(id==1||id==2||id==5){
               // window.open("http://test.jieshuibao.com/GSSQ_back");
-              window.open("http://tax.jieshuibao.com/manage");//正式
+              window.open(this.pass_url.url);//正式
             }else if(id==3){
               this.$router.push({name:val});
             }else if(id==4){
               // window.location.href="http://test.jieshuibao.com/GSSQ_back";
-              window.location.href="http://tax.jieshuibao.com/manage";//正式
+              window.location.href=this.pass_url.url;//正式
               this.$cookie.set('token', '')
             }
             this.close_status=false;
