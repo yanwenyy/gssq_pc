@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import http from '../../static/js/puplic'
 import main from '@/components/main'//主入口页面
 import login from '@/components/login'//登录页
 import home from '@/components/page/home'//首页
@@ -38,7 +39,8 @@ export default new Router({
           let token = Vue.cookie.get('token');
           if (!token || !/\S/.test(token)) {
             // window.location.href="http://test.jieshuibao.com/GSSQ_back";
-            window.location.href=this.pass_url.url;//正式
+            // window.location.href="http://tax.jieshuibao.com/manage";//正式
+            console.log(http)
           }
           next()
         },

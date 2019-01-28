@@ -386,29 +386,26 @@
             <div class="identity_choose">
               <label><input type="radio" name="taxPayerRole" @click="identity_no=false;identity_yes=true;taxPayerRole=1"/>居民纳税人</label>
             </div>
-            <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
+            <p>在中国境内有住所，或者无住所而一个纳税年度内在中国境内居住累计满一百八十三天的个人。</p>
           </div>
           <div class="identity_list inline-block">
             <div class="identity_gray" :class="identity_no?'identity_blue':''"><img src="../../../static/img/indentity_img2.png"></div>
             <div class="identity_choose">
               <label><input type="radio" name="taxPayerRole" @click="identity_no=true;identity_yes=false;taxPayerRole=2"/>非居民纳税人</label>
             </div>
-            <p>说明这个事情是什么什么样子的说明说明啦啦～</p>
+            <p>在中国境内无住所又不居住，或者无住所而一个纳税年度内在中国境内居住累计不满一百八十三天的个人</p>
           </div>
         </div>
         <span class="submit_identity download_btn" @click="submit_identity">确定</span>
       </div>
     </div>
-    <div class="kf_phone">
+    <div class="kf_phone" v-show="phones_show">
       <div class="kf_msg ">
         <div class="kf_msg_title inline-block">
           <span class="inline-block">联系电话</span>
         </div>
         <div class="kf_msg_num inline-block">
-          <div class="inline-block">010-98787887</div>
-          <div class="inline-block">010-98787887</div>
-          <div class="inline-block">010-98787887</div>
-
+          <div class="inline-block" v-for="(item,index) in phones">{{item}}</div>
         </div>
       </div>
     </div>
@@ -424,6 +421,8 @@
       data(){
           return{
             //用户信息
+            phones:[],
+            phones_show:false,
             user_msg:'',
             taxPayerRole:0,
             once_show:false,
@@ -455,19 +454,41 @@
           };
           //获取用户登录信息
           this.ajax_nodata_get(this.http_url.url+"/sys/user/info",function(data){
-            that.user_msg=data.user;
-            that.taxPayerRole=data.user.taxPayerRole;
-            if(that.taxPayerRole==0&&that.once_show==false){
-              that.mask_layer_show=true;
-              that.identity_dialog_show=true
-            }else if(that.taxPayerRole==0&&that.once_show==true){
-              that.mask_layer_show=false;
-              that.identity_dialog_show=false
-            }else if(that.taxPayerRole!=0){
-              that.mask_layer_show=false;
-              that.identity_dialog_show=false
+            if(data.code===0){
+              that.user_msg=data.user;
+              that.taxPayerRole=data.user.taxPayerRole;
+              if(that.taxPayerRole==0&&that.once_show==false){
+                that.mask_layer_show=true;
+                that.identity_dialog_show=true
+              }else if(that.taxPayerRole==0&&that.once_show==true){
+                that.mask_layer_show=false;
+                that.identity_dialog_show=false
+              }else if(that.taxPayerRole!=0){
+                that.mask_layer_show=false;
+                that.identity_dialog_show=false
+              }
+            }else {
+              alert(data.msg)
             }
+
           });
+          //获取事务所客服电话
+          this.ajax_nodata_get(this.http_url.url+"/biz/custphone/info/phones",function(data){
+            var phonesList=[]
+            if(data.code===0){
+              if(data.phones.length!=0&&data.phones!=null){
+                that.phones_show=true
+                for(var i=0;i<data.phones.length;i++){
+                  if(data.phones[i]){
+                    phonesList.push(data.phones[i])
+                  }
+                }
+                that.phones=phonesList
+              }else{
+                that.phones_show=false
+              }
+            }
+          }),
           //问答列表
           // this.ajax_wd("/onlook/onlookMsgList/share",{
           //   "page":"1",
@@ -501,7 +522,6 @@
           // });
           //首页视频
           this.ajax_nodata(this.http_url.url+"/biz/video/pc/list",function(data){
-            console.log(data);
             that.video=data.page.list;
           });
         },
@@ -545,7 +565,7 @@
 
 <style scoped>
   .kf_msg_num>div{
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
   .kf_msg_num{
     width:172px;
@@ -1314,7 +1334,7 @@
   }
   .identity_dialog{
     width: 445px;
-    height: 23.5rem;
+    height: 26.5rem;
     position: absolute;
     left: 0;
     right: 0;
@@ -1348,6 +1368,7 @@
     margin-left: 20px;
     margin-top: 20px;
     text-align: center;
+    vertical-align: top;
   }
   .identity_dialog_title{
     position: relative;

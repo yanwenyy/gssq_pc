@@ -10,7 +10,7 @@
           <div class="header-title">{{user_msg.companyName}}</div>
           <div class="header-user-msg">
             <img src="../../static/img/user-img.png" alt="">
-            <span>{{user_msg.username}}</span>
+            <span>{{user_msg.username||user_msg.name||user_msg.mobile}}</span>
             <img src="../../static/img/header-down.png" alt="">
           </div>
           <div class="close-login" v-if="close_status">
