@@ -6,13 +6,13 @@ export default{
     Vue.prototype.http_url = {
       test:'http://test.jieshuibao.com/jsb_tax/',
       formal: "http://tax.jieshuibao.com/jsb_tax/",
-      url:  "http://test.jieshuibao.com/jsb_tax/",
+      url:  "http://tax.jieshuibao.com/jsb_tax/",
     };
     //跳转地址
     Vue.prototype.pass_url = {
       test:'http://test.jieshuibao.com/GSSQ_back',
       formal: "http://tax.jieshuibao.com/manage",
-      url:  "http://test.jieshuibao.com/GSSQ_back",
+      url:  "http://tax.jieshuibao.com/manage",
     };
     //问答接口变量
     Vue.prototype.http_url_wd = {
